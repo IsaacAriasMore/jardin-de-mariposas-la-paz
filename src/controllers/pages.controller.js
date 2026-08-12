@@ -11,7 +11,7 @@ const PAGE_DEFS = [
     path: '/',
     title: 'Inicio',
     description:
-      'Jardín de Mariposas La Paz: un mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica, donde las mariposas viven en vuelo libre entre plantas y flores tropicales.',
+      'Jardín de Mariposas La Paz: un mariposario rural en Bajo La Paz, San Ramón, Alajuela, Costa Rica, para observar mariposas y flores tropicales en plena naturaleza.',
     extra: { preloadHero: true },
   },
   {
@@ -20,7 +20,7 @@ const PAGE_DEFS = [
     path: '/nuestro-mariposario',
     title: 'Nuestro Mariposario',
     description:
-      'Conozca el mariposario en Bajo La Paz, San Ramón: un espacio dedicado a las mariposas, las plantas que las sostienen y su conservación.',
+      'Conozca el mariposario en Bajo La Paz, San Ramón: un espacio dedicado a la observación de mariposas, la naturaleza y su conservación.',
   },
   {
     key: 'mariposas',
@@ -28,7 +28,7 @@ const PAGE_DEFS = [
     path: '/mariposas',
     title: 'Mariposas',
     description:
-      'Las mariposas que habitan el Jardín de Mariposas La Paz: color, plantas hospederas y comportamiento en vuelo libre.',
+      'Las mariposas del Jardín de Mariposas La Paz: color, flores y su entorno natural en el jardín de San Ramón.',
   },
   {
     key: 'experiencia',
@@ -36,7 +36,7 @@ const PAGE_DEFS = [
     path: '/experiencia',
     title: 'Experiencia',
     description:
-      'Lo que se vive en una visita al mariposario: mariposas en vuelo libre, flores tropicales y cercanía con la naturaleza.',
+      'Lo que se vive en una visita al mariposario: mariposas entre flores tropicales y cercanía con la naturaleza.',
   },
   {
     key: 'conservacion',
@@ -44,7 +44,7 @@ const PAGE_DEFS = [
     path: '/conservacion',
     title: 'Conservación',
     description:
-      'El valor de conservar mariposas y sus hábitats: plantas hospederas, polinización y jardines amigables con la vida silvestre.',
+      'El valor de conservar mariposas y sus hábitats: flores, polinización y jardines amigables con la vida silvestre.',
   },
   {
     key: 'galeria',

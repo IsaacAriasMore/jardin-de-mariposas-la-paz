@@ -3,6 +3,8 @@
   producto. Publicación digital de naturaleza, no plantilla turística.
   FIRST VIEWPORT: Hero full-bleed con video, contenido alineado a la izquierda,
   tagline vertical sutil a la derecha. La fotografía manda.
+  VIDEO: un elemento por breakpoint (horizontal desktop, vertical móvil), cada
+  uno con su poster. El oculto vía display:none no descarga su fuente.
   FINISH: unreviewed and undocumented is unfinished.
 -->
 
@@ -10,34 +12,41 @@
 <section class="hero" aria-label="Presentación principal">
   <div class="hero__media">
     <video
-      class="hero__video"
+      class="hero__video hero__video--desktop"
       autoplay
       muted
       loop
       playsinline
+      preload="auto"
       poster="/media/posters/hero-desktop.jpg"
       aria-hidden="true"
     >
       <source src="/media/videos/mariposa-flor-amarilla-hero-1080p.mp4" type="video/mp4" />
     </video>
-    <img
-      class="hero__poster"
-      src="/media/posters/hero-desktop.jpg"
-      alt=""
+    <video
+      class="hero__video hero__video--mobile"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="/media/posters/hero-mobile.jpg"
       aria-hidden="true"
-    />
+    >
+      <source src="/media/videos/mariposas-entre-hojas-vertical-1080.mp4" type="video/mp4" />
+    </video>
   </div>
   <div class="hero__overlay" aria-hidden="true"></div>
   <div class="hero__content">
     <p class="hero__location">Bajo La Paz · San Ramón · Costa Rica</p>
     <h1 class="hero__title"><%= site.name %></h1>
     <p class="hero__lead">
-      Donde las mariposas viven en vuelo libre entre plantas y flores
-      tropicales del bosque nuboso.
+      Un mariposario rural en el bosque nuboso de San Ramón, para observar
+      mariposas y flores tropicales en plena naturaleza.
     </p>
     <div class="hero__actions">
       <a class="btn btn--large" href="/visitanos">Visítanos</a>
-      <a class="btn btn--large btn--ghost" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
+      <a class="btn btn--large btn--ghost-dark" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
         WhatsApp
       </a>
     </div>
@@ -53,14 +62,14 @@
         <p class="intro__label">El jardín</p>
         <h2 id="intro-title" class="intro__heading">Un espacio para las mariposas</h2>
         <p class="intro__body">
-          En el corazón del bosque nuboso de San Ramón, las mariposas viven entre
-          las plantas que las sostienen. Un lugar real, rural y tranquilo, donde la
-          naturaleza se observa de cerca y se disfruta sin prisa.
+          En el bosque nuboso de San Ramón, las mariposas y las flores conviven
+          en un entorno natural y tranquilo. Un lugar real y rural para observar
+          la naturaleza de cerca, sin prisa.
         </p>
         <p class="intro__body">
           El Jardín de Mariposas La Paz es un espacio dedicado a la observación
-          de mariposas en su hábitat natural, rodeado de flores tropicales y
-          vegetación del Valle Central de Costa Rica.
+          de mariposas y flores tropicales, rodeado de la vegetación y el
+          paisaje del Valle Central de Costa Rica.
         </p>
       </div>
       <div class="intro__image reveal-image">
@@ -71,9 +80,9 @@
           alt="Mariposa azul sobre hoja tropical en el jardín"
           width="1280"
           height="853"
-          loading="eager"
+          loading="lazy"
         />
-        <span class="intro__image-caption">Mariposa en vuelo libre, jardín tropical</span>
+        <span class="intro__image-caption">Mariposa posada sobre una hoja tropical</span>
       </div>
     </div>
   </div>
@@ -84,7 +93,7 @@
   <div class="mariposas-editorial__header">
     <h2 id="marip-title" class="mariposas-editorial__title">Las mariposas del jardín</h2>
     <p class="mariposas-editorial__subtitle">
-      Diversidad de colores y tamaños en vuelo libre entre las flores tropicales.
+      Una muestra del color y la variedad que se encuentra entre las flores del jardín.
     </p>
   </div>
   <div class="mariposas-editorial__grid reveal-stagger">
@@ -133,30 +142,27 @@
   </div>
 </section>
 
-<!-- ======== EXPERIENCIA: full-bleed dark with video -------------------- -->
+<!-- ======== EXPERIENCIA: dark, un solo video -------------------------- -->
 <section class="experiencia-full reveal" aria-labelledby="exp-title">
-  <div class="experiencia-full__bg" aria-hidden="true">
-    <video autoplay muted loop playsinline>
-      <source src="/media/videos/mariposa-flores-tropicales-1080p.mp4" type="video/mp4" />
-    </video>
-  </div>
-  <div class="experiencia-full__content">
-    <div class="experiencia-full__text">
-      <p class="experiencia-full__label">La experiencia</p>
-      <h2 id="exp-title" class="experiencia-full__title">
-        Observar mariposas de cerca
-      </h2>
-      <p class="experiencia-full__body">
-        Un recorrido tranquilo donde la naturaleza se siente en cada rincón.
-        Las mariposas vuelan libres entre las plantas hospederas, sin jaulas
-        ni exhibiciones artificiales.
-      </p>
-      <a class="btn" href="/experiencia">Conocer la experiencia</a>
-    </div>
-    <div class="experiencia-full__media reveal-clip">
-      <video autoplay muted loop playsinline aria-label="Video de mariposas entre flores tropicales">
-        <source src="/media/videos/mariposa-flores-tropicales-1080p.mp4" type="video/mp4" />
-      </video>
+  <div class="container">
+    <div class="experiencia-full__layout">
+      <div class="experiencia-full__text">
+        <p class="experiencia-full__label">La experiencia</p>
+        <h2 id="exp-title" class="experiencia-full__title">
+          Observar mariposas de cerca
+        </h2>
+        <p class="experiencia-full__body">
+          Un recorrido tranquilo para observar mariposas de cerca, entre flores
+          y vegetación. Una pausa para sentir el entorno natural del jardín y
+          disfrutarlo sin prisa.
+        </p>
+        <a class="btn" href="/experiencia">Conocer la experiencia</a>
+      </div>
+      <div class="experiencia-full__media reveal-clip">
+        <video autoplay muted loop playsinline preload="metadata" aria-label="Mariposas y flores del jardín en movimiento">
+          <source src="/media/videos/mariposa-flores-tropicales-1080p.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
   </div>
 </section>
@@ -180,17 +186,17 @@
         <h2 id="cons-title" class="conservacion-essay__title">Conservación</h2>
         <div class="prose">
           <p>
-            Las mariposas dependen de plantas hospederas, flores y ecosistemas
-            sanos. Proteger su hábitat también protege los jardines y la
-            polinización que sostiene la vida.
+            Las mariposas dependen de flores, vegetación y ecosistemas sanos.
+            Proteger su hábitat también protege los jardines y la polinización
+            que sostiene la vida.
           </p>
           <p>
-            Conozca por qué las mariposas son indicadoras de salud ambiental
-            y cómo los jardines amigables con la vida silvestre marcan la
-            diferencia en el paisaje rural de Costa Rica.
+            Conozca por qué las mariposas se consideran indicadoras de la salud
+            de un ecosistema y cómo los jardines amigables con la vida silvestre
+            marcan la diferencia en el paisaje rural de Costa Rica.
           </p>
         </div>
-        <p style="margin-top: var(--space-3);">
+        <p class="section-actions">
           <a class="btn btn--ghost" href="/conservacion">Saber más</a>
         </p>
       </div>
@@ -203,7 +209,7 @@
   <div class="galeria-editorial__header">
     <h2 id="gal-title" class="galeria-editorial__title">Galería</h2>
     <p class="galeria-editorial__subtitle">
-      Fotografías y videos reales del jardín: mariposas, flores y momentos de la visita.
+      Fotografías y videos del jardín: mariposas, flores y el entorno natural.
     </p>
   </div>
   <div class="galeria-masonry reveal-stagger">
@@ -236,11 +242,11 @@
 
 <!-- ======== CTA WHATSAPP ----------------------------------------------- -->
 <section class="cta-wa reveal" aria-labelledby="cta-title">
-  <div class="container--narrow" style="text-align: center;">
+  <div class="container--narrow">
     <h2 id="cta-title" class="cta-wa__title">¿Listo para visitarnos?</h2>
     <p class="cta-wa__body">
       Consulte horarios, precio de entrada y cómo llegar. Estamos en Bajo La Paz,
-      San Ramón, a pocos minutos del Valle Central.
+      San Ramón, entre el bosque nuboso y el paisaje rural de Alajuela.
     </p>
     <a class="btn btn--whatsapp btn--large" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
       Contactar por WhatsApp
@@ -274,7 +280,7 @@
             <dd><%= site.priceNote %></dd>
           </div>
         </dl>
-        <p style="margin-top: var(--space-3);">
+        <p class="section-actions">
           <a class="btn" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener">
             Cómo llegar en Google Maps
           </a>

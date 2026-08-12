@@ -38,7 +38,11 @@ test('los datos oficiales del negocio están completos', () => {
   assert.equal(business.facebookUrl, 'https://www.facebook.com/mariposaslapaz/');
   assert.equal(business.priceNote, 'Consultar por WhatsApp');
   assert.equal(business.hours.length, 3);
-  assert.ok(business.navigation.length >= 8);
+  assert.equal(business.navigation.length, 6);
+  assert.deepEqual(
+    business.navigation.map((item) => item.label),
+    ['Nuestro Mariposario', 'Mariposas', 'Experiencia', 'Conservación', 'Galería', 'Visítanos'],
+  );
 });
 
 test('los enlaces de WhatsApp se generan codificados con el teléfono principal', () => {

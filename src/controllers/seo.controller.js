@@ -1,7 +1,6 @@
 'use strict';
 
 const config = require('../config');
-const business = require('../config/business');
 
 // robots.txt: políticas de rastreo + referencia al sitemap.
 function robots(req, res) {
@@ -13,11 +12,24 @@ Sitemap: ${config.siteUrl}/sitemap.xml
 `);
 }
 
-// sitemap.xml: todas las páginas públicas (derivadas de la navegación oficial).
+// Páginas públicas indexables (espejo de routes/index.js). Independientes de
+// la navegación visible: "/" y "/guias" no están en el menú pero sí indexan.
+const PUBLIC_ROUTES = [
+  '/',
+  '/nuestro-mariposario',
+  '/mariposas',
+  '/experiencia',
+  '/conservacion',
+  '/galeria',
+  '/guias',
+  '/visitanos',
+];
+
+// sitemap.xml: todas las páginas públicas.
 function sitemap(req, res) {
-  const urls = business.navigation
-    .map((item) => `  <url>\n    <loc>${config.siteUrl}${item.href}</loc>\n  </url>`)
-    .join('\n');
+  const urls = PUBLIC_ROUTES.map(
+    (href) => `  <url>\n    <loc>${config.siteUrl}${href}</loc>\n  </url>`,
+  ).join('\n');
 
   res.type('application/xml');
   res.send(

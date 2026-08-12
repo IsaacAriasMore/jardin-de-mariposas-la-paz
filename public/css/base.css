@@ -17,18 +17,18 @@
 
   /* --- Paleta: Bosque Nuboso + Tierra + Flor --- */
   /* Superficies */
-  --color-bg: oklch(0.965 0.004 155);              /* mist: verde muy pálido, NO cream */
-  --color-surface: oklch(1 0 0);                    /* blanco */
-  --color-surface-raised: oklch(0.985 0.003 155);   /* sutil elevation */
-  --color-surface-muted: oklch(0.935 0.008 155);    /* gris verde */
-  --color-surface-dark: oklch(0.22 0.05 155);       /* bosque profundo */
-  --color-surface-darker: oklch(0.17 0.045 155);    /* noche del bosque */
+  --color-bg: oklch(0.965 0.004 155); /* mist: verde muy pálido, NO cream */
+  --color-surface: oklch(1 0 0); /* blanco */
+  --color-surface-raised: oklch(0.985 0.003 155); /* sutil elevation */
+  --color-surface-muted: oklch(0.935 0.008 155); /* gris verde */
+  --color-surface-dark: oklch(0.22 0.05 155); /* bosque profundo */
+  --color-surface-darker: oklch(0.17 0.045 155); /* noche del bosque */
 
   /* Tinta */
-  --color-ink: oklch(0.17 0.015 155);              /* carbón con tinte verde */
-  --color-ink-secondary: oklch(0.35 0.02 150);      /* gris oscuro cálido */
-  --color-ink-muted: oklch(0.5 0.018 150);         /* gris medio */
-  --color-ink-on-dark: oklch(0.93 0.004 145);      /* texto sobre fondo oscuro */
+  --color-ink: oklch(0.17 0.015 155); /* carbón con tinte verde */
+  --color-ink-secondary: oklch(0.35 0.02 150); /* gris oscuro cálido */
+  --color-ink-muted: oklch(0.5 0.018 150); /* gris medio */
+  --color-ink-on-dark: oklch(0.93 0.004 145); /* texto sobre fondo oscuro */
   --color-ink-on-dark-muted: oklch(0.72 0.008 145);
 
   /* Marca: verde bosque */
@@ -133,7 +133,10 @@ body {
 }
 
 /* --- Tipografía ------------------------------------------------------- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
   line-height: 1.12;
   text-wrap: balance;
@@ -184,14 +187,16 @@ a {
 }
 
 /* --- Imágenes --------------------------------------------------------- */
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
 /* --- Listas ----------------------------------------------------------- */
-ul, ol {
+ul,
+ol {
   padding-left: 1.25rem;
 }
 
@@ -351,8 +356,13 @@ ul, ol {
 /* Hamburger */
 .nav-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   background: none;
   border: none;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   padding: var(--space-1);
   color: var(--color-ink);
@@ -373,15 +383,15 @@ ul, ol {
   margin-top: 6px;
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(1) {
   transform: translateY(7.5px) rotate(45deg);
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(2) {
   opacity: 0;
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(3) {
   transform: translateY(-7.5px) rotate(-45deg);
 }
 
@@ -433,6 +443,22 @@ ul, ol {
 .btn--ghost:hover {
   background: var(--color-surface-muted);
   border-color: var(--color-ink-muted);
+  box-shadow: none;
+}
+
+/* Ghost sobre fondo oscuro/video: tinta clara + fondo translúcido para
+   garantizar contraste WCAG AA contra cualquier fotograma del video. */
+.btn--ghost-dark {
+  background: oklch(0.15 0.03 155 / 0.4);
+  color: #fff;
+  border: 1.5px solid oklch(0.9 0.01 145 / 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.btn--ghost-dark:hover {
+  background: oklch(0.9 0.01 145 / 0.14);
+  border-color: oklch(0.95 0.005 145 / 0.9);
   box-shadow: none;
 }
 
@@ -529,6 +555,10 @@ ul, ol {
   letter-spacing: 0.02em;
 }
 
+.site-footer__maps-wrapper {
+  margin-top: 0.75rem;
+}
+
 .site-footer__note {
   color: oklch(0.72 0.006 145);
   font-size: 0.92rem;
@@ -544,8 +574,11 @@ ul, ol {
   text-align: center;
 }
 
-/* --- Reveal animations ------------------------------------------------ */
-.reveal {
+/* --- Reveal animations ------------------------------------------------
+   Progresive enhancement: los estados ocultos solo existen cuando JS está
+   activo (clase .js en <html>). Sin JS el contenido permanece visible.
+   -------------------------------------------------------------------- */
+.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -553,27 +586,33 @@ ul, ol {
     transform var(--duration-reveal) var(--ease-out-expo);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal--delay-1 { transition-delay: 100ms; }
-.reveal--delay-2 { transition-delay: 200ms; }
-.reveal--delay-3 { transition-delay: 300ms; }
+.reveal--delay-1 {
+  transition-delay: 100ms;
+}
+.reveal--delay-2 {
+  transition-delay: 200ms;
+}
+.reveal--delay-3 {
+  transition-delay: 300ms;
+}
 
 /* Clip-path reveal */
-.reveal-clip {
+.js .reveal-clip {
   clip-path: inset(0 0 100% 0);
   transition: clip-path var(--duration-reveal) var(--ease-out-expo);
 }
 
-.reveal-clip.is-visible {
+.js .reveal-clip.is-visible {
   clip-path: inset(0 0 0 0);
 }
 
 /* Stagger children */
-.reveal-stagger > * {
+.js .reveal-stagger > * {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -581,28 +620,56 @@ ul, ol {
     transform var(--duration-slow) var(--ease-out-expo);
 }
 
-.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
-.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 60ms; opacity: 1; transform: translateY(0); }
-.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 120ms; opacity: 1; transform: translateY(0); }
-.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 180ms; opacity: 1; transform: translateY(0); }
-.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
-.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+.js .reveal-stagger.is-visible > *:nth-child(1) {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.js .reveal-stagger.is-visible > *:nth-child(2) {
+  transition-delay: 60ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.js .reveal-stagger.is-visible > *:nth-child(3) {
+  transition-delay: 120ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.js .reveal-stagger.is-visible > *:nth-child(4) {
+  transition-delay: 180ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.js .reveal-stagger.is-visible > *:nth-child(5) {
+  transition-delay: 240ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.js .reveal-stagger.is-visible > *:nth-child(6) {
+  transition-delay: 300ms;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Image scale reveal */
 .reveal-image {
   overflow: hidden;
 }
 
-.reveal-image img {
+.js .reveal-image img {
   transform: scale(1.08);
   transition: transform 1.2s var(--ease-out-expo);
 }
 
-.reveal-image.is-visible img {
+.js .reveal-image.is-visible img {
   transform: scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal-clip,
+  .js .reveal-stagger > *,
+  .js .reveal-image img,
   .reveal,
   .reveal-clip,
   .reveal-stagger > *,
@@ -611,5 +678,54 @@ ul, ol {
     transform: none;
     clip-path: none;
     transition: none;
+  }
+}
+
+/* --- Navegación: responsive (global) --------------------------------- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-2);
+    gap: 0;
+    z-index: var(--z-dropdown);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .site-nav__list.is-open {
+    display: flex;
+  }
+
+  .site-nav__link {
+    padding: 0.75rem var(--space-2);
+    font-size: 1rem;
+    display: block;
+  }
+
+  .site-nav__link::after {
+    display: none;
+  }
+
+  .site-nav__link.is-active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+/* --- Footer: responsive (global) ------------------------------------- */
+@media (max-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 }

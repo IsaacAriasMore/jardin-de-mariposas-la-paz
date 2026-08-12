@@ -13,7 +13,7 @@ module.exports = {
     plusCode: '5F36+VVC, Bajo La Paz, San Ramón, Alajuela 20201, Costa Rica',
   },
   phones: {
-    // Formato de exhibición
+    // Formato visual para mostrar en la web
     primary: '+506 8889-4483',
     secondary: '+506 8880-3433',
     // Solo dígitos, para wa.me y tel:
@@ -29,14 +29,14 @@ module.exports = {
   facebookUrl: 'https://www.facebook.com/mariposaslapaz/',
   priceNote: 'Consultar por WhatsApp',
   whatsappDefaultMessage: '¡Hola! Quisiera información sobre Jardín de Mariposas La Paz.',
+  // Menú principal: la marca ya enlaza a "/" y "Guías" queda reservado sin
+  // enlace hasta que exista contenido real.
   navigation: [
-    { label: 'Inicio', href: '/' },
     { label: 'Nuestro Mariposario', href: '/nuestro-mariposario' },
     { label: 'Mariposas', href: '/mariposas' },
     { label: 'Experiencia', href: '/experiencia' },
     { label: 'Conservación', href: '/conservacion' },
     { label: 'Galería', href: '/galeria' },
-    { label: 'Guías', href: '/guias' },
     { label: 'Visítanos', href: '/visitanos' },
   ],
 };

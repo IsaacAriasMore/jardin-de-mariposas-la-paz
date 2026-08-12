@@ -9,7 +9,7 @@
 //
 // Uso: npm run media
 
-import { mkdir, copyFile, readdir } from 'node:fs/promises';
+import { mkdir, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
@@ -111,7 +111,9 @@ async function main() {
   await processPosters();
   await copyDevVideos();
 
-  console.log(`\nTotales: ${manifest.length} fotos procesadas, ${VIDEOS.length} videos copiados (dev).`);
+  console.log(
+    `\nTotales: ${manifest.length} fotos procesadas, ${VIDEOS.length} videos copiados (dev).`,
+  );
   console.log('Nota: los masters en Fotos/ y Videos/ quedan intactos.');
 }
 
