@@ -21,10 +21,19 @@ function createApp() {
 
   app.use(
     helmet({
-      // Fase 2 (diseño): definir una Content Security Policy explícita que permita
-      // los estilos/scripts inline y JSON-LD previstos. Mientras tanto se desactiva
-      // la CSP por defecto para no bloquear el desarrollo.
-      contentSecurityPolicy: false,
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          imgSrc: ["'self'", 'data:'],
+          mediaSrc: ["'self'"],
+          scriptSrc: ["'self'"],
+          connectSrc: ["'self'"],
+          formAction: ["'self'", 'https://wa.me'],
+          frameAncestors: ["'self'"],
+        },
+      },
     }),
   );
 

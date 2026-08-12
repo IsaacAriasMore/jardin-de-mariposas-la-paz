@@ -12,6 +12,7 @@ const PAGE_DEFS = [
     title: 'Inicio',
     description:
       'Jardín de Mariposas La Paz: un mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica, donde las mariposas viven en vuelo libre entre plantas y flores tropicales.',
+    extra: { preloadHero: true },
   },
   {
     key: 'nuestroMariposario',
@@ -73,7 +74,7 @@ const PAGE_DEFS = [
 
 function makeHandler(def) {
   return function (req, res) {
-    res.render(def.view, { page: buildPageMeta(def) });
+    res.render(def.view, { page: buildPageMeta(def), ...def.extra });
   };
 }
 

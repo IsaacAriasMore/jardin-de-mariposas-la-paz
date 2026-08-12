@@ -12,6 +12,7 @@ function viewLocals(req, res, next) {
     googleMapsUrl: config.googleMapsUrl,
   };
   res.locals.currentPath = req.path;
+  res.locals.preloadHero = false;
   res.locals.whatsapp = {
     primary: buildWhatsAppLink(),
     primaryHref: `tel:${business.phones.primaryTel}`,

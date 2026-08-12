@@ -1,23 +1,296 @@
-<section class="page-hero">
-  <div class="container">
-    <h1 class="page-hero__title"><%= site.name %></h1>
-    <p class="page-hero__lead">
-      Un mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica, donde las
-      mariposas viven en vuelo libre entre plantas y flores tropicales.
+<!--
+  THESIS: Un mariposario rural real donde la fotografía y el video son el
+  producto. Publicación digital de naturaleza, no plantilla turística.
+  FIRST VIEWPORT: Hero full-bleed con video, contenido alineado a la izquierda,
+  tagline vertical sutil a la derecha. La fotografía manda.
+  FINISH: unreviewed and undocumented is unfinished.
+-->
+
+<!-- ======== HERO ====================================================== -->
+<section class="hero" aria-label="Presentación principal">
+  <div class="hero__media">
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/media/posters/hero-desktop.jpg"
+      aria-hidden="true"
+    >
+      <source src="/media/videos/mariposa-flor-amarilla-hero-1080p.mp4" type="video/mp4" />
+    </video>
+    <img
+      class="hero__poster"
+      src="/media/posters/hero-desktop.jpg"
+      alt=""
+      aria-hidden="true"
+    />
+  </div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="hero__location">Bajo La Paz · San Ramón · Costa Rica</p>
+    <h1 class="hero__title"><%= site.name %></h1>
+    <p class="hero__lead">
+      Donde las mariposas viven en vuelo libre entre plantas y flores
+      tropicales del bosque nuboso.
     </p>
-    <p><a class="btn" href="/visitanos">Planear mi visita</a></p>
+    <div class="hero__actions">
+      <a class="btn btn--large" href="/visitanos">Visítanos</a>
+      <a class="btn btn--large btn--ghost" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <span class="hero__tagline" aria-hidden="true">Donde la naturaleza cobra alas</span>
+</section>
+
+<!-- ======== INTRO: editorial split, vertical image --------------------- -->
+<section class="intro reveal" aria-labelledby="intro-title">
+  <div class="container">
+    <div class="intro__layout">
+      <div class="intro__text">
+        <p class="intro__label">El jardín</p>
+        <h2 id="intro-title" class="intro__heading">Un espacio para las mariposas</h2>
+        <p class="intro__body">
+          En el corazón del bosque nuboso de San Ramón, las mariposas viven entre
+          las plantas que las sostienen. Un lugar real, rural y tranquilo, donde la
+          naturaleza se observa de cerca y se disfruta sin prisa.
+        </p>
+        <p class="intro__body">
+          El Jardín de Mariposas La Paz es un espacio dedicado a la observación
+          de mariposas en su hábitat natural, rodeado de flores tropicales y
+          vegetación del Valle Central de Costa Rica.
+        </p>
+      </div>
+      <div class="intro__image reveal-image">
+        <img
+          src="/media/img/mariposa-azul-hoja-tropical-1280.jpg"
+          srcset="/media/img/mariposa-azul-hoja-tropical-640.webp 640w, /media/img/mariposa-azul-hoja-tropical-1280.webp 1280w"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          alt="Mariposa azul sobre hoja tropical en el jardín"
+          width="1280"
+          height="853"
+          loading="eager"
+        />
+        <span class="intro__image-caption">Mariposa en vuelo libre, jardín tropical</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="page-section">
-  <div class="container">
-    <p class="page-lead">
-      Aquí se compartirá la historia del jardín, las especies que habitan,
-      la experiencia de la visita y las razones para conservar las mariposas.
+<!-- ======== MARIPOSAS: editorial grid, varied sizes -------------------- -->
+<section class="mariposas-editorial reveal" aria-labelledby="marip-title">
+  <div class="mariposas-editorial__header">
+    <h2 id="marip-title" class="mariposas-editorial__title">Las mariposas del jardín</h2>
+    <p class="mariposas-editorial__subtitle">
+      Diversidad de colores y tamaños en vuelo libre entre las flores tropicales.
     </p>
-    <!-- Fase 2 (diseño): hero con video mariposa-flor-amarilla-hero-4k.mp4
-         (respaldos: mariposa-azul-hoja-tropical.jpg y video vertical móvil),
-         introducción, sección de mariposas, experiencia, conservación,
-         galería y bloque de ubicación. Ver GUIA-DE-USO.md. -->
+  </div>
+  <div class="mariposas-editorial__grid reveal-stagger">
+    <article class="mariposas-editorial__item">
+      <img
+        src="/media/img/mariposa-negra-amarilla-flor-roja-1280.jpg"
+        srcset="/media/img/mariposa-negra-amarilla-flor-roja-640.webp 640w, /media/img/mariposa-negra-amarilla-flor-roja-1280.webp 1280w"
+        sizes="(max-width: 768px) 100vw, 45vw"
+        alt="Mariposa negra y amarilla posada sobre una flor roja"
+        width="1280"
+        height="853"
+        loading="lazy"
+      />
+      <div class="mariposas-editorial__item-overlay">
+        <span class="mariposas-editorial__item-name">Mariposa sobre flor roja</span>
+      </div>
+    </article>
+    <article class="mariposas-editorial__item">
+      <img
+        src="/media/img/mariposa-azul-pequena-flor-violeta-1280.jpg"
+        srcset="/media/img/mariposa-azul-pequena-flor-violeta-640.webp 640w, /media/img/mariposa-azul-pequena-flor-violeta-1280.webp 1280w"
+        sizes="(max-width: 768px) 50vw, 28vw"
+        alt="Mariposa azul pequeña sobre flor violeta"
+        width="1280"
+        height="853"
+        loading="lazy"
+      />
+      <div class="mariposas-editorial__item-overlay">
+        <span class="mariposas-editorial__item-name">Mariposa azul pequeña</span>
+      </div>
+    </article>
+    <article class="mariposas-editorial__item">
+      <img
+        src="/media/img/mariposa-cola-larga-volando-flores-1280.jpg"
+        srcset="/media/img/mariposa-cola-larga-volando-flores-640.webp 640w, /media/img/mariposa-cola-larga-volando-flores-1280.webp 1280w"
+        sizes="(max-width: 768px) 50vw, 28vw"
+        alt="Mariposa de cola larga volando entre flores"
+        width="1280"
+        height="853"
+        loading="lazy"
+      />
+      <div class="mariposas-editorial__item-overlay">
+        <span class="mariposas-editorial__item-name">Mariposa en vuelo</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======== EXPERIENCIA: full-bleed dark with video -------------------- -->
+<section class="experiencia-full reveal" aria-labelledby="exp-title">
+  <div class="experiencia-full__bg" aria-hidden="true">
+    <video autoplay muted loop playsinline>
+      <source src="/media/videos/mariposa-flores-tropicales-1080p.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="experiencia-full__content">
+    <div class="experiencia-full__text">
+      <p class="experiencia-full__label">La experiencia</p>
+      <h2 id="exp-title" class="experiencia-full__title">
+        Observar mariposas de cerca
+      </h2>
+      <p class="experiencia-full__body">
+        Un recorrido tranquilo donde la naturaleza se siente en cada rincón.
+        Las mariposas vuelan libres entre las plantas hospederas, sin jaulas
+        ni exhibiciones artificiales.
+      </p>
+      <a class="btn" href="/experiencia">Conocer la experiencia</a>
+    </div>
+    <div class="experiencia-full__media reveal-clip">
+      <video autoplay muted loop playsinline aria-label="Video de mariposas entre flores tropicales">
+        <source src="/media/videos/mariposa-flores-tropicales-1080p.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CONSERVACIÓN: contemplative, large image ------------------- -->
+<section class="conservacion-essay reveal" aria-labelledby="cons-title">
+  <div class="container">
+    <div class="conservacion-essay__layout">
+      <div class="conservacion-essay__image reveal-image">
+        <img
+          src="/media/img/mariposa-sobre-flor-amarilla-1280.jpg"
+          srcset="/media/img/mariposa-sobre-flor-amarilla-640.webp 640w, /media/img/mariposa-sobre-flor-amarilla-1280.webp 1280w"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          alt="Mariposa posada sobre una flor amarilla"
+          width="1280"
+          height="853"
+          loading="lazy"
+        />
+      </div>
+      <div class="conservacion-essay__text">
+        <h2 id="cons-title" class="conservacion-essay__title">Conservación</h2>
+        <div class="prose">
+          <p>
+            Las mariposas dependen de plantas hospederas, flores y ecosistemas
+            sanos. Proteger su hábitat también protege los jardines y la
+            polinización que sostiene la vida.
+          </p>
+          <p>
+            Conozca por qué las mariposas son indicadoras de salud ambiental
+            y cómo los jardines amigables con la vida silvestre marcan la
+            diferencia en el paisaje rural de Costa Rica.
+          </p>
+        </div>
+        <p style="margin-top: var(--space-3);">
+          <a class="btn btn--ghost" href="/conservacion">Saber más</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== GALERÍA: masonry editorial --------------------------------- -->
+<section class="galeria-editorial reveal" aria-labelledby="gal-title">
+  <div class="galeria-editorial__header">
+    <h2 id="gal-title" class="galeria-editorial__title">Galería</h2>
+    <p class="galeria-editorial__subtitle">
+      Fotografías y videos reales del jardín: mariposas, flores y momentos de la visita.
+    </p>
+  </div>
+  <div class="galeria-masonry reveal-stagger">
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposa-azul-hoja-tropical-1280.jpg" srcset="/media/img/mariposa-azul-hoja-tropical-640.webp 640w, /media/img/mariposa-azul-hoja-tropical-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 50vw" alt="Mariposa azul sobre hoja tropical" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/grupo-mariposas-naranjas-en-planta-1280.jpg" srcset="/media/img/grupo-mariposas-naranjas-en-planta-640.webp 640w, /media/img/grupo-mariposas-naranjas-en-planta-1280.webp 1280w" sizes="(max-width: 768px) 50vw, 25vw" alt="Grupo de mariposas naranjas sobre una planta" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposas-naranjas-fondo-natural-1280.jpg" srcset="/media/img/mariposas-naranjas-fondo-natural-640.webp 640w, /media/img/mariposas-naranjas-fondo-natural-1280.webp 1280w" sizes="(max-width: 768px) 50vw, 25vw" alt="Mariposas naranjas sobre fondo natural oscuro" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposas-naranjas-en-vuelo-1280.jpg" srcset="/media/img/mariposas-naranjas-en-vuelo-640.webp 640w, /media/img/mariposas-naranjas-en-vuelo-1280.webp 1280w" sizes="(max-width: 768px) 50vw, 25vw" alt="Mariposas naranjas en vuelo" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposa-sobre-flor-amarilla-1280.jpg" srcset="/media/img/mariposa-sobre-flor-amarilla-640.webp 640w, /media/img/mariposa-sobre-flor-amarilla-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 25vw" alt="Mariposa sobre flor amarilla" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposa-negra-amarilla-flor-roja-1280.jpg" srcset="/media/img/mariposa-negra-amarilla-flor-roja-640.webp 640w, /media/img/mariposa-negra-amarilla-flor-roja-1280.webp 1280w" sizes="(max-width: 768px) 50vw, 25vw" alt="Mariposa negra y amarilla sobre flor roja" loading="lazy" />
+    </div>
+    <div class="galeria-masonry__item">
+      <img src="/media/img/mariposa-azul-pequena-flor-violeta-1280.jpg" srcset="/media/img/mariposa-azul-pequena-flor-violeta-640.webp 640w, /media/img/mariposa-azul-pequena-flor-violeta-1280.webp 1280w" sizes="(max-width: 768px) 50vw, 25vw" alt="Mariposa azul pequeña sobre flor violeta" loading="lazy" />
+    </div>
+  </div>
+  <div class="galeria-editorial__cta">
+    <a class="btn btn--ghost" href="/galeria">Ver galería completa</a>
+  </div>
+</section>
+
+<!-- ======== CTA WHATSAPP ----------------------------------------------- -->
+<section class="cta-wa reveal" aria-labelledby="cta-title">
+  <div class="container--narrow" style="text-align: center;">
+    <h2 id="cta-title" class="cta-wa__title">¿Listo para visitarnos?</h2>
+    <p class="cta-wa__body">
+      Consulte horarios, precio de entrada y cómo llegar. Estamos en Bajo La Paz,
+      San Ramón, a pocos minutos del Valle Central.
+    </p>
+    <a class="btn btn--whatsapp btn--large" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
+      Contactar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ======== UBICACIÓN: editorial con datos ---------------------------- -->
+<section class="ubicacion-editorial reveal" aria-labelledby="ubica-title">
+  <div class="container">
+    <div class="ubicacion-editorial__layout">
+      <div class="ubicacion-editorial__text">
+        <h2 id="ubica-title" class="ubicacion-editorial__title">Visítanos</h2>
+        <dl class="ubicacion-details">
+          <div>
+            <dt>Ubicación</dt>
+            <dd><%= site.location.address %></dd>
+          </div>
+          <div>
+            <dt>Referencia</dt>
+            <dd><%= site.location.reference %></dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd>
+              <% site.hours.forEach(function (slot, i) { %><%= slot.days %>: <%= slot.time %><%= i < site.hours.length - 1 ? ' · ' : '' %><% }) %>
+            </dd>
+          </div>
+          <div>
+            <dt>Entrada</dt>
+            <dd><%= site.priceNote %></dd>
+          </div>
+        </dl>
+        <p style="margin-top: var(--space-3);">
+          <a class="btn" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener">
+            Cómo llegar en Google Maps
+          </a>
+        </p>
+      </div>
+      <div class="ubicacion-editorial__map reveal-image">
+        <img
+          src="/media/img/mariposas-naranjas-en-vuelo-1280.jpg"
+          srcset="/media/img/mariposas-naranjas-en-vuelo-640.webp 640w, /media/img/mariposas-naranjas-en-vuelo-1280.webp 1280w"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          alt="Mariposas en el jardín"
+          width="1280"
+          height="853"
+          loading="lazy"
+        />
+      </div>
+    </div>
   </div>
 </section>
