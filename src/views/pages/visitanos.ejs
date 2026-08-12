@@ -1,0 +1,44 @@
+<section class="page-section">
+  <div class="container">
+    <h1 class="page-title">Visítanos</h1>
+    <p class="page-lead"><%= site.location.address %> · <%= site.location.reference %>.</p>
+
+    <h2>Horario</h2>
+    <ul class="page-list">
+      <% site.hours.forEach(function (slot) { %>
+        <li><strong><%= slot.days %>:</strong> <%= slot.time %></li>
+      <% }) %>
+    </ul>
+
+    <h2>Entrada</h2>
+    <p><%= site.priceNote %>.</p>
+
+    <h2>Contacto</h2>
+    <ul class="page-list">
+      <li>
+        <a class="btn" href="<%= whatsapp.primary %>" target="_blank" rel="noopener"
+          >WhatsApp · <%= site.phones.primary %></a
+        >
+      </li>
+      <li>
+        <a class="page-link" href="<%= whatsapp.primaryHref %>"><%= site.phones.primary %></a>
+      </li>
+      <li>
+        <a class="page-link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a>
+      </li>
+      <li>
+        <a class="page-link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener">Facebook</a>
+      </li>
+    </ul>
+
+    <h2>Ubicación</h2>
+    <p class="site-footer__plus-code"><%= site.location.plusCode %></p>
+    <p>
+      <a class="page-link" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener"
+        >Cómo llegar en Google Maps</a
+      >
+    </p>
+    <!-- Fase 2: foto real del mariposario y su entrada (no foto de stock) +
+         mapa incrustado. -->
+  </div>
+</section>

@@ -1,0 +1,44 @@
+# Dependencias
+node_modules/
+
+# Entorno y secretos — .env nunca se versiona
+.env
+.env.*
+!.env.example
+
+# Logs y archivos temporales
+*.log
+logs/
+npm-debug.log*
+tmp/
+temp/
+.notes/
+
+# Builds y cachés
+coverage/
+dist/
+build/
+.cache/
+.eslintcache
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Assets fuente (masters locales): NO se versionan.
+# Fotos/ y Videos/ son los originales en alta resolución (los videos 4K suman ~95 MB).
+# Para publicar el sitio se generan copias optimizadas en public/media/.
+Fotos/
+Videos/
+
+# Medios servidos por la web: copias optimizadas generadas a partir de los masters.
+# El directorio se conserva con .gitkeep para mantener la ruta en el repo.
+public/media/*
+!public/media/.gitkeep

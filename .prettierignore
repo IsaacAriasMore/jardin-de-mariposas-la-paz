@@ -1,0 +1,10 @@
+node_modules/
+package-lock.json
+Fotos/
+Videos/
+public/media/
+.env
+.env.*
+# Masters documentales del proyecto: no se reformatean
+GUIA-DE-USO.md
+MAPEO-NOMBRES-ORIGINALES.txt

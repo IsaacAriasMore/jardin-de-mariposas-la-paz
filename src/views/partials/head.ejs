@@ -1,0 +1,42 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= page.title %></title>
+  <meta name="description" content="<%= page.description %>" />
+  <meta name="robots" content="<%= page.robots %>" />
+  <link rel="canonical" href="<%= page.canonical %>" />
+
+  <!-- Tipografía editorial: Newsreader (display) + Karla (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap"
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="<%= page.og.type %>" />
+  <meta property="og:locale" content="<%= page.og.locale %>" />
+  <meta property="og:site_name" content="<%= page.og.siteName %>" />
+  <meta property="og:title" content="<%= page.og.title %>" />
+  <meta property="og:description" content="<%= page.og.description %>" />
+  <meta property="og:url" content="<%= page.og.url %>" />
+  <% if (page.og.image) { %>
+    <meta property="og:image" content="<%= page.og.image %>" />
+  <% } %>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="<%= page.og.image ? 'summary_large_image' : 'summary' %>" />
+
+  <meta name="theme-color" content="#1e4a33" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <% if (preloadHero) { %>
+    <!-- LCP: preload del poster del hero (fallback inmediato del video) -->
+    <link rel="preload" as="image" href="/media/posters/hero-desktop.jpg" />
+  <% } %>
+
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/home.css" />
+  <script src="/js/main.js" defer></script>
+</head>

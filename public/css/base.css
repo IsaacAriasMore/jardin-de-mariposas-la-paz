@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Base styles — Jardín de Mariposas La Paz
+   Fase 1 (scaffolding): arquitectura de tokens y estilos base funcionales.
+   La paleta es PROVISIONAL: se definirá la identidad visual en la Fase 2.
+   ========================================================================== */
+
+/* --- Tokens de diseño (provisionales) -------------------------------- */
+:root {
+  color-scheme: light dark;
+
+  /* Superficies y tinta (OKLCH, tinte hacia el verde del jardín) */
+  --color-bg: oklch(0.985 0.005 145);
+  --color-surface: oklch(1 0 0);
+  --color-surface-muted: oklch(0.955 0.012 145);
+  --color-ink: oklch(0.22 0.025 150);
+  --color-ink-muted: oklch(0.44 0.02 150);
+  --color-primary: oklch(0.42 0.09 150);
+  --color-primary-strong: oklch(0.36 0.09 150);
+  --color-on-primary: oklch(0.98 0.01 145);
+  --color-border: oklch(0.86 0.015 145);
+  --color-focus: oklch(0.6 0.16 60);
+
+  /* Radio y espaciado */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+
+  /* Tipografía (fuentes definitivas por definir en Fase 2) */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
+
+  /* Movimiento: curvas y duraciones (filosofía design-eng) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: oklch(0.185 0.015 150);
+    --color-surface: oklch(0.22 0.015 150);
+    --color-surface-muted: oklch(0.26 0.018 150);
+    --color-ink: oklch(0.94 0.01 145);
+    --color-ink-muted: oklch(0.75 0.015 145);
+    --color-primary: oklch(0.68 0.11 150);
+    --color-primary-strong: oklch(0.73 0.11 150);
+    --color-on-primary: oklch(0.16 0.02 150);
+    --color-border: oklch(0.36 0.02 150);
+  }
+}
+
+/* --- Reset y base ---------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-block: 0 0.5em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+a {
+  color: var(--color-primary-strong);
+  text-underline-offset: 0.2em;
+}
+
+/* A11y: foco visible */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Movimiento seguro */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Utilidades de layout -------------------------------------------- */
+.container {
+  width: min(1120px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* --- Header / navegación --------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in oklch, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding-block: 0.8rem;
+}
+
+.site-nav__brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding-block: 0.35rem;
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__link.is-active {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-primary);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-nav__link:hover {
+    color: var(--color-ink);
+  }
+}
+
+/* --- Botones --------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background: var(--color-primary-strong);
+  }
+}
+
+/* --- Secciones de página --------------------------------------------- */
+.page-hero {
+  padding-block: var(--space-5) var(--space-4);
+}
+
+.page-hero__title {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+
+.page-hero__lead,
+.page-lead {
+  color: var(--color-ink-muted);
+  font-size: 1.1rem;
+  max-width: 65ch;
+}
+
+.page-section {
+  padding-block: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.page-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+}
+
+.page-list {
+  max-width: 65ch;
+}
+
+.page-link {
+  color: var(--color-primary-strong);
+}
+
+.page-errors pre {
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--color-surface-muted);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* --- Footer ----------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding-block: var(--space-4) var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.site-footer__title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.site-footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.site-footer__link {
+  color: var(--color-ink-muted);
+  text-decoration-color: var(--color-primary);
+}
+
+.site-footer__plus-code {
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer__note {
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer__copy {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
+}

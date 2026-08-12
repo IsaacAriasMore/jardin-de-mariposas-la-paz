@@ -1,0 +1,16 @@
+<section class="page-section">
+  <div class="container">
+    <h1 class="page-title">Error del servidor</h1>
+    <p class="page-lead">
+      Ocurrió un error inesperado (<%= statusCode %>). Intente nuevamente en unos
+      momentos. Si persiste, contáctenos por WhatsApp.
+    </p>
+    <p><a class="btn" href="/">Volver al inicio</a></p>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <details class="page-errors">
+        <summary>Detalle técnico (solo desarrollo)</summary>
+        <pre><%= error.stack %></pre>
+      </details>
+    <% } %>
+  </div>
+</section>
