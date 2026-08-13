@@ -11,7 +11,7 @@ const PAGE_DEFS = [
     path: '/',
     title: 'Inicio',
     description:
-      'Jardín de Mariposas La Paz: un mariposario rural en Bajo La Paz, San Ramón, Alajuela, Costa Rica, para observar mariposas y flores tropicales en plena naturaleza.',
+      'Jardín de Mariposas La Paz: mariposario en Bajo La Paz, San Ramón, con visitas guiadas en español e inglés para grupos educativos y distintas edades.',
     extra: { preloadHero: true },
   },
   {
@@ -20,7 +20,7 @@ const PAGE_DEFS = [
     path: '/nuestro-mariposario',
     title: 'Nuestro Mariposario',
     description:
-      'Conozca el mariposario en Bajo La Paz, San Ramón: un espacio dedicado a la observación de mariposas, la naturaleza y su conservación.',
+      'Conozca el mariposario de Bajo La Paz, San Ramón: el espacio donde viven las mariposas entre flores y vegetación, con visitas guiadas en español e inglés.',
   },
   {
     key: 'mariposas',
@@ -36,7 +36,7 @@ const PAGE_DEFS = [
     path: '/experiencia',
     title: 'Experiencia',
     description:
-      'Una visita al Jardín de Mariposas La Paz en Bajo La Paz, San Ramón: observe mariposas y flores tropicales de cerca y disfrute el entorno natural a su propio ritmo.',
+      'Visitas guiadas en el mariposario de Bajo La Paz, San Ramón: recorridos acompañados por un guía en español e inglés para grupos educativos y distintas edades.',
   },
   {
     key: 'conservacion',
@@ -65,7 +65,7 @@ const PAGE_DEFS = [
     path: '/visitanos',
     title: 'Visítanos',
     description:
-      'Mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica: cómo llegar, horarios, entrada y contacto por WhatsApp del Jardín de Mariposas La Paz.',
+      'Cómo llegar al mariposario en Bajo La Paz, San Ramón: horarios, entrada y contacto por WhatsApp. Visitas guiadas en español e inglés.',
   },
 ];
 

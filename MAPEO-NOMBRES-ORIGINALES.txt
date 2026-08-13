@@ -70,34 +70,36 @@ MATERIAL REAL DEL NEGOCIO — APROBADO (Facebook, procedencia confirmada)
     -> mariposario-bajo-la-paz-02-{640,1280,1920}.{webp,jpg}
     Procedencia: cuenta de Facebook del negocio. Estructura con crisálidas.
 
-PENDIENTE DE CONFIRMAR PROCEDENCIA — SIN DERIVADOS
-(descripción visual confirmada; falta confirmación explícita del propietario)
+APROBADO PARA USO WEB — CON DERIVADOS
+(autorizado por el usuario para integrar al sitio; procedencia no documentada,
+por eso NO se clasifican como REAL. Las personas presentes son adultas.)
 
   505011602_3077208649109320_5051752296908815880_n.jpg
-    Mariposa oscura con puntos azules. Sin derivados hasta confirmar.
-    Slug propuesto (cuando se apruebe): mariposa-oscura-puntos-azules.
+    -> mariposa-oscura-puntos-azules-{640,960}.{webp,jpg}
+    Mariposa oscura con puntos azules. Uso: /mariposas, /galería.
 
   505835868_3080390048791180_3877059931757099776_n.jpg
-    Mariposa naranja entre flores. Sin derivados hasta confirmar.
-    Fuente menor a 640px (528w): al aprobarse, el pipeline generaría solo 480w +
-    el ancho natural (528), nunca se agranda la imagen.
-    Slug propuesto (cuando se apruebe): mariposa-naranja-flores.
+    -> mariposa-naranja-flores-{480,528}.{webp,jpg}
+    Mariposa naranja entre flores. Fuente 528w: solo 480w + ancho natural,
+    nunca se agranda. Uso: Home, placa compacta (máx. 480px). NO en
+    full-bleed / hero / espacios grandes.
 
   506940932_3086830528147132_1929793400418905484_n.jpg
-    Hombre mostrando una mariposa. Además requiere autorización de publicación.
-    Slug propuesto (cuando se apruebe): guia-mariposario-mariposa.
+    -> guia-mariposario-mariposa-{640,960}.{webp,jpg}
+    Hombre (guía) mostrando una mariposa. Uso: Home (experiencia guiada).
 
   506941578_3086830491480469_5740770662770968235_n.jpg
-    Hombre acompañando a un visitante adulto. Además requiere autorización.
-    Slug propuesto (cuando se apruebe): guia-acompanando-visitante.
+    -> guia-acompanando-visitante-{640,960}.{webp,jpg}
+    Hombre acompañando a un visitante adulto. Uso: /nuestro-mariposario, /galería.
 
   507088230_3086830348147150_333135784783391839_n.jpg
-    Hombre explicando a un grupo de adultos. Además requiere autorización.
-    Slug propuesto (cuando se apruebe): guia-grupo-adultos.
+    -> guia-grupo-adultos-{640,960}.{webp,jpg}
+    Hombre explicando a un grupo de adultos. Uso: /experiencia (galería inmersiva).
 
   508109705_3086830558147129_5168074877511046835_n.jpg
-    Visitantes adultos observando mariposas. Además requiere autorización.
-    Slug propuesto (cuando se apruebe): visitantes-dentro-mariposario.
+    -> visitantes-dentro-mariposario-{640,960}.{webp,jpg}
+    Visitantes adultos observando mariposas. Uso: /experiencia (galería inmersiva),
+    /galería.
 
 HOLD — SIN DERIVADOS (no integrar a la web)
   482005509_657913423419130_6761994400711140598_n (1).jpg
@@ -141,11 +143,8 @@ VIDEOS (Videos/)
 
 SIN DERIVADOS POR DECISIÓN
 ==========================
-  - 505011602_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA
-  - 505835868_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA
-  - 506940932_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
-  - 506941578_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
-  - 507088230_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
-  - 508109705_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
   - 480999978_*.jpg  -> PENDIENTE DE CONFIRMACIÓN
   - 482005509_*.jpg  -> HOLD (menores/personas)
+
+APROBADOS PARA USO WEB (derivados generados): las 6 fotografías 505011602…,
+505835868…, 506940932…, 506941578…, 507088230… y 508109705… (ver arriba).

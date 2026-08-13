@@ -39,10 +39,14 @@ test('los datos oficiales del negocio están completos', () => {
   assert.equal(business.facebookUrl, 'https://www.facebook.com/mariposaslapaz/');
   assert.equal(business.priceNote, 'Consultar por WhatsApp');
   assert.equal(business.hours.length, 3);
-  assert.equal(business.navigation.length, 6);
+  assert.equal(business.navigation.length, 5);
   assert.deepEqual(
     business.navigation.map((item) => item.label),
-    ['Nuestro Mariposario', 'Mariposas', 'Experiencia', 'Conservación', 'Galería', 'Visítanos'],
+    ['Experiencia', 'Nuestro Mariposario', 'Mariposas', 'Galería', 'Visítanos'],
+  );
+  assert.ok(
+    !business.navigation.some((item) => item.label === 'Conservación'),
+    'Conservación sale del menú principal (sigue accesible y enlazada)',
   );
 });
 

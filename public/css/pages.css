@@ -93,6 +93,37 @@
   padding-top: var(--space-3);
 }
 
+/* --- Nuestro Mariposario: acompañada (2 cols, foto humana) ------------ */
+.acompanada__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.acompanada__media {
+  margin: 0;
+}
+
+.acompanada__media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.acompanada__media figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink-on-dark-muted);
+}
+
+.acompanada__text {
+  max-width: 52ch;
+}
+
 /* --- Mariposas: ensayo fotográfico editorial --------------------------
    Apertura asimétrica, banda full-bleed, mosaico asimétrico, nota oscura
    y outro con CTA. No repite patrones de la home. --------------------- */
@@ -258,6 +289,67 @@
   border-radius: var(--radius-sm);
 }
 
+/* --- Experiencia: visita guiada (primera sección) -----------------------
+   Bloque de conversión: intro editorial + públicos en dos grupos
+   (educativas / visitantes) + idiomas + CTA WhatsApp. ------------------ */
+.exp-guiada {
+  padding: var(--space-6) 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.exp-guiada__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.exp-guiada__intro {
+  max-width: 50ch;
+}
+
+.exp-guiada__idiomas {
+  font-size: 1rem;
+  color: var(--color-ink-secondary);
+}
+
+.exp-guiada__publics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.exp-guiada__group h3 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  margin-bottom: var(--space-1);
+}
+
+.exp-guiada__group-text {
+  margin: 0;
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.exp-guiada__cta {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.exp-guiada__note {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.95rem;
+  max-width: 44ch;
+}
+
 /* --- Experiencia: immersive with video --------------------------------
    Composición cinematográfica oscura: video protagonista, texto breve y
    galería de apoyo. Ritmo distinto al de Mariposas (abre en oscuro). --- */
@@ -326,7 +418,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   transition: transform 1.2s var(--ease-out-expo);
 }
 
@@ -334,11 +426,6 @@
   .experiencia-immersive__gallery-item:hover img {
     transform: scale(1.05);
   }
-}
-
-.experiencia-immersive__gallery-item:first-child {
-  grid-row: 1 / 3;
-  aspect-ratio: auto;
 }
 
 .experiencia-immersive__gallery-note {
@@ -522,7 +609,7 @@
 
 .visitanos-practico__layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-6);
   align-items: start;
 }
@@ -654,7 +741,9 @@
 
 @media (max-width: 768px) {
   .nuestro-layout,
+  .exp-guiada__grid,
   .experiencia-immersive__content,
+  .acompanada__layout,
   .mariposas-apertura__layout,
   .mariposas-outro__layout,
   .conservacion-contemplative__columns,
@@ -666,6 +755,10 @@
   }
 
   .nuestro-layout__image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .acompanada__media img {
     aspect-ratio: 16 / 10;
   }
 
@@ -687,10 +780,6 @@
 
   .experiencia-immersive__gallery {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .experiencia-immersive__gallery-item:first-child {
-    grid-row: auto;
   }
 
   .experiencia-pausa__media img {
@@ -719,6 +808,14 @@
 @media (max-width: 480px) {
   .galeria-full__masonry {
     columns: 1;
+  }
+
+  .exp-guiada__publics {
+    grid-template-columns: 1fr;
+  }
+
+  .experiencia-immersive__gallery {
+    grid-template-columns: 1fr;
   }
 
   .visitanos-cta__actions .btn {

@@ -5,9 +5,11 @@
    ========================================================================== */
 
 /* --- Hero ------------------------------------------------------------- */
+/* Altura 88dvh en desktop: libera espacio para que la franja de información
+   rápida asome sin perder el impacto del video (evaluado en 88–92dvh). */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: 88dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -114,6 +116,111 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
   letter-spacing: 0.05em;
+}
+
+/* --- Información rápida: franja escaneable, sin cards ------------------ */
+.quickfacts {
+  background: var(--color-surface-muted);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.quickfacts__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: var(--space-2) 0;
+  list-style: none;
+}
+
+.quickfacts__item {
+  display: grid;
+  gap: 0.2rem;
+  flex: 1 1 200px;
+}
+
+.quickfacts__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.quickfacts__value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+/* --- Experiencia guiada: bloque editorial con públicos ------------------ */
+.guia-experiencia {
+  padding: var(--space-7) 0;
+  background: var(--color-surface);
+}
+
+.guia-experiencia__layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.guia-experiencia__text {
+  max-width: 52ch;
+}
+
+.guia-experiencia__label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-1);
+}
+
+.guia-experiencia__title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-3);
+}
+
+.guia-experiencia__all-ages-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-top: var(--space-3);
+  margin-bottom: 0.15rem;
+}
+
+.guia-experiencia__all-ages {
+  margin: 0;
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.guia-experiencia__media {
+  margin: 0;
+}
+
+.guia-experiencia__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.guia-experiencia__media figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
 }
 
 /* --- Intro: editorial split ------------------------------------------ */
@@ -226,6 +333,15 @@
   grid-column: 1 / 3;
 }
 
+/* ítem con fuente de resolución limitada (528px): se limita su ancho para
+   no estirarlo en pantallas grandes (móvil: placa centrada a 480px máx.). */
+.mariposas-editorial__item--compact {
+  max-width: 480px;
+  width: 100%;
+  justify-self: center;
+  align-self: stretch;
+}
+
 .mariposas-note {
   margin-top: var(--space-3);
   color: var(--color-ink-muted);
@@ -281,6 +397,16 @@
   font-style: italic;
 }
 
+.mariposas-editorial__cta {
+  text-align: center;
+  margin-top: var(--space-3);
+}
+
+.mariposas-editorial__more {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 /* --- Experiencia: dark, con un solo video ---------------------------- */
 .experiencia-full {
   position: relative;
@@ -325,16 +451,23 @@
 }
 
 .experiencia-full__media {
-  position: relative;
-  aspect-ratio: 16 / 10;
+  margin: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
 }
 
-.experiencia-full__media video {
+.experiencia-full__media img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+.experiencia-full__caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink-on-dark-muted);
 }
 
 /* --- Conservación: contemplativa con imagen grande -------------------- */
@@ -433,34 +566,22 @@
   }
 }
 
-/* Posiciones del masonry */
+/* Posiciones del masonry (preview de 4 imágenes en la home) */
 .galeria-masonry__item:nth-child(1) {
-  grid-column: 1 / 6;
-  grid-row: 1 / 5;
+  grid-column: 1 / 7;
+  grid-row: 1 / 6;
 }
 .galeria-masonry__item:nth-child(2) {
-  grid-column: 6 / 9;
-  grid-row: 1 / 3;
-}
-.galeria-masonry__item:nth-child(3) {
-  grid-column: 9 / 13;
+  grid-column: 7 / 10;
   grid-row: 1 / 4;
 }
+.galeria-masonry__item:nth-child(3) {
+  grid-column: 10 / 13;
+  grid-row: 1 / 5;
+}
 .galeria-masonry__item:nth-child(4) {
-  grid-column: 6 / 9;
-  grid-row: 3 / 6;
-}
-.galeria-masonry__item:nth-child(5) {
-  grid-column: 1 / 6;
+  grid-column: 7 / 13;
   grid-row: 5 / 8;
-}
-.galeria-masonry__item:nth-child(6) {
-  grid-column: 9 / 13;
-  grid-row: 4 / 7;
-}
-.galeria-masonry__item:nth-child(7) {
-  grid-column: 6 / 9;
-  grid-row: 6 / 8;
 }
 
 .galeria-editorial__cta {
@@ -468,47 +589,71 @@
   margin-top: var(--space-4);
 }
 
-/* --- CTA WhatsApp: limpio, centrado ---------------------------------- */
-.cta-wa {
-  padding: var(--space-6) 0;
-  text-align: center;
-  background: var(--color-surface-muted);
-}
-
-.cta-wa__title {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-1);
-}
-
-.cta-wa__body {
-  color: var(--color-ink-muted);
-  font-size: 1.05rem;
-  margin-bottom: var(--space-3);
-  margin-inline: auto;
-}
-
-/* --- Ubicación: editorial con datos ---------------------------------- */
-.ubicacion-editorial {
+/* --- CTA final: oscuro, WhatsApp protagonista ------------------------- */
+.cta-final {
   padding: var(--space-7) 0;
+  text-align: center;
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
+}
+
+.cta-final__title {
+  color: var(--color-ink-on-dark);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.cta-final__body {
+  color: var(--color-ink-on-dark-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 0 auto var(--space-4);
+  max-width: 52ch;
+}
+
+/* --- Planifica tu visita: datos prácticos, sin mapa -------------------- */
+.planifica {
+  padding: var(--space-6) 0;
   background: var(--color-surface);
 }
 
-.ubicacion-editorial__layout {
+.planifica__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
+  gap: var(--space-6);
   align-items: start;
 }
 
-.ubicacion-editorial__text {
-  max-width: 48ch;
+.planifica__text {
+  max-width: 52ch;
 }
 
-.ubicacion-editorial__title {
+.planifica__label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-1);
+}
+
+.planifica__title {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   margin-bottom: var(--space-3);
+}
+
+.planifica__cta {
+  max-width: 44ch;
+  padding-top: var(--space-3);
+}
+
+.planifica__cta-body {
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
 .ubicacion-details {
@@ -534,27 +679,6 @@
   color: var(--color-ink);
 }
 
-.ubicacion-editorial__map {
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--color-surface-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ubicacion-editorial__map img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* --- Utilidades ------------------------------------------------------- */
-.section-actions {
-  margin-top: var(--space-3);
-}
-
 /* --- Responsive ------------------------------------------------------- */
 @media (max-width: 1024px) {
   .mariposas-editorial__grid {
@@ -573,32 +697,20 @@
   }
 
   .galeria-masonry__item:nth-child(1) {
-    grid-column: 1 / 4;
-    grid-row: 1 / 4;
+    grid-column: 1 / 5;
+    grid-row: 1 / 5;
   }
   .galeria-masonry__item:nth-child(2) {
-    grid-column: 4 / 7;
+    grid-column: 5 / 7;
     grid-row: 1 / 3;
   }
   .galeria-masonry__item:nth-child(3) {
-    grid-column: 4 / 7;
-    grid-row: 3 / 5;
+    grid-column: 5 / 7;
+    grid-row: 3 / 6;
   }
   .galeria-masonry__item:nth-child(4) {
-    grid-column: 1 / 4;
-    grid-row: 4 / 6;
-  }
-  .galeria-masonry__item:nth-child(5) {
-    grid-column: 1 / 4;
-    grid-row: 6 / 8;
-  }
-  .galeria-masonry__item:nth-child(6) {
-    grid-column: 4 / 7;
-    grid-row: 5 / 7;
-  }
-  .galeria-masonry__item:nth-child(7) {
-    grid-column: 4 / 7;
-    grid-row: 7 / 8;
+    grid-column: 1 / 5;
+    grid-row: 5 / 8;
   }
 }
 
@@ -618,11 +730,16 @@
 
   /* Layouts colapsan a 1 columna */
   .intro__layout,
+  .guia-experiencia__layout,
   .experiencia-full__layout,
   .conservacion-essay__layout,
-  .ubicacion-editorial__layout {
+  .planifica__layout {
     grid-template-columns: 1fr;
     gap: var(--space-3);
+  }
+
+  .guia-experiencia__media {
+    order: -1;
   }
 
   .intro__text {
@@ -697,6 +814,10 @@
 
   .galeria-masonry__item:nth-child(1) {
     grid-column: auto;
+  }
+
+  .quickfacts__list {
+    gap: var(--space-1) var(--space-2);
   }
 }
 

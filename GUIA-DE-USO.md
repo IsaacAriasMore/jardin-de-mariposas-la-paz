@@ -60,6 +60,21 @@ Clasificación completa (stock / real / pendiente / HOLD), dimensiones y licenci
   negocio (Facebook): interior con sendero y vegetación; estructura con crisálidas.
   Idóneas donde importe mostrar el lugar de verdad.
 
+## FOTOGRAFÍAS APROBADAS PARA USO WEB (autorizadas por el usuario)
+Procedencia no documentada (por eso no se clasifican como REAL); las personas que
+aparecen son adultas. Alt texts en las vistas correspondientes.
+
+- `guia-mariposario-mariposa` — Home (sección experiencia guiada).
+- `guia-grupo-adultos` — /experiencia (galería inmersiva).
+- `visitantes-dentro-mariposario` — /experiencia (galería inmersiva) y /galería.
+- `guia-acompanando-visitante` — /nuestro-mariposario (acompañada) y /galería.
+- `mariposa-oscura-puntos-azules` — /mariposas (galería) y /galería.
+- `mariposa-naranja-flores` — Home (placa compacta, máx. 480px). Fuente 528w:
+  solo derivados 480w + ancho natural. NO en full-bleed / hero / espacios grandes.
+
+> Evitar repetir una misma fotografía más de 2 veces en el sitio. El pie/caption de
+> las fotos con personas no inventa nombres ni los asocia a personas reales.
+
 ## Videos de apoyo (STOCK, contenido pendiente de confirmar)
 - `pexels-13619427-1080p` (horizontal) y `pexels-15160751-1080` (vertical):
   ambiente/flora o fondos de sección. Confirmar contenido visual antes de
@@ -70,12 +85,12 @@ Clasificación completa (stock / real / pendiente / HOLD), dimensiones y licenci
   "así se ven en nuestro mariposario". Los videos actuales son STOCK: no deben
   presentarse como grabados en el mariposario.
 - `482005509_*.jpg` está en HOLD (menores/personas): no integrar a la web.
-- `505011602_*.jpg`, `505835868_*.jpg`, `506940932_*.jpg`, `506941578_*.jpg`,
-  `507088230_*.jpg` y `508109705_*.jpg` están PENDIENTES DE CONFIRMAR PROCEDENCIA:
-  no integrar ni generar derivados hasta confirmación explícita del propietario.
-  Las 4 con personas requieren además autorización de publicación (slugs propuestos
-  en el MAPEO).
+- Las 6 fotografías `505011602_*.jpg`, `505835868_*.jpg`, `506940932_*.jpg`,
+  `506941578_*.jpg`, `507088230_*.jpg` y `508109705_*.jpg` están APROBADAS PARA
+  USO WEB (autorizadas por el usuario), con derivados generados. Su procedencia
+  sigue sin documentar: no afirmar autor ni propiedad, no tratarlas como REAL.
 - `480999978_*.jpg` está PENDIENTE: no integrar hasta confirmar procedencia.
 - Las imágenes menores a 640 px (p. ej. `505835868_*.jpg`, 528w) generan solo
-  derivados a 480w + ancho natural: nunca se agrandan ni se declaran mayores.
+  derivados a 480w + ancho natural: nunca se agrandan ni se declaran mayores, y
+  no se usan en espacios grandes (full-bleed, hero).
 - No cargar los masters 4K en la web: usar siempre los derivados de `public/media/`.

@@ -46,13 +46,15 @@ module.exports = {
     // los años de experiencia hayan sido trabajando en este mariposario.
     guideExperience: 'Más de 10 años de experiencia como guía turístico',
   },
-  // Menú principal: la marca ya enlaza a "/" y "Guías" queda reservado sin
-  // enlace hasta que exista contenido real.
+  // Menú principal: prioridad a la conversión (Experiencia primero) y a las
+  // páginas de contenido central. La marca ya enlaza a "/" y "Guías" queda
+  // reservado sin enlace hasta que exista contenido real. Conservación sale
+  // del menú principal (se mantiene accesible, indexable y enlazada desde
+  // la home, el pie de página y el sitemap).
   navigation: [
+    { label: 'Experiencia', href: '/experiencia' },
     { label: 'Nuestro Mariposario', href: '/nuestro-mariposario' },
     { label: 'Mariposas', href: '/mariposas' },
-    { label: 'Experiencia', href: '/experiencia' },
-    { label: 'Conservación', href: '/conservacion' },
     { label: 'Galería', href: '/galeria' },
     { label: 'Visítanos', href: '/visitanos' },
   ],

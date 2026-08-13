@@ -1,8 +1,12 @@
-<!-- Experiencia: composición cinematográfica e inmersiva, abre en oscuro.
-     VIDEO: el protagonista es mariposa-flores-tropicales (solo existe MP4;
-     si en el futuro se genera un WebM se agrega como primer <source> antes
-     del fallback MP4). El video y las fotos de apoyo son material STOCK
-     usado como recurso visual: no se afirma que correspondan al mariposario.
+<!-- Experiencia: la visita guiada es la protagonista. Abre en oscuro con la
+     jerarquía de conversión: experiencia guiada + guía (+10 años como guía
+     turístico, tratamiento editorial sin cursiva) + español/inglés + públicos
+     (educativos y visitantes, presentación compacta).
+     VIDEO: mariposa-flores-tropicales (solo existe MP4; si en el futuro se
+     genera un WebM se agrega como primer <source> antes del fallback MP4).
+     Fotos humanas de la galería inmersiva: material real APROBADO para uso
+     web (guía y visitantes en el mariposario). El video es STOCK y se etiqueta
+     como ilustrativo: no se afirma que corresponda al mariposario.
      No se inventan servicios, tours, duración, testimonios ni actividades. -->
 
 <section class="page-header page-header--dark">
@@ -10,9 +14,61 @@
     <p class="page-header__label">La experiencia</p>
     <h1 class="page-header__title">La Experiencia</h1>
     <p class="page-header__lead">
-      Mariposas de cerca, flores tropicales y la calma de un mariposario en el
-      bosque nuboso de San Ramón.
+      Visitas guiadas para grupos educativos y visitantes de distintas edades,
+      con un guía con más de 10 años de experiencia como guía turístico y
+      acompañamiento en español e inglés.
     </p>
+  </div>
+</section>
+
+<!-- ======== EXPERIENCIA GUIADA: públicos + idiomas + CTA ---------------- -->
+<section class="exp-guiada reveal">
+  <div class="container">
+    <div class="exp-guiada__grid">
+      <div class="exp-guiada__intro">
+        <p class="eyebrow">Experiencia guiada</p>
+        <h2>Una experiencia guiada para distintas edades</h2>
+        <div class="prose">
+          <p>
+            El mariposario se puede recorrer acompañado. La visita guiada está
+            disponible para grupos educativos y visitantes de distintas edades,
+            con acompañamiento en español e inglés.
+          </p>
+        </div>
+        <p class="guide-years">
+          <span class="guide-years__num">+10 años</span>
+          <span class="guide-years__text">de experiencia como guía turístico</span>
+        </p>
+        <p class="exp-guiada__idiomas">
+          Acompañamiento en <strong>Español · Inglés</strong>
+        </p>
+      </div>
+
+      <div class="exp-guiada__publics">
+        <div class="exp-guiada__group">
+          <h3>Visitas educativas</h3>
+          <p class="exp-guiada__group-text">
+            Preescolar, kínder, escuelas y grupos educativos.
+          </p>
+        </div>
+        <div class="exp-guiada__group">
+          <h3>Otros visitantes</h3>
+          <p class="exp-guiada__group-text">
+            Personas adultas, adultas mayores y visitantes de distintas edades.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-guiada__cta">
+      <a class="btn btn--whatsapp btn--large" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
+        Consultar una visita
+      </a>
+      <p class="exp-guiada__note">
+        Para visitas individuales, grupales o educativas, consulte disponibilidad
+        y detalles.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -43,52 +99,40 @@
         <h2>Observar de cerca, sin prisa</h2>
         <div class="prose">
           <p>
-            La experiencia es sencilla: recorrer el mariposario a su propio ritmo,
-            detenerse junto a las flores y esperar a que las mariposas lleguen.
+            Entre flores y vegetación, las mariposas van y vienen. Detenerse a
+            mirar de cerca es una forma sencilla de conectar con la naturaleza.
           </p>
           <p>
-            Para grupos y público de distintas edades también ofrecemos visitas
-            guiadas, en español e inglés. Solo el entorno natural del
-            mariposario en Bajo La Paz, San Ramón.
+            El entorno del mariposario en Bajo La Paz, San Ramón, lo acompaña
+            todo: plantas, aire y el paisaje del bosque nuboso.
           </p>
         </div>
       </div>
       <div class="experiencia-immersive__gallery reveal-stagger">
         <figure class="experiencia-immersive__gallery-item">
           <img
-            src="/media/img/pexels-joerg-hartmann-626385254-38778510-1920.jpg"
-            srcset="/media/img/pexels-joerg-hartmann-626385254-38778510-640.webp 640w, /media/img/pexels-joerg-hartmann-626385254-38778510-1280.webp 1280w, /media/img/pexels-joerg-hartmann-626385254-38778510-1920.webp 1920w"
+            src="/media/img/guia-grupo-adultos-960.jpg"
+            srcset="/media/img/guia-grupo-adultos-640.webp 640w, /media/img/guia-grupo-adultos-960.webp 960w"
             sizes="(max-width: 768px) 50vw, 25vw"
-            alt="Mariposa posada sobre el follaje"
-            width="1920"
-            height="1280"
+            alt="Guía explicando al grupo durante una visita"
+            width="960"
+            height="640"
             loading="lazy"
           />
         </figure>
         <figure class="experiencia-immersive__gallery-item">
           <img
-            src="/media/img/pexels-abdullah-elgumus-917947069-38000621-1920.jpg"
-            srcset="/media/img/pexels-abdullah-elgumus-917947069-38000621-640.webp 640w, /media/img/pexels-abdullah-elgumus-917947069-38000621-1280.webp 1280w, /media/img/pexels-abdullah-elgumus-917947069-38000621-1920.webp 1920w"
+            src="/media/img/visitantes-dentro-mariposario-960.jpg"
+            srcset="/media/img/visitantes-dentro-mariposario-640.webp 640w, /media/img/visitantes-dentro-mariposario-960.webp 960w"
             sizes="(max-width: 768px) 50vw, 25vw"
-            alt="Mariposa posada sobre una flor"
-            width="1920"
-            height="1280"
-            loading="lazy"
-          />
-        </figure>
-        <figure class="experiencia-immersive__gallery-item">
-          <img
-            src="/media/img/mariposa-sobre-flor-amarilla-1280.jpg"
-            srcset="/media/img/mariposa-sobre-flor-amarilla-640.webp 640w, /media/img/mariposa-sobre-flor-amarilla-1280.webp 1280w"
-            sizes="(max-width: 768px) 50vw, 25vw"
-            alt="Mariposa posada sobre una flor amarilla"
-            width="1280"
-            height="960"
+            alt="Visitantes observando mariposas dentro del mariposario"
+            width="960"
+            height="640"
             loading="lazy"
           />
         </figure>
         <p class="experiencia-immersive__gallery-note">
-          Imágenes ilustrativas de mariposas y flores tropicales.
+          Fotografías de las visitas guiadas en el mariposario.
         </p>
       </div>
     </div>
@@ -113,19 +157,20 @@
   </div>
 </section>
 
-<!-- ======== CTA: hacia Visítanos / WhatsApp ---------------------------- -->
+<!-- ======== CTA FINAL: hacia WhatsApp ----------------------------------- -->
 <section class="experiencia-cta reveal">
   <div class="container">
-    <h2>¿Listo para conocerlo en persona?</h2>
+    <p class="eyebrow eyebrow--on-dark">¿Planeas una visita?</p>
+    <h2>Conversemos sobre tu visita</h2>
     <p class="experiencia-cta__body">
-      Consulte horarios, entrada y cómo llegar. Estamos en Bajo La Paz, San
-      Ramón, entre el bosque nuboso y el paisaje rural de Alajuela.
+      Para visitas individuales, grupales o educativas, consulte disponibilidad
+      y detalles por WhatsApp. Estamos en Bajo La Paz, San Ramón.
     </p>
     <p class="section-actions">
-      <a class="btn btn--ghost-dark" href="/visitanos">Visítanos</a>
       <a class="btn btn--whatsapp" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
-        WhatsApp
+        Consultar una visita
       </a>
+      <a class="btn btn--ghost-dark" href="/visitanos">Visítanos</a>
     </p>
   </div>
 </section>

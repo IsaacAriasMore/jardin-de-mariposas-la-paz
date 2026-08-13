@@ -369,6 +369,17 @@ ol {
   }
 }
 
+/* CTA de navegación: "Consultar visita" (WhatsApp). Discreto en desktop,
+   integrado en el menú desplegable en móvil (no es botón flotante). */
+.site-nav__cta {
+  margin-left: var(--space-2);
+}
+
+.site-nav__cta-link {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -543,6 +554,48 @@ ol {
   color: var(--color-ink-muted);
 }
 
+/* --- Cita del guía: "+10 años" editorial, sin cursiva -------------------
+   Jerarquía clara: el número protagonista en Newsreader (display, normal),
+   la frase de apoyo en Karla (body), limpia y sin cursiva. La línea naranja
+   lateral conserva el acento editorial. Usado en Home y /experiencia. ---- */
+.guide-years {
+  margin: var(--space-3) 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-accent);
+  display: grid;
+  gap: 0.2rem;
+}
+
+.guide-years__num {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.guide-years__text {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--color-ink-secondary);
+}
+
+/* --- Acciones de sección: botones lado a lado con ritmo constante --------
+   (WhatsApp primaria + Visítanos secundaria en "Datos prácticos"). Se apilan
+   a ancho completo en pantallas pequeñas. -------------------------------- */
+.section-actions {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 /* --- Footer ----------------------------------------------------------- */
 .site-footer {
   background: var(--color-surface-darker);
@@ -552,7 +605,7 @@ ol {
 
 .site-footer__grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
   gap: var(--space-5);
 }
 
@@ -763,6 +816,16 @@ ol {
     color: var(--color-primary);
     font-weight: 600;
   }
+
+  .site-nav__cta {
+    margin-left: 0;
+    padding: var(--space-2) var(--space-2) var(--space-1);
+  }
+
+  .site-nav__cta-link {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* --- Footer: responsive (global) ------------------------------------- */
@@ -770,5 +833,18 @@ ol {
   .site-footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+}
+
+/* --- Acciones de sección: apilado cómodo en pantallas pequeñas -------- */
+@media (max-width: 480px) {
+  .section-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-actions .btn {
+    justify-content: center;
+    width: 100%;
   }
 }

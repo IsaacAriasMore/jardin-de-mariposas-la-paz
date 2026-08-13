@@ -14,6 +14,8 @@
 // El pipeline es solo de generación: nunca se ejecuta FFmpeg en runtime.
 //
 // Clasificaciones (ver MAPEO-NOMBRES-ORIGINALES.txt y MEDIA-CATALOG.md):
+//   - APROBADO PARA USO WEB: autorizado por el usuario para integrar al sitio
+//     (la procedencia puede seguir sin documentar: eso no impide el uso web).
 //   - HOLD: no se generan derivados (autorización de publicación pendiente).
 //   - PENDIENTE: no se generan derivados hasta confirmar procedencia/contenido.
 //
@@ -80,7 +82,10 @@ function buildSizes(width) {
 }
 
 // Fotografías aprobadas (src en Fotos/ -> prefijo del derivado en public/media/img/).
-// Se excluyen los assets HOLD y PENDIENTE: ver MEDIA-CATALOG.md.
+// APROBADO PARA USO WEB (autorizado por el usuario; procedencia no documentada):
+// las 6 fotografías 505011602… / 505835868… / 506940932… / 506941578… / 507088230…
+// y 508109705… entran al pipeline. Se excluyen los assets HOLD (482005509…) y
+// PENDIENTE (480999978…): ver MEDIA-CATALOG.md.
 const PHOTOS = [
   { src: 'mariposa-azul-hoja-tropical.jpg', seo: 'mariposa-azul-hoja-tropical' },
   { src: 'mariposa-azul-pequena-flor-violeta.jpg', seo: 'mariposa-azul-pequena-flor-violeta' },
@@ -105,6 +110,31 @@ const PHOTOS = [
   {
     src: 'pexels-joerg-hartmann-626385254-38778510.jpg',
     seo: 'pexels-joerg-hartmann-626385254-38778510',
+  },
+  // APROBADO PARA USO WEB (procedencia no documentada).
+  {
+    src: '505011602_3077208649109320_5051752296908815880_n.jpg',
+    seo: 'mariposa-oscura-puntos-azules',
+  },
+  {
+    src: '505835868_3080390048791180_3877059931757099776_n.jpg',
+    seo: 'mariposa-naranja-flores',
+  },
+  {
+    src: '506940932_3086830528147132_1929793400418905484_n.jpg',
+    seo: 'guia-mariposario-mariposa',
+  },
+  {
+    src: '506941578_3086830491480469_5740770662770968235_n.jpg',
+    seo: 'guia-acompanando-visitante',
+  },
+  {
+    src: '507088230_3086830348147150_333135784783391839_n.jpg',
+    seo: 'guia-grupo-adultos',
+  },
+  {
+    src: '508109705_3086830558147129_5168074877511046835_n.jpg',
+    seo: 'visitantes-dentro-mariposario',
   },
 ];
 
