@@ -512,8 +512,35 @@ ol {
   color: var(--color-ink-on-dark);
 }
 
+.page-section--dark h2 {
+  color: var(--color-ink-on-dark);
+}
+
+.page-section--dark .prose {
+  color: var(--color-ink-on-dark-muted);
+}
+
+.page-section--dark .prose strong {
+  color: var(--color-ink-on-dark);
+}
+
 .page-section--muted {
   background: var(--color-surface-muted);
+}
+
+/* --- Compartidas: captions y notas de medio ---------------------------- */
+.media-caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+}
+
+.media-note {
+  margin-top: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
 }
 
 /* --- Footer ----------------------------------------------------------- */

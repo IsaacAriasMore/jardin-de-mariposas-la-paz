@@ -44,7 +44,7 @@ const PAGE_DEFS = [
     path: '/conservacion',
     title: 'Conservación',
     description:
-      'El valor de conservar mariposas y sus hábitats: flores, polinización y jardines amigables con la vida silvestre.',
+      'Conservación de mariposas y biodiversidad en el Jardín de Mariposas La Paz, Bajo La Paz, San Ramón, Alajuela, Costa Rica: hábitats, flores y naturaleza.',
   },
   {
     key: 'galeria',
@@ -52,7 +52,7 @@ const PAGE_DEFS = [
     path: '/galeria',
     title: 'Galería',
     description:
-      'Galería de fotos y videos del Jardín de Mariposas La Paz: mariposas, flores y momentos del jardín.',
+      'Galería del Jardín de Mariposas La Paz, mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica: el jardín y fotografía de mariposas y naturaleza.',
   },
   {
     key: 'guias',
