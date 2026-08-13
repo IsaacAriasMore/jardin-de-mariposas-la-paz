@@ -40,6 +40,10 @@ function createApp() {
           ],
           connectSrc: ["'self'"],
           formAction: ["'self'", 'https://wa.me'],
+          // frameSrc: qué iframes puede cargar nuestra web (solo el embed
+          // oficial de Google Maps en /visitanos). frameAncestors (quién puede
+          // embebernos) se mantiene en ['self'] intacto.
+          frameSrc: ["'self'", 'https://www.google.com'],
           frameAncestors: ["'self'"],
         },
       },

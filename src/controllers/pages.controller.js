@@ -54,14 +54,11 @@ const PAGE_DEFS = [
     description:
       'Galería del Jardín de Mariposas La Paz, mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica: el jardín y fotografía de mariposas y naturaleza.',
   },
-  {
-    key: 'guias',
-    view: 'pages/guias',
-    path: '/guias',
-    title: 'Guías',
-    description:
-      'Guías de visita y recomendaciones para planear y disfrutar su recorrido por el Jardín de Mariposas La Paz.',
-  },
+  // FUTURO (reservado, NO publicar): Guías de visita.
+  //   key: 'guias'    view: 'pages/guias'   path: '/guias'
+  //   Detalle: /guias/:slug (artículos reales cuando existan; sin filler).
+  // Retirado temporalmente por thin content: /guias responde 404 hasta que
+  // haya contenido real. Se re-agrega aquí + en routes/ + en PUBLIC_ROUTES.
   {
     key: 'visitanos',
     view: 'pages/visitanos',

@@ -37,7 +37,7 @@ Un mariposario rural real en Bajo La Paz, San Ramón (Alajuela, Costa Rica), don
 ## Capabilities and Constraints
 
 - Sitio informativo público, sin autenticación. WhatsApp como canal de contacto principal (helper único de enlaces `wa.me`).
-- Sin base de datos en esta etapa. Ruta `/guias` reservada sin contenido (confirmado: no crear artículos).
+- Sin base de datos en esta etapa. `/guias` está **reservada para una fase futura**: actualmente NO es una ruta pública (responde 404, no está en navegación ni en sitemap). Se habilitará cuando existan guías/artículos con contenido real; no se inventa contenido. Arquitectura prevista: `/guias` (índice) y `/guias/:slug` (detalle).
 - No inventar: especies (la identificación científica está pendiente), testimonios, premios, estadísticas, datos históricos o biológicos.
 - Dominio definitivo pendiente de compra; provisional `jardindemariposaslapaz.com`. Enlace de Google Maps desacoplado (`GOOGLE_MAPS_URL`), provisionalmente el Plus Code.
 - SEO desacoplado por página (title, description, canonical, OG, sitemap, robots).

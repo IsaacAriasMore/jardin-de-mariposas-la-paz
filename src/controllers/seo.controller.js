@@ -13,7 +13,9 @@ Sitemap: ${config.siteUrl}/sitemap.xml
 }
 
 // Páginas públicas indexables (espejo de routes/index.js). Independientes de
-// la navegación visible: "/" y "/guias" no están en el menú pero sí indexan.
+// la navegación visible: "/" no está en el menú pero sí indexa.
+// NOTA: "/guias" está excluido a propósito: reservada para el futuro, no se
+// indexa hasta tener artículos reales (evita thin content en el sitemap).
 const PUBLIC_ROUTES = [
   '/',
   '/nuestro-mariposario',
@@ -21,7 +23,6 @@ const PUBLIC_ROUTES = [
   '/experiencia',
   '/conservacion',
   '/galeria',
-  '/guias',
   '/visitanos',
 ];
 

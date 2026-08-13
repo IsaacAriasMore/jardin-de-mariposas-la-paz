@@ -66,7 +66,7 @@ Decisiones de la Fase 1:
 │   └── views/
 │       ├── layout.ejs
 │       ├── partials/         # head, navbar, footer
-│       └── pages/            # 8 páginas + 404 + error
+│       └── pages/            # 7 páginas + 404 + error
 └── tests/
     ├── app.test.js           # Rutas 200, 404, robots, sitemap, SEO/H1
     └── config.test.js        # Defaults de entorno y datos del negocio
@@ -122,13 +122,24 @@ npm run format:check  # Prettier (verifica)
 | `/experiencia`         | La Experiencia                                                 |
 | `/conservacion`        | Conservación                                                   |
 | `/galeria`             | Galería                                                        |
-| `/guias`               | Guías                                                          |
 | `/visitanos`           | Visítanos (ubicación, horario, contacto)                       |
 | `/robots.txt`          | Rutas de rastreo + sitemap                                     |
 | `/sitemap.xml`         | Sitemap de páginas públicas                                    |
 | _cualquier otra_       | 404 personalizado (noindex)                                    |
 
-Evolución prevista sin rehacer el proyecto: `/mariposas/:slug` y `/guias/:slug` (los controladores se agregan cuando existan datos reales; no se inventan especies ni artículos).
+### Guías (reservada para una fase futura)
+
+`/guias` está **reservada** para futuros artículos de guía, pero actualmente **no existe como ruta pública**:
+
+- Responde `404` (cae en el 404 personalizado, sin redirect ni página vacía).
+- No está en la navegación ni en el `sitemap.xml` (excluida de `PUBLIC_ROUTES`).
+- Se habilitará cuando existan guías con contenido real; no se inventa contenido.
+- La arquitectura futura contempla:
+
+  - `/guias` — índice de guías
+  - `/guias/:slug` — detalle de una guía
+
+Evolución prevista sin rehacer el proyecto: `/mariposas/:slug` (detalle de especie) y la sección _Guías_ (los controladores y vistas se agregan cuando existan datos reales; ver `PRODUCT.md`).
 
 ## SEO
 
