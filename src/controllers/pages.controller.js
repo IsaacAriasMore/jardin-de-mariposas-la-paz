@@ -28,7 +28,7 @@ const PAGE_DEFS = [
     path: '/mariposas',
     title: 'Mariposas',
     description:
-      'Las mariposas del Jardín de Mariposas La Paz: color, flores y su entorno natural en el jardín de San Ramón.',
+      'Mariposas y flores tropicales en el Jardín de Mariposas La Paz, Bajo La Paz, San Ramón, Alajuela, Costa Rica: un recorrido fotográfico para observar la naturaleza de cerca.',
   },
   {
     key: 'experiencia',
@@ -36,7 +36,7 @@ const PAGE_DEFS = [
     path: '/experiencia',
     title: 'Experiencia',
     description:
-      'Lo que se vive en una visita al mariposario: mariposas entre flores tropicales y cercanía con la naturaleza.',
+      'Una visita al Jardín de Mariposas La Paz en Bajo La Paz, San Ramón: observe mariposas y flores tropicales de cerca y disfrute el entorno natural a su propio ritmo.',
   },
   {
     key: 'conservacion',

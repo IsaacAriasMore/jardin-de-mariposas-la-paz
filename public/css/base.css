@@ -261,6 +261,22 @@ ol {
   border: 0;
 }
 
+/* Eyebrow: etiqueta editorial compartida (mismo patrón que los __label de
+   cada sección, centralizado para las páginas internas). */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-1);
+}
+
+.eyebrow--on-dark {
+  color: oklch(0.65 0.08 55);
+}
+
 /* --- Header / Navegación ---------------------------------------------- */
 .site-header {
   position: sticky;
