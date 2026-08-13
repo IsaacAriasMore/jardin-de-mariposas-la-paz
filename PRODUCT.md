@@ -53,7 +53,7 @@ Un mariposario rural real en Bajo La Paz, San Ramón (Alajuela, Costa Rica), don
 
 ## Evidence on Hand
 
-- 8 fotografías y 3 videos 4K en `Fotos/` y `Videos/` (masters; mapeo en `MAPEO-NOMBRES-ORIGINALES.txt`, uso recomendado en `GUIA-DE-USO.md`).
+- 14 fotografías y 5 videos en `Fotos/` y `Videos/` (masters; mapeo en `MAPEO-NOMBRES-ORIGINALES.txt`, inventario y clasificación en `MEDIA-CATALOG.md`, uso recomendado en `GUIA-DE-USO.md`). Derivados web generados con `npm run media` en `public/media/`.
 - Datos oficiales del negocio en `src/config/business.js`.
 - Ausencias que no deben rellenarse: especies identificadas, testimonios, premios, precios específicos, materiales físicos del negocio (folletos/QR).
 
