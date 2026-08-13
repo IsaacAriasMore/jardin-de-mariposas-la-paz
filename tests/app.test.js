@@ -134,7 +134,7 @@ test('/experiencia presenta el tour guiado, la credencial ICT y el aprendizaje',
   assert.ok(html.includes('para disfrutar en compañía'), 'bloque de familias y adultos');
   assert.ok(html.includes('ciclo de vida'), 'propuesta de aprendizaje');
   assert.ok(html.includes('crisálida'), 'etapas del ciclo de vida');
-  assert.ok(html.includes('hábitos, alimentación, reproducción'), 'contenido educativo');
+  assert.ok(html.includes('comportamiento, alimentación, reproducción'), 'contenido educativo');
   assert.ok(html.includes('precio y duración'), 'precio y duración se remiten a WhatsApp');
   assert.ok(html.includes('guia-grupo-adultos-960.jpg'), 'foto del guía con grupo');
   assert.ok(html.includes('visitantes-dentro-mariposario-960.jpg'), 'foto de visitantes');
