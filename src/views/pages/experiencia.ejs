@@ -23,10 +23,10 @@
 </section>
 
 <!-- ======== TOUR GUIADO: públicos + idiomas + CTA ----------------------- -->
-<section class="exp-guiada reveal">
+<section class="exp-guiada reveal" data-motion-group="tour-detalles">
   <div class="container">
     <div class="exp-guiada__grid">
-      <div class="exp-guiada__intro">
+      <div class="exp-guiada__intro" data-motion-item="copy">
         <p class="eyebrow">Experiencia guiada</p>
         <h2>El recorrido</h2>
         <div class="prose">
@@ -42,7 +42,7 @@
         </p>
       </div>
 
-      <div class="exp-guiada__publics">
+      <div class="exp-guiada__publics" data-motion-item="stagger">
         <div class="exp-guiada__group">
           <h3>Visitas educativas</h3>
           <p class="exp-guiada__group-text">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="exp-guiada__cta">
+    <div class="exp-guiada__cta" data-motion-item="actions">
       <a class="btn btn--whatsapp btn--large" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
         Consultar una visita
       </a>
@@ -71,10 +71,10 @@
 </section>
 
 <!-- ======== APRENDIZAJE: ciclo de vida y etapas -------------------------- -->
-<section class="experiencia-aprende page-section--muted reveal">
+<section class="experiencia-aprende page-section--muted reveal" data-motion-group="ciclo-vida">
   <div class="container">
     <div class="experiencia-aprende__layout">
-      <div class="experiencia-aprende__text">
+      <div class="experiencia-aprende__text" data-motion-item="copy">
         <p class="eyebrow">Aprender durante el recorrido</p>
         <h2>El ciclo de vida de las mariposas</h2>
         <div class="prose">
@@ -90,7 +90,7 @@
           </p>
         </div>
       </div>
-      <div class="experiencia-aprende__etapas reveal-stagger">
+      <div class="experiencia-aprende__etapas" data-motion-item="stagger">
         <span class="experiencia-aprende__chip">Huevo</span>
         <span class="experiencia-aprende__chip">Oruga</span>
         <span class="experiencia-aprende__chip">Crisálida</span>
@@ -101,9 +101,9 @@
 </section>
 
 <!-- ======== INMERSIVO: video protagonista + texto breve ---------------- -->
-<section class="experiencia-immersive page-section--dark reveal">
+<section class="experiencia-immersive page-section--dark reveal" data-motion-group="experiencia-inmersiva">
   <div class="container">
-    <div class="experiencia-immersive__hero reveal-clip">
+    <div class="experiencia-immersive__hero" data-motion-item="clip">
       <video
         autoplay
         muted
@@ -122,7 +122,7 @@
     </p>
 
     <div class="experiencia-immersive__content">
-      <div class="experiencia-immersive__text">
+      <div class="experiencia-immersive__text" data-motion-item="copy">
         <p class="eyebrow eyebrow--on-dark">Aprende observando</p>
         <h2>Descubre de cerca</h2>
         <div class="prose">
@@ -133,7 +133,7 @@
           </p>
         </div>
       </div>
-      <div class="experiencia-immersive__gallery reveal-stagger">
+      <div class="experiencia-immersive__gallery" data-motion-item="gallery-stagger">
         <figure class="experiencia-immersive__gallery-item">
           <img
             src="/media/img/guia-grupo-adultos-960.jpg"
@@ -165,9 +165,9 @@
 </section>
 
 <!-- ======== PAUSA: banda contemplativa en claro ------------------------ -->
-<section class="experiencia-pausa reveal">
+<section class="experiencia-pausa reveal" data-motion-group="pausa-editorial">
   <div class="container">
-    <figure class="experiencia-pausa__media reveal-image">
+    <figure class="experiencia-pausa__media" data-motion-item="media">
       <img
         src="/media/img/mariposario-bajo-la-paz-02-1920.jpg"
         srcset="/media/img/mariposario-bajo-la-paz-02-640.webp 640w, /media/img/mariposario-bajo-la-paz-02-1280.webp 1280w, /media/img/mariposario-bajo-la-paz-02-1920.webp 1920w"
@@ -183,8 +183,8 @@
 </section>
 
 <!-- ======== CTA FINAL: hacia WhatsApp ----------------------------------- -->
-<section class="experiencia-cta reveal">
-  <div class="container">
+<section class="experiencia-cta reveal" data-motion-group="cta-experiencia">
+  <div class="container" data-motion-item="copy">
     <p class="eyebrow eyebrow--on-dark">¿Planeas una visita?</p>
     <h2>Conversemos sobre tu visita</h2>
     <p class="experiencia-cta__body">

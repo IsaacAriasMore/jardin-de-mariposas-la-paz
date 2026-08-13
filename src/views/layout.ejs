@@ -4,6 +4,23 @@
   <body class="<%= currentPath === '/' ? 'has-hero' : '' %>">
     <span id="topo" hidden></span>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <div class="ambient-butterflies" aria-hidden="true">
+      <svg class="ambient-butterfly ambient-butterfly--one" viewBox="0 0 32 24" focusable="false">
+        <g class="ambient-butterfly__flight">
+          <path class="ambient-butterfly__wing ambient-butterfly__wing--left" d="M16 12C9 2 2 3 3 9c.5 4 5 5 13 3Z" fill="currentColor" />
+          <path class="ambient-butterfly__wing ambient-butterfly__wing--right" d="M16 12c7-10 14-9 13-3-.5 4-5 5-13 3Z" fill="currentColor" />
+          <path d="M16 12c-4 8-9 7-9 2 .4-3 4-3 9-2Zm0 0c4 8 9 7 9 2-.4-3-4-3-9-2Z" fill="currentColor" />
+          <path d="M16 9v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        </g>
+      </svg>
+      <svg class="ambient-butterfly ambient-butterfly--two" viewBox="0 0 32 24" focusable="false">
+        <g class="ambient-butterfly__flight"><path class="ambient-butterfly__wing ambient-butterfly__wing--left" d="M16 12C9 2 2 3 3 9c.5 4 5 5 13 3Z" fill="currentColor" /><path class="ambient-butterfly__wing ambient-butterfly__wing--right" d="M16 12c7-10 14-9 13-3-.5 4-5 5-13 3Z" fill="currentColor" /><path d="M16 12c-4 8-9 7-9 2 .4-3 4-3 9-2Zm0 0c4 8 9 7 9 2-.4-3-4-3-9-2Z" fill="currentColor" /></g>
+      </svg>
+      <svg class="ambient-butterfly ambient-butterfly--three" viewBox="0 0 32 24" focusable="false">
+        <g class="ambient-butterfly__flight"><path class="ambient-butterfly__wing ambient-butterfly__wing--left" d="M16 12C9 2 2 3 3 9c.5 4 5 5 13 3Z" fill="currentColor" /><path class="ambient-butterfly__wing ambient-butterfly__wing--right" d="M16 12c7-10 14-9 13-3-.5 4-5 5-13 3Z" fill="currentColor" /><path d="M16 12c-4 8-9 7-9 2 .4-3 4-3 9-2Zm0 0c4 8 9 7 9 2-.4-3-4-3-9-2Z" fill="currentColor" /></g>
+      </svg>
+    </div>
     <%- include('partials/navbar') %>
     <main id="contenido">
       <%- body %>

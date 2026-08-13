@@ -10,6 +10,7 @@ function viewLocals(req, res, next) {
   res.locals.config = {
     siteUrl: config.siteUrl,
     googleMapsUrl: config.googleMapsUrl,
+    googleMapsDirectionsUrl: config.googleMapsDirectionsUrl,
   };
   res.locals.currentPath = req.path;
   res.locals.preloadHero = false;

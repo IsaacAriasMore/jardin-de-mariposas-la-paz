@@ -17,10 +17,10 @@
 </section>
 
 <!-- ======== APERTURA: ciclo de vida, educativo ------------------------ -->
-<section class="mariposas-apertura reveal">
+<section class="mariposas-apertura reveal" data-motion-group="transformacion">
   <div class="container">
     <div class="mariposas-apertura__layout">
-      <div class="mariposas-apertura__text">
+      <div class="mariposas-apertura__text" data-motion-item="copy-start">
         <p class="eyebrow">Ciclo de vida</p>
         <h2>Una transformación sorprendente</h2>
         <p class="mariposas-apertura__body">
@@ -34,7 +34,7 @@
           y de las condiciones del entorno en el que viven.
         </p>
       </div>
-      <figure class="mariposas-apertura__media reveal-image">
+      <figure class="mariposas-apertura__media" data-motion-item="media-end">
         <img
           src="/media/img/mariposa-negra-amarilla-flor-roja-1280.jpg"
           srcset="/media/img/mariposa-negra-amarilla-flor-roja-640.webp 640w, /media/img/mariposa-negra-amarilla-flor-roja-1280.webp 1280w"
@@ -51,32 +51,43 @@
 </section>
 
 <!-- ======== BANDA: imagen horizontal full-bleed ----------------------- -->
-<section class="mariposas-banda reveal">
-  <figure class="mariposas-banda__media reveal-image">
-    <img
-      src="/media/img/mariposa-azul-hoja-tropical-1920.jpg"
-      srcset="/media/img/mariposa-azul-hoja-tropical-640.webp 640w, /media/img/mariposa-azul-hoja-tropical-1280.webp 1280w, /media/img/mariposa-azul-hoja-tropical-1920.webp 1920w"
-      sizes="100vw"
-      alt="Mariposa azul posada sobre una hoja tropical"
-      width="1920"
-      height="1080"
-      loading="lazy"
-    />
-    <figcaption>Mariposa azul sobre una hoja</figcaption>
-  </figure>
+<section class="mariposas-banda reveal" data-motion-group="banda-mariposa">
+  <div class="container">
+    <div class="mariposas-banda__layout">
+      <figure class="mariposas-banda__media" data-motion-item="media-start">
+        <img
+          src="/media/img/mariposa-azul-hoja-tropical-1920.jpg"
+          srcset="/media/img/mariposa-azul-hoja-tropical-640.webp 640w, /media/img/mariposa-azul-hoja-tropical-1280.webp 1280w, /media/img/mariposa-azul-hoja-tropical-1920.webp 1920w"
+          sizes="(max-width: 768px) 100vw, 62vw"
+          alt="Mariposa azul posada sobre una hoja tropical"
+          width="1920"
+          height="1080"
+          loading="lazy"
+        />
+        <figcaption>Mariposa azul sobre una hoja</figcaption>
+      </figure>
+      <div class="mariposas-banda__copy" data-motion-item="copy-end">
+        <h2>Una mirada de cerca</h2>
+        <p>
+          Durante el recorrido, detenerse ante una mariposa permite apreciar sus
+          alas y el entorno donde se posa.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ======== GALERÍA: composición asimétrica --------------------------- -->
-<section class="mariposas-galeria page-section">
+<section class="mariposas-galeria page-section reveal" data-motion-group="diversidad-galeria">
   <div class="container">
-    <div class="mariposas-galeria__header">
+    <div class="mariposas-galeria__header" data-motion-item="copy">
       <h2>Diversidad de tonos</h2>
       <p class="mariposas-galeria__subtitle">
         Una mirada a la variedad de colores y formas que encontramos en el
         mundo de las mariposas.
       </p>
     </div>
-    <div class="mariposas-galeria__grid reveal-stagger">
+    <div class="mariposas-galeria__grid" data-motion-item="gallery-stagger">
       <figure class="mariposas-galeria__item">
         <img
           src="/media/img/grupo-mariposas-naranjas-en-planta-1280.jpg"
@@ -130,10 +141,10 @@
 </section>
 
 <!-- ======== OUTRO: observar + CTA ------------------------------------- -->
-<section class="mariposas-outro page-section">
+<section class="mariposas-outro page-section reveal" data-motion-group="observar-cta">
   <div class="container">
     <div class="mariposas-outro__layout">
-      <figure class="mariposas-outro__image reveal-image">
+      <figure class="mariposas-outro__image" data-motion-item="media-start">
         <img
           src="/media/img/mariposa-cola-larga-volando-flores-1280.jpg"
           srcset="/media/img/mariposa-cola-larga-volando-flores-640.webp 640w, /media/img/mariposa-cola-larga-volando-flores-1280.webp 1280w"
@@ -145,7 +156,7 @@
         />
         <figcaption>Mariposa volando entre flores</figcaption>
       </figure>
-      <div class="mariposas-outro__text">
+      <div class="mariposas-outro__text" data-motion-item="copy-end">
         <p class="eyebrow">Observar</p>
         <h2>No hace falta saber de mariposas para disfrutarlas</h2>
         <div class="prose">

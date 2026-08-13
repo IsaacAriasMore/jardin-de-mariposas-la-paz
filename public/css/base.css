@@ -41,6 +41,8 @@
   --color-accent: oklch(0.68 0.16 55);
   --color-accent-hover: oklch(0.62 0.17 55);
   --color-on-accent: oklch(0.18 0.02 55);
+  --color-whatsapp: #0d7a3f;
+  --color-whatsapp-hover: #0a6836;
 
   /* Bordes */
   --color-border: oklch(0.88 0.008 150);
@@ -181,7 +183,7 @@ a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a:hover {
+  a:not(.btn):hover {
     color: var(--color-primary-hover);
   }
 }
@@ -226,17 +228,8 @@ ol {
   top: var(--space-1);
 }
 
-/* --- Movimiento seguro ------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+/* La preferencia de motion se resuelve en main.js y se puede cambiar en vivo.
+   Nunca se aplica un "reset" global: el color, foco y feedback siguen útiles. */
 
 /* --- Utilidades ------------------------------------------------------- */
 .container {
@@ -307,7 +300,7 @@ ol {
 .site-nav__brand {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
   text-decoration: none;
   color: var(--color-ink);
   letter-spacing: -0.01em;
@@ -329,6 +322,16 @@ ol {
   list-style: none;
 }
 
+@media (max-width: 1100px) {
+  .site-nav__list {
+    gap: 0.2rem 1rem;
+  }
+
+  .site-nav__cta {
+    margin-left: var(--space-1);
+  }
+}
+
 .site-nav__link {
   display: inline-block;
   padding-block: 0.3rem;
@@ -345,10 +348,12 @@ ol {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 1.5px;
   background: var(--color-primary);
-  transition: width var(--duration-base) var(--ease-out-expo);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-base) var(--ease-out-expo);
 }
 
 .site-nav__link.is-active {
@@ -356,7 +361,7 @@ ol {
 }
 
 .site-nav__link.is-active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -396,30 +401,35 @@ ol {
   line-height: 0;
 }
 
-.nav-toggle__bar {
-  display: block;
+.nav-toggle__icon {
   width: 22px;
-  height: 1.5px;
-  background: currentColor;
+  height: 22px;
+  overflow: visible;
+}
+
+.nav-toggle__line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
   transition:
-    transform var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-out-expo),
     opacity var(--duration-fast) var(--ease-out);
 }
 
-.nav-toggle__bar + .nav-toggle__bar {
-  margin-top: 6px;
+.nav-toggle[aria-expanded='true'] .nav-toggle__line--top {
+  transform: translateY(3.5px) rotate(45deg);
 }
 
-.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(1) {
-  transform: translateY(7.5px) rotate(45deg);
-}
-
-.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(2) {
+.nav-toggle[aria-expanded='true'] .nav-toggle__line--middle {
   opacity: 0;
+  transform: scaleX(0);
 }
 
-.nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(3) {
-  transform: translateY(-7.5px) rotate(-45deg);
+.nav-toggle[aria-expanded='true'] .nav-toggle__line--bottom {
+  transform: translateY(-3.5px) rotate(-45deg);
 }
 
 /* --- Botones ---------------------------------------------------------- */
@@ -445,7 +455,12 @@ ol {
 
 .btn:hover {
   background: var(--color-accent-hover);
+  color: var(--color-on-accent);
   box-shadow: var(--shadow-md);
+}
+
+.btn:visited {
+  color: var(--color-on-accent);
 }
 
 .btn:active {
@@ -459,6 +474,11 @@ ol {
 
 .btn--primary:hover {
   background: var(--color-primary-hover);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:visited {
+  color: var(--color-on-primary);
 }
 
 .btn--ghost {
@@ -470,7 +490,12 @@ ol {
 .btn--ghost:hover {
   background: var(--color-surface-muted);
   border-color: var(--color-ink-muted);
+  color: var(--color-ink);
   box-shadow: none;
+}
+
+.btn--ghost:visited {
+  color: var(--color-ink);
 }
 
 /* Ghost sobre fondo oscuro/video: tinta clara + fondo translúcido para
@@ -486,7 +511,12 @@ ol {
 .btn--ghost-dark:hover {
   background: oklch(0.9 0.01 145 / 0.14);
   border-color: oklch(0.95 0.005 145 / 0.9);
+  color: #fff;
   box-shadow: none;
+}
+
+.btn--ghost-dark:visited {
+  color: #fff;
 }
 
 .btn--dark {
@@ -496,16 +526,26 @@ ol {
 
 .btn--dark:hover {
   background: var(--color-surface-darker);
+  color: var(--color-ink-on-dark);
+}
+
+.btn--dark:visited {
+  color: var(--color-ink-on-dark);
 }
 
 .btn--whatsapp {
-  background: #25d366;
+  background: var(--color-whatsapp);
   color: #fff;
 }
 
 .btn--whatsapp:hover {
-  background: #20bd5a;
+  background: var(--color-whatsapp-hover);
+  color: #fff;
   box-shadow: var(--shadow-md);
+}
+
+.btn--whatsapp:visited {
+  color: #fff;
 }
 
 .btn--large {
@@ -632,6 +672,14 @@ ol {
   transition: color var(--duration-fast) var(--ease-out);
 }
 
+.site-footer__whatsapp {
+  align-self: start;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .site-footer__link:hover {
     color: var(--color-ink-on-dark);
@@ -668,111 +716,10 @@ ol {
   text-align: center;
 }
 
-/* --- Reveal animations ------------------------------------------------
-   Progresive enhancement: los estados ocultos solo existen cuando JS está
-   activo (clase .js en <html>). Sin JS el contenido permanece visible.
-   -------------------------------------------------------------------- */
-.js .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity var(--duration-reveal) var(--ease-out-expo),
-    transform var(--duration-reveal) var(--ease-out-expo);
-}
-
-.js .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal--delay-1 {
-  transition-delay: 100ms;
-}
-.reveal--delay-2 {
-  transition-delay: 200ms;
-}
-.reveal--delay-3 {
-  transition-delay: 300ms;
-}
-
-/* Clip-path reveal */
-.js .reveal-clip {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path var(--duration-reveal) var(--ease-out-expo);
-}
-
-.js .reveal-clip.is-visible {
-  clip-path: inset(0 0 0 0);
-}
-
-/* Stagger children */
-.js .reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity var(--duration-slow) var(--ease-out-expo),
-    transform var(--duration-slow) var(--ease-out-expo);
-}
-
-.js .reveal-stagger.is-visible > *:nth-child(1) {
-  transition-delay: 0ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-.js .reveal-stagger.is-visible > *:nth-child(2) {
-  transition-delay: 60ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-.js .reveal-stagger.is-visible > *:nth-child(3) {
-  transition-delay: 120ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-.js .reveal-stagger.is-visible > *:nth-child(4) {
-  transition-delay: 180ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-.js .reveal-stagger.is-visible > *:nth-child(5) {
-  transition-delay: 240ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-.js .reveal-stagger.is-visible > *:nth-child(6) {
-  transition-delay: 300ms;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Image scale reveal */
+/* Scroll reveals are created with WAAPI only after real intersection. The
+   static CSS baseline stays visible if JavaScript or the observer fails. */
 .reveal-image {
   overflow: hidden;
-}
-
-.js .reveal-image img {
-  transform: scale(1.08);
-  transition: transform 1.2s var(--ease-out-expo);
-}
-
-.js .reveal-image.is-visible img {
-  transform: scale(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .js .reveal,
-  .js .reveal-clip,
-  .js .reveal-stagger > *,
-  .js .reveal-image img,
-  .reveal,
-  .reveal-clip,
-  .reveal-stagger > *,
-  .reveal-image img {
-    opacity: 1;
-    transform: none;
-    clip-path: none;
-    transition: none;
-  }
 }
 
 /* --- Navegación: responsive (global) --------------------------------- */
@@ -844,5 +791,277 @@ ol {
   .section-actions .btn {
     justify-content: center;
     width: 100%;
+  }
+}
+
+/* --- Motion reconstruction --------------------------------------------- */
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--hero-entry-offset), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes navbar-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+html[data-motion='full'].motion-ready body.has-hero .hero__location,
+html[data-motion='full'].motion-ready body.has-hero .hero__title,
+html[data-motion='full'].motion-ready body.has-hero .hero__lead,
+html[data-motion='full'].motion-ready body.has-hero .hero__actions {
+  animation: hero-copy-in 620ms var(--ease-out-expo) both;
+}
+
+html[data-motion='full'].motion-ready body.has-hero .hero__location {
+  --hero-entry-offset: 16px;
+  animation-delay: 0ms;
+}
+html[data-motion='full'].motion-ready body.has-hero .hero__title {
+  --hero-entry-offset: 38px;
+  animation-delay: 120ms;
+}
+html[data-motion='full'].motion-ready body.has-hero .hero__lead {
+  --hero-entry-offset: 26px;
+  animation-delay: 240ms;
+}
+html[data-motion='full'].motion-ready body.has-hero .hero__actions {
+  --hero-entry-offset: 20px;
+  animation-delay: 360ms;
+}
+
+html[data-motion='full'].motion-ready .site-header {
+  animation: navbar-enter 400ms var(--ease-out-expo) both;
+}
+
+.site-header {
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion='full'] .btn:hover {
+    transform: translate3d(0, -4px, 0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn:active {
+    transform: translate3d(0, -1px, 0) scale(0.975);
+  }
+
+  .site-nav__link:hover {
+    transform: translate3d(0, -1px, 0);
+  }
+  .site-nav__link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+[data-tilt] {
+  perspective: 1050px;
+  transform-style: preserve-3d;
+  transition:
+    transform 220ms var(--ease-out-expo),
+    box-shadow 220ms var(--ease-out);
+  will-change: auto;
+}
+
+[data-tilt].is-tilting {
+  will-change: transform;
+  box-shadow: var(--shadow-lg);
+}
+
+[data-tilt] img {
+  transform: translateZ(0);
+  transition: transform 220ms var(--ease-out-expo);
+}
+
+[data-tilt].is-tilting img {
+  transform: translateZ(14px) scale(1.015);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .galeria-masonry__item,
+  .galeria-full__item,
+  .mariposas-galeria__item {
+    transition:
+      transform 240ms var(--ease-out-expo),
+      box-shadow 240ms var(--ease-out);
+  }
+
+  html[data-motion='full'] .galeria-masonry__item:hover,
+  html[data-motion='full'] .galeria-full__item:hover,
+  html[data-motion='full'] .mariposas-galeria__item:hover {
+    transform: translate3d(0, -5px, 0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  html[data-motion='full'] .galeria-masonry__item:hover img,
+  html[data-motion='full'] .galeria-full__item:hover img,
+  html[data-motion='full'] .mariposas-galeria__item:hover img {
+    transform: scale(1.045);
+  }
+
+  .mariposas-galeria__item:hover .mariposas-galeria__caption {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+.mariposas-galeria__caption {
+  transition: transform 220ms var(--ease-out);
+}
+
+.ambient-glow,
+.ambient-butterflies {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  z-index: var(--z-base);
+  background:
+    radial-gradient(circle at 3% 24%, oklch(0.58 0.06 155 / 0.07), transparent 20rem),
+    radial-gradient(circle at 97% 74%, oklch(0.72 0.08 62 / 0.06), transparent 18rem);
+}
+
+.ambient-butterflies {
+  /* Decorative layer: above the surface, below positioned site content. */
+  z-index: var(--z-base);
+  overflow: hidden;
+}
+.ambient-butterfly {
+  position: absolute;
+  width: 2.4rem;
+  color: oklch(0.57 0.1 57 / 0.22);
+}
+.ambient-butterfly--one {
+  top: 18%;
+  left: 3%;
+}
+.ambient-butterfly--two {
+  top: 50%;
+  right: 4%;
+  width: 1.75rem;
+  color: oklch(0.54 0.07 155 / 0.13);
+  filter: blur(0.3px);
+}
+.ambient-butterfly--three {
+  top: 80%;
+  left: 12%;
+  width: 1.45rem;
+  color: oklch(0.57 0.08 57 / 0.09);
+  filter: blur(0.6px);
+}
+.ambient-butterfly__flight {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ambient-butterfly__wing {
+  transform-box: fill-box;
+  transform-origin: center right;
+}
+.ambient-butterfly__wing--right {
+  transform-origin: center left;
+}
+
+@keyframes butterfly-flight-one {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(14vw, -8vh, 0) rotate(7deg);
+  }
+}
+@keyframes butterfly-flight-two {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(5deg);
+  }
+  50% {
+    transform: translate3d(-8vw, 6vh, 0) rotate(-5deg);
+  }
+}
+@keyframes butterfly-flight-three {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(6vw, -5vh, 0) rotate(4deg);
+  }
+}
+@keyframes butterfly-wing-left {
+  0%,
+  100% {
+    transform: scaleX(1) rotate(-7deg);
+  }
+  50% {
+    transform: scaleX(0.55) rotate(10deg);
+  }
+}
+@keyframes butterfly-wing-right {
+  0%,
+  100% {
+    transform: scaleX(1) rotate(7deg);
+  }
+  50% {
+    transform: scaleX(0.55) rotate(-10deg);
+  }
+}
+
+html[data-motion='full'] .ambient-butterfly--one .ambient-butterfly__flight {
+  animation: butterfly-flight-one 24s var(--ease-in-out) infinite;
+}
+html[data-motion='full'] .ambient-butterfly--two .ambient-butterfly__flight {
+  animation: butterfly-flight-two 32s var(--ease-in-out) -9s infinite;
+}
+html[data-motion='full'] .ambient-butterfly--three .ambient-butterfly__flight {
+  animation: butterfly-flight-three 36s var(--ease-in-out) -14s infinite;
+}
+html[data-motion='full'] .ambient-butterfly__wing--left {
+  animation: butterfly-wing-left 1.9s var(--ease-in-out) infinite;
+}
+html[data-motion='full'] .ambient-butterfly__wing--right {
+  animation: butterfly-wing-right 2.3s var(--ease-in-out) -0.4s infinite;
+}
+html[data-motion='reduced'] .ambient-glow,
+html[data-motion='reduced'] .ambient-butterflies {
+  display: none;
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .ambient-butterfly--two,
+  .ambient-butterfly--three {
+    display: none;
+  }
+  .ambient-butterfly--one {
+    top: 68%;
+    left: auto;
+    right: 3%;
   }
 }

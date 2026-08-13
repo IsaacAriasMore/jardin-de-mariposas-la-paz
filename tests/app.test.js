@@ -2,6 +2,8 @@
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const request = require('supertest');
 
 const { createApp } = require('../src/app');
@@ -75,6 +77,10 @@ test('el menú principal prioriza la conversión y ya no enlaza Conservación', 
     const res = await request(app).get(route);
     const nav = res.text.match(/<ul class="site-nav__list" id="nav-list"[\s\S]*?<\/ul>/);
     assert.ok(nav, `navbar presente en ${route}`);
+    assert.ok(
+      res.text.includes('class="site-nav__brand" href="/">Jardín de Mariposas La Paz</a>'),
+      `marca oficial en ${route}`,
+    );
     assert.ok(nav[0].includes('Consultar visita'), `CTA del menú en ${route}`);
     assert.ok(nav[0].includes('Tour guiado'), `label Tour guiado en el menú de ${route}`);
     assert.ok(
@@ -125,6 +131,72 @@ test('el Home mantiene un solo video (el hero) por rendimiento', async () => {
     res.text,
     /mariposas-entre-hojas-vertical-1080\.webm[\s\S]*mariposas-entre-hojas-vertical-1080\.mp4/,
   );
+  assert.match(res.text, /preload="none"/, 'el video no solicita media antes de decidir el modo');
+  assert.match(
+    res.text,
+    /autoplay/,
+    'el video declara intención de autoplay cuando se carga en full',
+  );
+  assert.match(res.text, /data-source-desktop-webm=/, 'fuente desktop declarada como dato');
+  assert.match(res.text, /data-source-mobile-webm=/, 'fuente móvil declarada como dato');
+  assert.match(res.text, /data-hero-motion-toggle/, 'control explícito de movimiento presente');
+  assert.match(res.text, /aria-label="Pausar movimiento"/, 'control de movimiento accesible');
+  assert.match(
+    res.text,
+    /hero__motion-toggle-label">Pausar movimiento/,
+    'control en estado full por defecto',
+  );
+});
+
+test('Motion inicia en full sin una preferencia válida guardada', () => {
+  const mainScript = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'main.js'), 'utf8');
+  assert.match(mainScript, /\['full', 'reduced'\]\.includes\(value\) \? value : 'full'/);
+  assert.match(mainScript, /function hasFullMotion\(\) \{\s+return preference === 'full';\s+\}/);
+  assert.doesNotMatch(mainScript, /preference === 'system'/);
+});
+
+test('los reveals se prearman por grupo antes de la intersección', () => {
+  const mainScript = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'main.js'), 'utf8');
+  const homeTemplate = fs.readFileSync(
+    path.join(__dirname, '..', 'src', 'views', 'pages', 'home.ejs'),
+    'utf8',
+  );
+  assert.match(mainScript, /animation\.pause\(\);\s+animation\.currentTime = 0;/);
+  assert.match(mainScript, /fill: 'both'/);
+  assert.match(mainScript, /getRevealGroups\(\)/);
+  assert.doesNotMatch(mainScript, /function animateReveal/);
+  ['tour', 'mariposario', 'mariposas', 'galeria', 'cta'].forEach((group) => {
+    assert.match(homeTemplate, new RegExp(`data-motion-group="${group}"`));
+  });
+});
+
+test('las páginas internas declaran grupos coordinados sin reveals anidados', () => {
+  const pagesRoot = path.join(__dirname, '..', 'src', 'views', 'pages');
+  const requiredGroups = {
+    'experiencia.ejs': ['tour-detalles', 'ciclo-vida', 'experiencia-inmersiva', 'cta-experiencia'],
+    'nuestro-mariposario.ejs': ['mariposario-principal', 'visita-acompanada', 'entorno-galeria'],
+    'mariposas.ejs': ['transformacion', 'banda-mariposa', 'diversidad-galeria', 'observar-cta'],
+    'galeria.ejs': ['galeria-principal', 'galeria-cta'],
+    'conservacion.ejs': ['entorno-principal', 'ecosistema', 'aprender-cta'],
+    'visitanos.ejs': ['ubicacion', 'informacion-practica', 'contacto-cta'],
+  };
+
+  Object.entries(requiredGroups).forEach(([file, groups]) => {
+    const template = fs.readFileSync(path.join(pagesRoot, file), 'utf8');
+    groups.forEach((group) => {
+      assert.match(template, new RegExp(`data-motion-group="${group}"`));
+    });
+    assert.doesNotMatch(template, /reveal-image|reveal-stagger|reveal-clip/);
+  });
+});
+
+test('el menú móvil conserva un botón accesible con icono SVG de tres líneas', async () => {
+  const res = await request(app).get('/');
+  const nav = res.text.match(/<button[\s\S]*?class="nav-toggle"[\s\S]*?<\/button>/);
+  assert.ok(nav, 'botón de menú presente');
+  assert.match(nav[0], /aria-expanded="false"/);
+  assert.match(nav[0], /aria-controls="nav-list"/);
+  assert.equal((nav[0].match(/<line /g) || []).length, 3, 'icono SVG de tres líneas');
 });
 
 test('/experiencia presenta el tour guiado, la credencial ICT y el aprendizaje', async () => {
@@ -189,9 +261,10 @@ test('el footer es conciso: sin referencia/Plus Code y con números sin duplicar
   assert.ok(!footer[0].includes('200 metros sureste'), 'sin referencia exacta en el footer');
   assert.equal(
     (footer[0].match(/\+506 8889-4483/g) || []).length,
-    1,
-    'número principal sin duplicar (solo el botón WhatsApp)',
+    0,
+    'número principal fuera de la etiqueta visible de WhatsApp',
   );
+  assert.match(footer[0], />WhatsApp<\//, 'botón de WhatsApp conciso');
 });
 
 test('Mariposas quedó sin la sección pendiente de fichas', async () => {
@@ -202,6 +275,11 @@ test('Mariposas quedó sin la sección pendiente de fichas', async () => {
   assert.ok(!res.text.includes('En camino'), 'sin sección en camino');
   assert.ok(!res.text.includes('identificación científica'), 'sin nota de identificación');
   assert.ok(res.text.includes('Conocer el tour'), 'CTA al tour presente');
+  assert.ok(res.text.includes('Una mirada de cerca'), 'contexto editorial de la foto azul');
+  assert.ok(
+    res.text.includes('alt="Mariposa azul posada sobre una hoja tropical"'),
+    'foto azul mantiene alt descriptivo',
+  );
 });
 
 test('Conservación se presenta como "Mariposas y su entorno"', async () => {
@@ -270,6 +348,13 @@ test('/visitanos incluye el embed de Google Maps y la CSP lo permite', async () 
     'referrerpolicy estricta en el iframe',
   );
   assert.ok(res.text.includes('Ver en Google Maps'), 'el enlace externo se mantiene');
+  assert.ok(res.text.includes('Abrir en Google Maps'), 'acción secundaria del mapa presente');
+  assert.ok(res.text.includes('Cómo llegar'), 'acción de indicaciones presente');
+  assert.match(
+    res.text,
+    /href="https:\/\/www\.google\.com\/maps\/dir\/\?api=1&amp;destination=/,
+    'las indicaciones usan una URL de direcciones separada',
+  );
 
   // CSP: frame-src permite solo el embed oficial; frame-ancestors sin relajar.
   const csp = res.headers['content-security-policy'];
