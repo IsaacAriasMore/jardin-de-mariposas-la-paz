@@ -5,7 +5,7 @@
 
 module.exports = {
   name: 'Jardín de Mariposas La Paz',
-  shortName: 'Mariposas La Paz',
+  shortName: 'Mariposario La Paz',
   tagline: 'Mariposario en Bajo La Paz, San Ramón, Costa Rica',
   location: {
     address: 'Bajo La Paz, San Ramón, Alajuela, Costa Rica',
@@ -29,6 +29,23 @@ module.exports = {
   facebookUrl: 'https://www.facebook.com/mariposaslapaz/',
   priceNote: 'Consultar por WhatsApp',
   whatsappDefaultMessage: '¡Hola! Quisiera información sobre Jardín de Mariposas La Paz.',
+  // Visitas guiadas: información confirmada. NO se inventan duraciones,
+  // tamaños de grupo, precios, reservas, métodos de pago ni horarios especiales.
+  guidedVisits: {
+    available: true,
+    audiences: [
+      'Preescolar y kínder',
+      'Escuelas',
+      'Grupos educativos',
+      'Personas adultas',
+      'Personas adultas mayores',
+      'Visitantes de distintas edades',
+    ],
+    languages: ['Español', 'Inglés'],
+    // La afirmación correcta es "como guía turístico": NO está confirmado que
+    // los años de experiencia hayan sido trabajando en este mariposario.
+    guideExperience: 'Más de 10 años de experiencia como guía turístico',
+  },
   // Menú principal: la marca ya enlaza a "/" y "Guías" queda reservado sin
   // enlace hasta que exista contenido real.
   navigation: [

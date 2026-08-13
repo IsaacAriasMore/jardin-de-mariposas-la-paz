@@ -7,14 +7,22 @@ Para el uso por sección: `GUIA-DE-USO.md`.
 
 ## Clasificación
 
-- **REAL** — material del propio mariposario (confirmado).
+- **REAL** — material del propio mariposario (procedencia confirmada).
 - **STOCK** — material de terceros (Pexels / Unsplash), apoyo editorial.
   No acompañar con textos del tipo "fotografía tomada en nuestro jardín".
-- **PENDIENTE** — procedencia o contenido sin confirmar.
+- **PENDIENTE** — procedencia sin confirmar por el propietario, o material con
+  personas (autorización de publicación pendiente): NO se generan derivados.
 - **HOLD** — NO integrar a la web (autorización de publicación pendiente).
 
-No se ha confirmado visualmente el contenido de las fotos REAL (este inventario
-se construyó desde nombres y metadatos; revisar a ojo antes de publicar).
+Confirmación actual:
+
+- **REAL aprobadas (2):** `mariposario-bajo-la-paz-01` y `mariposario-bajo-la-paz-02`.
+- **Descripción visual confirmada (6):** `505011602…`, `505835868…`, `506940932…`,
+  `506941578…`, `507088230…` y `508109705…`. Su contenido se conoce, pero la
+  clasificación REAL depende de una confirmación explícita de procedencia del
+  propietario que aún no está documentada: permanecen **PENDIENTES** y sin derivados.
+  Las 4 con personas requieren además autorización de publicación.
+- El material STOCK se revisa a ojo antes de publicar.
 
 ---
 
@@ -104,17 +112,60 @@ se construyó desde nombres y metadatos; revisar a ojo antes de publicar).
 
 - Archivo: `Fotos/118407196_1677795549050644_2796371698994772266_n.jpg` (1536x2048, JPEG, 0.61 MB, vertical)
 - Procedencia: cuenta de Facebook del negocio.
-- Clasificación: **REAL** · Descripción visual: PENDIENTE
-- Derivados: `mariposario-bajo-la-paz-01-{640,1280}.{webp,jpg}` (1.25 MB)
-- Uso recomendado: autenticidad del lugar (Visítanos / contacto / historia). Confirmar contenido a ojo.
+- Clasificación: **REAL** · Contenido visual: interior del mariposario con sendero y vegetación.
+- Derivados: `mariposario-bajo-la-paz-01-{640,1280,1536}.{webp,jpg}`
+- Uso recomendado: autenticidad del lugar (Visítanos / contacto / historia).
 
 ### 119239978_1695778757252323_8903119856060690491_n.jpg
 
 - Archivo: `Fotos/119239978_1695778757252323_8903119856060690491_n.jpg` (2048x1536, JPEG, 0.34 MB, horizontal)
 - Procedencia: cuenta de Facebook del negocio.
-- Clasificación: **REAL** · Descripción visual: PENDIENTE
-- Derivados: `mariposario-bajo-la-paz-02-{640,1280,1920}.{webp,jpg}` (1.06 MB)
-- Uso recomendado: autenticidad del lugar. Confirmar contenido a ojo.
+- Clasificación: **REAL** · Contenido visual: estructura del mariposario con crisálidas.
+- Derivados: `mariposario-bajo-la-paz-02-{640,1280,1920}.{webp,jpg}`
+- Uso recomendado: autenticidad del lugar.
+
+### 505011602_3077208649109320_5051752296908815880_n.jpg — **PENDIENTE DE CONFIRMAR PROCEDENCIA**
+
+- Archivo: `Fotos/505011602_3077208649109320_5051752296908815880_n.jpg` (960x540, JPEG, 0.11 MB, horizontal)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** · Contenido visual: mariposa oscura con puntos azules (confirmado).
+- Sin derivados hasta confirmar procedencia. Slug propuesto cuando se apruebe: `mariposa-oscura-puntos-azules`.
+
+### 505835868_3080390048791180_3877059931757099776_n.jpg — **PENDIENTE DE CONFIRMAR PROCEDENCIA**
+
+- Archivo: `Fotos/505835868_3080390048791180_3877059931757099776_n.jpg` (528x960, JPEG, 0.15 MB, vertical)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** · Contenido visual: mariposa naranja entre flores (confirmado).
+- Sin derivados hasta confirmar procedencia. Slug propuesto cuando se apruebe: `mariposa-naranja-flores`.
+  Nota: fuente menor a 640px (528w); al aprobarse, el pipeline generaría solo 480w + ancho natural (nunca se agranda).
+
+### 506940932_3086830528147132_1929793400418905484_n.jpg — **PENDIENTE**
+
+- Archivo: `Fotos/506940932_3086830528147132_1929793400418905484_n.jpg` (960x640, JPEG, 0.07 MB, horizontal)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** — contiene personas (hombre mostrando una mariposa);
+  requiere además autorización de publicación. Sin derivados.
+
+### 506941578_3086830491480469_5740770662770968235_n.jpg — **PENDIENTE**
+
+- Archivo: `Fotos/506941578_3086830491480469_5740770662770968235_n.jpg` (960x640, JPEG, 0.06 MB, horizontal)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** — contiene personas (un hombre acompañando a un
+  visitante adulto); requiere además autorización de publicación. Sin derivados.
+
+### 507088230_3086830348147150_333135784783391839_n.jpg — **PENDIENTE**
+
+- Archivo: `Fotos/507088230_3086830348147150_333135784783391839_n.jpg` (960x640, JPEG, 0.11 MB, horizontal)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** — contiene personas (un hombre explicando a un grupo
+  de adultos); requiere además autorización de publicación. Sin derivados.
+
+### 508109705_3086830558147129_5168074877511046835_n.jpg — **PENDIENTE**
+
+- Archivo: `Fotos/508109705_3086830558147129_5168074877511046835_n.jpg` (960x640, JPEG, 0.08 MB, horizontal)
+- Procedencia: presunta por patrón de nombre (Facebook); sin confirmación explícita del propietario.
+- Clasificación: **PENDIENTE DE CONFIRMAR PROCEDENCIA** — contiene personas (visitantes adultos observando
+  mariposas); requiere además autorización de publicación. Sin derivados.
 
 ### 482005509_657913423419130_6761994400711140598_n (1).jpg — **HOLD**
 
@@ -178,18 +229,23 @@ se construyó desde nombres y metadatos; revisar a ojo antes de publicar).
 
 ## Resumen
 
-| Clasificación         | Cantidad                 |
-| --------------------- | ------------------------ |
-| Fotografías REAL      | 3 (2 aprobadas + 1 HOLD) |
-| Fotografías STOCK     | 10                       |
-| Fotografías PENDIENTE | 1                        |
-| Videos STOCK          | 5                        |
-| HOLD (sin derivados)  | 1 foto                   |
+| Clasificación                                 | Cantidad |
+| --------------------------------------------- | -------- |
+| Fotografías REAL aprobadas                    | 2        |
+| Fotografías STOCK                             | 10       |
+| Fotografías PENDIENTE (procedencia, personas) | 4        |
+| Fotografías PENDIENTE (procedencia)           | 3        |
+| Fotografías HOLD (sin derivados)              | 1        |
+| Videos STOCK                                  | 5        |
+| Total masters (`Fotos/`)                      | 20       |
+
+Nota: "PENDIENTE (procedencia)" = las 6 fotos nuevas + `480999978…`. De esas 6,
+4 contienen personas y requieren además autorización de publicación.
 
 ## Pesos (Hostinger)
 
-- Masters: 146.95 MB (23.21 MB fotos + 123.74 MB videos).
-- Derivados: 62.81 MB (9.25 MB img + 52.84 MB videos + 0.72 MB posters).
-- Ahorro: ~57% del total (los videos 4K de 44/29 MB pasan a 6.6/3.2 MB).
+- Masters: 147.53 MB (23.79 MB fotos + 123.74 MB videos).
+- Derivados: 63.97 MB (10.42 MB img + 52.84 MB videos + 0.72 MB posters).
+- Ahorro: ~56% del total (los videos 4K de 44/29 MB pasan a 6.6/3.2 MB).
 - Video derivado más pesado: `mariposa-flores-tropicales-1080p.mp4` (13.88 MB).
-- Imagen derivada más pesada: `mariposa-negra-amarilla-flor-roja-1920.jpg` / `mariposario-bajo-la-paz-01-1280.jpg` (0.51 MB).
+- Imagen derivada más pesada: `mariposa-negra-amarilla-flor-roja-1920.jpg` (0.51 MB).

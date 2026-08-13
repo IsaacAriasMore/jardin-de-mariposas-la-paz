@@ -9,9 +9,10 @@ Clasificación completa (stock / real / pendiente / HOLD), dimensiones y licenci
 - Los masters (`Fotos/`, `Videos/`) nunca se tocan; los derivados van a `public/media/`.
 - Binarios: se usa `ffmpeg-static` y `@derhuerst/ffprobe-static` (devDependencies),
   con override vía `FFMPEG_BIN` / `FFPROBE_BIN` o el binario del PATH.
-- Formato web: imágenes WebP (+ JPEG fallback) a 640/1280/1920 px; videos MP4 H.264
-  (yuv420p, faststart, sin audio) y WebM VP9 solo cuando es menor que el MP4;
-  posters extraídos de un frame real de cada video.
+- Formato web: imágenes WebP (+ JPEG fallback) a 640/1280/1920 px sin upscaling
+  (las fuentes menores a 640 px generan un derivado a 480w + el ancho natural);
+  videos MP4 H.264 (yuv420p, faststart, sin audio) y WebM VP9 solo cuando es menor
+  que el MP4; posters extraídos de un frame real de cada video.
 - Los videos del hero se sirven como `autoplay muted loop playsinline`; por eso se
   elimina el audio en todos los derivados.
 
@@ -56,17 +57,25 @@ Clasificación completa (stock / real / pendiente / HOLD), dimensiones y licenci
 
 ## AUTENTICIDAD DEL LUGAR (Visítanos / contacto)
 - `mariposario-bajo-la-paz-01` y `mariposario-bajo-la-paz-02` — fotos REALES del
-  negocio (Facebook). Idóneas donde importe mostrar el lugar de verdad.
-  Revisar el contenido a ojo antes de usarlas (descripción pendiente).
+  negocio (Facebook): interior con sendero y vegetación; estructura con crisálidas.
+  Idóneas donde importe mostrar el lugar de verdad.
 
 ## Videos de apoyo (STOCK, contenido pendiente de confirmar)
 - `pexels-13619427-1080p` (horizontal) y `pexels-15160751-1080` (vertical):
   ambiente/flora o fondos de sección. Confirmar contenido visual antes de
-  acompañarlos de textos sobre "nuestro jardín".
+  acompañarlos de textos sobre "nuestro mariposario".
 
 ## Reglas
 - Las fotos STOCK no deben acompañarse de textos como "en nuestro jardín" o
-  "así se ven en nuestro mariposario".
+  "así se ven en nuestro mariposario". Los videos actuales son STOCK: no deben
+  presentarse como grabados en el mariposario.
 - `482005509_*.jpg` está en HOLD (menores/personas): no integrar a la web.
+- `505011602_*.jpg`, `505835868_*.jpg`, `506940932_*.jpg`, `506941578_*.jpg`,
+  `507088230_*.jpg` y `508109705_*.jpg` están PENDIENTES DE CONFIRMAR PROCEDENCIA:
+  no integrar ni generar derivados hasta confirmación explícita del propietario.
+  Las 4 con personas requieren además autorización de publicación (slugs propuestos
+  en el MAPEO).
 - `480999978_*.jpg` está PENDIENTE: no integrar hasta confirmar procedencia.
+- Las imágenes menores a 640 px (p. ej. `505835868_*.jpg`, 528w) generan solo
+  derivados a 480w + ancho natural: nunca se agrandan ni se declaran mayores.
 - No cargar los masters 4K en la web: usar siempre los derivados de `public/media/`.

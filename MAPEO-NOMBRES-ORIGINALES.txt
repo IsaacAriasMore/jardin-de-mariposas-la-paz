@@ -61,14 +61,43 @@ MATERIAL DE TERCEROS — STOCK (Pexels / Unsplash)
     -> pexels-joerg-hartmann-626385254-38778510-{640,1280,1920}.{webp,jpg}
     Origen: Pexels, autor joerg hartmann, ID 626385254. Licencia PENDIENTE.
 
-MATERIAL REAL DEL NEGOCIO (Facebook)
+MATERIAL REAL DEL NEGOCIO — APROBADO (Facebook, procedencia confirmada)
   118407196_1677795549050644_2796371698994772266_n.jpg
-    -> mariposario-bajo-la-paz-01-{640,1280}.{webp,jpg}
-    Procedencia: cuenta de Facebook del negocio. Descripción visual PENDIENTE.
+    -> mariposario-bajo-la-paz-01-{640,1280,1536}.{webp,jpg}
+    Procedencia: cuenta de Facebook del negocio. Interior con sendero y vegetación.
 
   119239978_1695778757252323_8903119856060690491_n.jpg
     -> mariposario-bajo-la-paz-02-{640,1280,1920}.{webp,jpg}
-    Procedencia: cuenta de Facebook del negocio. Descripción visual PENDIENTE.
+    Procedencia: cuenta de Facebook del negocio. Estructura con crisálidas.
+
+PENDIENTE DE CONFIRMAR PROCEDENCIA — SIN DERIVADOS
+(descripción visual confirmada; falta confirmación explícita del propietario)
+
+  505011602_3077208649109320_5051752296908815880_n.jpg
+    Mariposa oscura con puntos azules. Sin derivados hasta confirmar.
+    Slug propuesto (cuando se apruebe): mariposa-oscura-puntos-azules.
+
+  505835868_3080390048791180_3877059931757099776_n.jpg
+    Mariposa naranja entre flores. Sin derivados hasta confirmar.
+    Fuente menor a 640px (528w): al aprobarse, el pipeline generaría solo 480w +
+    el ancho natural (528), nunca se agranda la imagen.
+    Slug propuesto (cuando se apruebe): mariposa-naranja-flores.
+
+  506940932_3086830528147132_1929793400418905484_n.jpg
+    Hombre mostrando una mariposa. Además requiere autorización de publicación.
+    Slug propuesto (cuando se apruebe): guia-mariposario-mariposa.
+
+  506941578_3086830491480469_5740770662770968235_n.jpg
+    Hombre acompañando a un visitante adulto. Además requiere autorización.
+    Slug propuesto (cuando se apruebe): guia-acompanando-visitante.
+
+  507088230_3086830348147150_333135784783391839_n.jpg
+    Hombre explicando a un grupo de adultos. Además requiere autorización.
+    Slug propuesto (cuando se apruebe): guia-grupo-adultos.
+
+  508109705_3086830558147129_5168074877511046835_n.jpg
+    Visitantes adultos observando mariposas. Además requiere autorización.
+    Slug propuesto (cuando se apruebe): visitantes-dentro-mariposario.
 
 HOLD — SIN DERIVADOS (no integrar a la web)
   482005509_657913423419130_6761994400711140598_n (1).jpg
@@ -112,5 +141,11 @@ VIDEOS (Videos/)
 
 SIN DERIVADOS POR DECISIÓN
 ==========================
-  - 482005509_*.jpg  -> HOLD (menores/personas)
+  - 505011602_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA
+  - 505835868_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA
+  - 506940932_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
+  - 506941578_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
+  - 507088230_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
+  - 508109705_*.jpg  -> PENDIENTE DE CONFIRMAR PROCEDENCIA (personas)
   - 480999978_*.jpg  -> PENDIENTE DE CONFIRMACIÓN
+  - 482005509_*.jpg  -> HOLD (menores/personas)

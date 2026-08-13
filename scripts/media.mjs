@@ -66,6 +66,19 @@ const WEBM_MIN_SAVINGS = 0.1;
 // inestable en máquinas con muchos procesadores lógicos (crash aleatorio).
 const THREADS = Math.max(1, Math.min(8, os.cpus().length));
 
+// Breakpoints por master: sin upscaling (nunca se agranda una foto).
+//  - Fuentes de 640px o más: los breakpoints estándar menores al ancho real.
+//  - Fuentes menores a 640px (p. ej. 528px): un derivado a 480w + el ancho
+//    natural, para que el navegador siempre tenga un archivo real que servir.
+//  - Se agrega el ancho natural (hasta 1920) para cubrir la fuente `src`.
+function buildSizes(width) {
+  const sizes = SIZES.filter((size) => size < width);
+  if (width < 640) sizes.push(480);
+  const natural = Math.min(width, 1920);
+  if (!sizes.includes(natural)) sizes.push(natural);
+  return sizes.sort((a, b) => a - b);
+}
+
 // Fotografías aprobadas (src en Fotos/ -> prefijo del derivado en public/media/img/).
 // Se excluyen los assets HOLD y PENDIENTE: ver MEDIA-CATALOG.md.
 const PHOTOS = [
@@ -200,9 +213,9 @@ async function processPhotos() {
     }
     const image = sharp(src);
     const { width, height } = await image.metadata();
+    const sizes = buildSizes(width);
 
-    for (const size of SIZES) {
-      if (size > width) continue; // Sin upscaling.
+    for (const size of sizes) {
       const resized = image.clone().resize({ width: size, withoutEnlargement: true });
       const stem = `${photo.seo}-${size}`;
       await resized
@@ -216,7 +229,7 @@ async function processPhotos() {
     }
 
     console.log(
-      `[img] ${photo.src} ${width}x${height} -> ${photo.seo}-{${SIZES.filter((s) => s <= width).join(',')}}.{webp,jpg}`,
+      `[img] ${photo.src} ${width}x${height} -> ${photo.seo}-{${sizes.join(',')}}.{webp,jpg}`,
     );
   }
 }

@@ -13,7 +13,7 @@ Página web pública del mariposario que permita a visitantes potenciales:
 
 - Descubrir qué es el mariposario y dónde queda (ubicación, horario, contacto).
 - Ver las mariposas, la experiencia de visita y las acciones de conservación.
-- Revisar fotos y videos reales del jardín.
+- Revisar fotografías reales del mariposario junto con material fotográfico y audiovisual editorial de apoyo.
 - Contactar por WhatsApp y consultar el precio de entrada.
 
 ## Stack
@@ -147,7 +147,8 @@ Evolución prevista sin rehacer el proyecto: `/mariposas/:slug` (detalle de espe
 - Un único `H1` por página.
 - `robots.txt` y `sitemap.xml` dinámicos.
 - `noindex` automático en 404 y error.
-- Pendiente (Fase 2): imagen OG con el material real, JSON-LD (`Organization` / `LocalBusiness`) y CSP explícita.
+- JSON-LD `LocalBusiness` en `/visitanos` (datos solo de `business.js` + `config`), CSP explícita con nonce y `frame-src` para el embed de Google Maps.
+- Pendiente (Fase 2): imagen OG con el material real y esquema `Organization`.
 
 ## WhatsApp
 
@@ -157,7 +158,7 @@ Todo enlace se genera con `src/utils/whatsapp.js` (helper único, URL codificada
 
 - **Son masters locales y NO se versionan en Git** (ver `.gitignore`): los videos 4K suman ~95 MB y no deben entrar al historial.
 - **No se modifican, no se sobrescriben, no se convierten destructivamente.**
-- Para la web se generan **copias optimizadas** en `public/media/` (escritorio 1920×1080, móvil 1080×1920, MP4 H.264 y WebM si es posible, `autoplay muted loop playsinline`, sin audio para fondos automáticos). Esto ocurre en la Fase 2 según `GUIA-DE-USO.md`.
+- Para la web se generan **copias optimizadas** en `public/media/` con `npm run media` (escritorio 1920×1080, móvil 1080×1920, MP4 H.264 y WebM si es posible, `autoplay muted loop playsinline`, sin audio para fondos automáticos). Ver `GUIA-DE-USO.md`.
 - Si más adelante se desea versionar los masters, se recomienda Git LFS y quitar las líneas `Fotos/` / `Videos/` del `.gitignore`.
 
 ## Evolución futura

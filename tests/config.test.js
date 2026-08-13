@@ -23,6 +23,7 @@ test('la configuración funciona con valores por defecto sin .env', () => {
 
 test('los datos oficiales del negocio están completos', () => {
   assert.equal(business.name, 'Jardín de Mariposas La Paz');
+  assert.equal(business.shortName, 'Mariposario La Paz');
   assert.equal(business.location.address, 'Bajo La Paz, San Ramón, Alajuela, Costa Rica');
   assert.equal(
     business.location.reference,
@@ -42,6 +43,27 @@ test('los datos oficiales del negocio están completos', () => {
   assert.deepEqual(
     business.navigation.map((item) => item.label),
     ['Nuestro Mariposario', 'Mariposas', 'Experiencia', 'Conservación', 'Galería', 'Visítanos'],
+  );
+});
+
+test('las visitas guiadas están confirmadas con públicos, idiomas y experiencia', () => {
+  assert.equal(business.guidedVisits.available, true);
+  assert.ok(
+    business.guidedVisits.audiences.includes('Preescolar y kínder'),
+    'incluye preescolar y kínder',
+  );
+  assert.ok(business.guidedVisits.audiences.includes('Escuelas'), 'incluye escuelas');
+  assert.ok(business.guidedVisits.audiences.includes('Grupos educativos'), 'incluye grupos');
+  assert.ok(
+    business.guidedVisits.audiences.includes('Personas adultas mayores'),
+    'incluye adultos mayores',
+  );
+  assert.deepEqual(business.guidedVisits.languages, ['Español', 'Inglés']);
+  assert.match(business.guidedVisits.guideExperience, /guía turístico/);
+  assert.doesNotMatch(
+    business.guidedVisits.guideExperience,
+    /trabajando en el jardín/,
+    'no se afirma que los años sean dentro del mariposario',
   );
 });
 

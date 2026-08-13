@@ -59,6 +59,28 @@ test('/guias está retirada: responde 404 hasta que exista contenido real', asyn
   }
 });
 
+test('el Home usa solo posters reales y dimensiones correctas', async () => {
+  const res = await request(app).get('/');
+  assert.equal(res.status, 200);
+
+  // Posters del hero: los nombres rotos (inexistentes) quedaron reemplazados.
+  assert.ok(res.text.includes('/media/posters/mariposa-flor-amarilla-hero.jpg'));
+  assert.ok(res.text.includes('/media/posters/mariposas-entre-hojas-vertical.jpg'));
+  assert.ok(!res.text.includes('hero-desktop.jpg'), 'sin poster hero-desktop inexistente');
+  assert.ok(!res.text.includes('hero-mobile.jpg'), 'sin poster hero-mobile inexistente');
+});
+
+test('el JSON-LD de /visitanos no inventa el nombre alternativo', async () => {
+  const res = await request(app).get('/visitanos');
+  const match = res.text.match(
+    /<script type="application\/ld\+json" nonce="([^"]+)">([\s\S]*?)<\/script>/,
+  );
+  assert.ok(match, 'JSON-LD presente con nonce CSP');
+  const schema = JSON.parse(match[2]);
+  assert.equal(schema.name, 'Jardín de Mariposas La Paz');
+  assert.equal(schema.alternateName, undefined, 'sin alternateName no confirmado');
+});
+
 test('/visitanos incluye structured data LocalBusiness y contacto completo', async () => {
   const res = await request(app).get('/visitanos');
   assert.equal(res.status, 200);
