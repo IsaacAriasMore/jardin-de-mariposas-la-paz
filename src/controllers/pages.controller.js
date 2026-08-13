@@ -11,7 +11,7 @@ const PAGE_DEFS = [
     path: '/',
     title: 'Inicio',
     description:
-      'Jardín de Mariposas La Paz: mariposario en Bajo La Paz, San Ramón, con visitas guiadas en español e inglés para grupos educativos y distintas edades.',
+      'Jardín de Mariposas La Paz: mariposario en Bajo La Paz, San Ramón, con tour guiado por un guía certificado por el ICT en español e inglés para aprender sobre el ciclo de vida de las mariposas.',
     extra: { preloadHero: true },
   },
   {

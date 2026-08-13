@@ -309,16 +309,20 @@
   max-width: 50ch;
 }
 
-.exp-guiada__idiomas {
-  font-size: 1rem;
-  color: var(--color-ink-secondary);
-}
-
 .exp-guiada__publics {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
   align-content: start;
+}
+
+.exp-guiada__lead {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 46ch;
 }
 
 .exp-guiada__group h3 {
@@ -348,6 +352,52 @@
   color: var(--color-ink-muted);
   font-size: 0.95rem;
   max-width: 44ch;
+}
+
+/* --- Experiencia: aprendizaje (ciclo de vida, propuesta educativa) ------
+   Bloque en claro con jerarquía: texto + chips de las etapas. Refuerza la
+   propuesta de valor "aprender durante el recorrido". -------------------- */
+.experiencia-aprende {
+  padding: var(--space-6) 0;
+}
+
+.experiencia-aprende__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.experiencia-aprende__text {
+  max-width: 50ch;
+}
+
+.experiencia-aprende__etapas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.experiencia-aprende__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 1.15rem;
+  color: var(--color-ink);
+  text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experiencia-aprende__chip:hover {
+    border-color: var(--color-primary-light);
+  }
 }
 
 /* --- Experiencia: immersive with video --------------------------------
@@ -743,6 +793,7 @@
   .nuestro-layout,
   .exp-guiada__grid,
   .experiencia-immersive__content,
+  .experiencia-aprende__layout,
   .acompanada__layout,
   .mariposas-apertura__layout,
   .mariposas-outro__layout,

@@ -50,7 +50,7 @@ test('los datos oficiales del negocio están completos', () => {
   );
 });
 
-test('las visitas guiadas están confirmadas con públicos, idiomas y experiencia', () => {
+test('las visitas guiadas están confirmadas con públicos, idiomas y credencial ICT', () => {
   assert.equal(business.guidedVisits.available, true);
   assert.ok(
     business.guidedVisits.audiences.includes('Preescolar y kínder'),
@@ -63,11 +63,13 @@ test('las visitas guiadas están confirmadas con públicos, idiomas y experienci
     'incluye adultos mayores',
   );
   assert.deepEqual(business.guidedVisits.languages, ['Español', 'Inglés']);
-  assert.match(business.guidedVisits.guideExperience, /guía turístico/);
-  assert.doesNotMatch(
-    business.guidedVisits.guideExperience,
-    /trabajando en el jardín/,
-    'no se afirma que los años sean dentro del mariposario',
+  assert.ok(
+    business.guidedVisits.guideCredential === 'Guía certificado por el ICT',
+    'credencial confirmada por el cliente',
+  );
+  assert.ok(
+    !/10 a\s*nos?/.test(business.guidedVisits.guideCredential),
+    'no se publica una antigüedad de años no confirmada',
   );
 });
 

@@ -186,22 +186,12 @@
   margin-bottom: var(--space-3);
 }
 
-.guia-experiencia__all-ages-label {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-  margin-top: var(--space-3);
-  margin-bottom: 0.15rem;
-}
-
-.guia-experiencia__all-ages {
-  margin: 0;
+.guia-experiencia__audiences {
+  margin: var(--space-2) 0 0;
   color: var(--color-ink-secondary);
   font-size: 1.05rem;
   line-height: 1.8;
+  max-width: 46ch;
 }
 
 .guia-experiencia__media {
@@ -654,6 +644,14 @@
   color: var(--color-ink-secondary);
   font-size: 1.05rem;
   line-height: 1.8;
+  margin-bottom: var(--space-1);
+}
+
+.planifica__price-note {
+  margin: 0 0 var(--space-1);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .ubicacion-details {

@@ -32,7 +32,7 @@ Un mariposario rural real en Bajo La Paz, San Ramón (Alajuela, Costa Rica), don
 - Teléfono/WhatsApp principal: +506 8889-4483. Secundario: +506 8880-3433.
 - Precio de entrada: "Consultar por WhatsApp" (decisión confirmada; no publicar tarifas).
 - Redes: Facebook `facebook.com/mariposaslapaz` (única red confirmada).
-- Visitas guiadas: disponibles. Públicos: preescolar y kínder, escuelas, grupos educativos, personas adultas, adultas mayores y visitantes de distintas edades. Idiomas: español e inglés. Guía con más de 10 años de experiencia como guía turístico. NO confirmado (no publicar): duración, tamaño de grupo, precios, reservas, métodos de pago.
+- Visitas guiadas: disponibles. Públicos: preescolar y kínder, escuelas, grupos educativos, personas adultas, adultas mayores y visitantes de distintas edades. Idiomas: español e inglés. Guía certificado por el ICT. NO confirmado (no publicar): duración, tamaño de grupo, precios, reservas, métodos de pago.
 - Entorno asociado a la marca: naturaleza, paisaje rural, biodiversidad, bosque nuboso, San Ramón, turismo natural.
 
 ## Capabilities and Constraints

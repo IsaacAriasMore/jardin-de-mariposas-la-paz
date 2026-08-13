@@ -1,50 +1,55 @@
-<!-- Experiencia: la visita guiada es la protagonista. Abre en oscuro con la
-     jerarquía de conversión: experiencia guiada + guía (+10 años como guía
-     turístico, tratamiento editorial sin cursiva) + español/inglés + públicos
+<!-- Experiencia: el tour guiado es la protagonista. Abre en oscuro con la
+     jerarquía de conversión: tour guiado + guía certificado por el ICT
+     (tratamiento editorial sin cursiva) + español e inglés + públicos
      (educativos y visitantes, presentación compacta).
      VIDEO: mariposa-flores-tropicales (solo existe MP4; si en el futuro se
      genera un WebM se agrega como primer <source> antes del fallback MP4).
      Fotos humanas de la galería inmersiva: material real APROBADO para uso
      web (guía y visitantes en el mariposario). El video es STOCK y se etiqueta
      como ilustrativo: no se afirma que corresponda al mariposario.
-     No se inventan servicios, tours, duración, testimonios ni actividades. -->
+     El ciclo de vida, hábitos y alimentación son la propuesta educativa
+     confirmada por el cliente. No se inventan duraciones ni precios: se
+     remite a WhatsApp. -->
 
 <section class="page-header page-header--dark">
   <div class="container">
     <p class="page-header__label">La experiencia</p>
     <h1 class="page-header__title">La Experiencia</h1>
     <p class="page-header__lead">
-      Visitas guiadas para grupos educativos y visitantes de distintas edades,
-      con un guía con más de 10 años de experiencia como guía turístico y
-      acompañamiento en español e inglés.
+      Tour guiado por el mariposario, ideal para visitantes nacionales y
+      extranjeros, con un guía certificado por el ICT y atención en español e
+      inglés.
     </p>
   </div>
 </section>
 
-<!-- ======== EXPERIENCIA GUIADA: públicos + idiomas + CTA ---------------- -->
+<!-- ======== TOUR GUIADO: públicos + idiomas + CTA ----------------------- -->
 <section class="exp-guiada reveal">
   <div class="container">
     <div class="exp-guiada__grid">
       <div class="exp-guiada__intro">
         <p class="eyebrow">Experiencia guiada</p>
-        <h2>Una experiencia guiada para distintas edades</h2>
+        <h2>Tour por el Mariposario</h2>
         <div class="prose">
           <p>
-            El mariposario se puede recorrer acompañado. La visita guiada está
-            disponible para grupos educativos y visitantes de distintas edades,
-            con acompañamiento en español e inglés.
+            Vive una experiencia educativa y cercana en <%= site.name %>, un
+            mariposario en Bajo La Paz, San Ramón, donde podrás observar
+            mariposas y aprender sobre su desarrollo en un entorno natural.
           </p>
         </div>
-        <p class="guide-years">
-          <span class="guide-years__num">+10 años</span>
-          <span class="guide-years__text">de experiencia como guía turístico</span>
-        </p>
-        <p class="exp-guiada__idiomas">
-          Acompañamiento en <strong>Español · Inglés</strong>
+        <p class="guide-credential">
+          <span class="guide-credential__title"><%= site.guidedVisits.guideCredential %></span>
+          <span class="guide-credential__sub">
+            Atención en español e inglés, ideal para visitantes nacionales y extranjeros
+          </span>
         </p>
       </div>
 
       <div class="exp-guiada__publics">
+        <p class="exp-guiada__lead">
+          Visitas guiadas para distintos públicos, desde preescolar y kínder
+          hasta personas adultas mayores.
+        </p>
         <div class="exp-guiada__group">
           <h3>Visitas educativas</h3>
           <p class="exp-guiada__group-text">
@@ -65,9 +70,38 @@
         Consultar una visita
       </a>
       <p class="exp-guiada__note">
-        Para visitas individuales, grupales o educativas, consulte disponibilidad
-        y detalles.
+        Para visitas individuales, grupales o educativas, consulte
+        disponibilidad, precio y duración por WhatsApp.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== APRENDIZAJE: ciclo de vida y etapas -------------------------- -->
+<section class="experiencia-aprende page-section--muted reveal">
+  <div class="container">
+    <div class="experiencia-aprende__layout">
+      <div class="experiencia-aprende__text">
+        <p class="eyebrow">Aprender durante el recorrido</p>
+        <h2>El ciclo de vida de las mariposas</h2>
+        <div class="prose">
+          <p>
+            Durante el recorrido podrás conocer el ciclo de vida de las
+            mariposas en sus distintas etapas, desde el huevo, la oruga y la
+            crisálida, hasta su transformación final.
+          </p>
+          <p>
+            También aprenderás sobre sus hábitos, alimentación, reproducción y
+            la importancia que tienen dentro del ecosistema.
+          </p>
+        </div>
+      </div>
+      <div class="experiencia-aprende__etapas reveal-stagger">
+        <span class="experiencia-aprende__chip">Huevo</span>
+        <span class="experiencia-aprende__chip">Oruga</span>
+        <span class="experiencia-aprende__chip">Crisálida</span>
+        <span class="experiencia-aprende__chip">Mariposa</span>
+      </div>
     </div>
   </div>
 </section>

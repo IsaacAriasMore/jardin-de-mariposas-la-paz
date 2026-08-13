@@ -42,9 +42,9 @@ module.exports = {
       'Visitantes de distintas edades',
     ],
     languages: ['Español', 'Inglés'],
-    // La afirmación correcta es "como guía turístico": NO está confirmado que
-    // los años de experiencia hayan sido trabajando en este mariposario.
-    guideExperience: 'Más de 10 años de experiencia como guía turístico',
+    // Credencial confirmada por el cliente. NO se inventan duración, tamaño de
+    // grupo, precios, reservas, métodos de pago ni horarios especiales.
+    guideCredential: 'Guía certificado por el ICT',
   },
   // Menú principal: prioridad a la conversión (Experiencia primero) y a las
   // páginas de contenido central. La marca ya enlaza a "/" y "Guías" queda

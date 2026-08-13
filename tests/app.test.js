@@ -89,18 +89,19 @@ test('el menú principal prioriza la conversión y ya no enlaza Conservación', 
   assert.ok(sitemap.text.includes('<loc>https://jardindemariposaslapaz.com/conservacion</loc>'));
 });
 
-test('el Home comunica visitas guiadas, idiomas y WhatsApp en su jerarquía', async () => {
+test('el Home comunica el tour guiado, la credencial ICT y WhatsApp en su jerarquía', async () => {
   const res = await request(app).get('/');
   const html = res.text.toLowerCase();
 
-  assert.ok(html.includes('visitas guiadas'), 'menciona visitas guiadas');
+  assert.ok(html.includes('tour por el mariposario'), 'título de la sección guiada');
+  assert.ok(html.includes('guía certificado por el ict'), 'credencial ICT del guía');
   assert.ok(html.includes('español · inglés'), 'idiomas visibles en la franja rápida');
-  assert.ok(html.includes('una experiencia guiada para distintas edades'), 'sección guiada');
-  assert.ok(html.includes('+10 años'), 'tratamiento editorial +10 años');
-  assert.ok(html.includes('de experiencia como guía turístico'), 'frase de apoyo del guía');
-  assert.ok(html.includes('desde kínder y grupos escolares'), 'público kínder y escuelas');
+  assert.ok(html.includes('español e inglés'), 'atención en español e inglés');
+  assert.ok(html.includes('ciclo de vida'), 'propuesta de aprendizaje');
+  assert.ok(html.includes('desde preescolar y kínder'), 'público preescolar y kínder');
   assert.ok(html.includes('hasta personas adultas mayores'), 'público adultos mayores');
   assert.ok(html.includes('consultar por whatsapp'), 'CTA WhatsApp presente');
+  assert.ok(html.includes('precio y duración'), 'precio y duración se remiten a WhatsApp');
   assert.ok(res.text.includes('href="https://wa.me/50688894483?text='), 'enlace wa.me');
   assert.ok(res.text.includes('¿Planeas una visita?'), 'CTA final de conversión');
 });
@@ -118,20 +119,23 @@ test('el Home mantiene un solo video (el hero) por rendimiento', async () => {
   assert.equal((res.text.match(/<video/g) || []).length, 2);
 });
 
-test('/experiencia presenta la visita guiada, idiomas y públicos', async () => {
+test('/experiencia presenta el tour guiado, la credencial ICT y el aprendizaje', async () => {
   const res = await request(app).get('/experiencia');
   const html = res.text.toLowerCase();
 
-  assert.ok(html.includes('visitas guiadas'), 'menciona visitas guiadas');
+  assert.ok(html.includes('tour por el mariposario'), 'título del tour');
+  assert.ok(html.includes('guía certificado por el ict'), 'credencial ICT en el lead');
   assert.ok(html.includes('español e inglés'), 'idiomas en el texto');
-  assert.ok(html.includes('español · inglés'), 'idiomas como dato visual');
   assert.ok(html.includes('consultar una visita'), 'CTA de consulta');
+  assert.ok(html.includes('visitas guiadas para distintos públicos'), 'lead de públicos');
   assert.ok(html.includes('preescolar, kínder'), 'público educativo compacto');
   assert.ok(html.includes('grupos educativos'), 'grupos educativos');
   assert.ok(html.includes('adultas mayores'), 'público adultos mayores');
   assert.ok(html.includes('visitantes de distintas edades'), 'distintas edades');
-  assert.ok(html.includes('+10 años'), 'tratamiento editorial +10 años');
-  assert.ok(html.includes('de experiencia como guía turístico'), 'frase de apoyo del guía');
+  assert.ok(html.includes('ciclo de vida'), 'propuesta de aprendizaje');
+  assert.ok(html.includes('crisálida'), 'etapas del ciclo de vida');
+  assert.ok(html.includes('hábitos, alimentación, reproducción'), 'contenido educativo');
+  assert.ok(html.includes('precio y duración'), 'precio y duración se remiten a WhatsApp');
   assert.ok(html.includes('guia-grupo-adultos-960.jpg'), 'foto del guía con grupo');
   assert.ok(html.includes('visitantes-dentro-mariposario-960.jpg'), 'foto de visitantes');
   assert.ok(!html.includes('a su propio ritmo'), 'no define la visita como autónoma');
@@ -154,11 +158,13 @@ test('las fotos aprobadas se distribuyen y 482005509 (HOLD) no aparece en ningun
   }
 });
 
-test('/visitanos ofrece el bloque educativo/grupal y la atención en español e inglés', async () => {
+test('/visitanos ofrece el bloque educativo/grupal y la credencial ICT', async () => {
   const res = await request(app).get('/visitanos');
   assert.equal(res.status, 200);
   assert.ok(res.text.includes('¿Planea una visita educativa o grupal?'));
-  assert.ok(res.text.includes('Acompañamiento en español e inglés'));
+  assert.ok(res.text.includes('guía certificado por el ICT'));
+  assert.ok(res.text.includes('atención en español e inglés'));
+  assert.ok(res.text.includes('precio y duración'));
   assert.ok(res.text.includes('Consultar por WhatsApp'));
 });
 
