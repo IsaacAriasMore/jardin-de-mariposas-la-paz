@@ -116,8 +116,15 @@ test('el Home incorpora las fotos nuevas aprobadas (guía y mariposa naranja)', 
 
 test('el Home mantiene un solo video (el hero) por rendimiento', async () => {
   const res = await request(app).get('/');
-  // Dos elementos <video> = hero desktop + hero móvil (el oculto no descarga).
-  assert.equal((res.text.match(/<video/g) || []).length, 2);
+  assert.equal((res.text.match(/<video/g) || []).length, 1);
+  assert.match(
+    res.text,
+    /mariposa-flor-amarilla-hero-1080p\.webm[\s\S]*mariposa-flor-amarilla-hero-1080p\.mp4/,
+  );
+  assert.match(
+    res.text,
+    /mariposas-entre-hojas-vertical-1080\.webm[\s\S]*mariposas-entre-hojas-vertical-1080\.mp4/,
+  );
 });
 
 test('/experiencia presenta el tour guiado, la credencial ICT y el aprendizaje', async () => {

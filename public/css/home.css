@@ -21,6 +21,9 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero__video {
@@ -31,18 +34,23 @@
   object-fit: cover;
 }
 
-/* Un video por breakpoint: el oculto (display:none) no descarga su fuente. */
-.hero__video--mobile {
-  display: none;
+/* Un recurso por viewport: el póster es fallback sin JS y la fuente del video
+   se selecciona con <source media>. */
+@media (min-width: 769px) {
+  .hero__media {
+    background-image: url('/media/posters/mariposa-flor-amarilla-hero.jpg');
+  }
 }
 
 @media (max-width: 768px) {
-  .hero__video--desktop {
-    display: none;
+  .hero__media {
+    background-image: url('/media/posters/mariposas-entre-hojas-vertical.jpg');
   }
+}
 
-  .hero__video--mobile {
-    display: block;
+@media (prefers-reduced-motion: reduce) {
+  .hero__video {
+    display: none;
   }
 }
 

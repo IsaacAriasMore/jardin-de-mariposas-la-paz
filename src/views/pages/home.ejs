@@ -21,28 +21,34 @@
 <section class="hero" aria-label="Presentación principal">
   <div class="hero__media">
     <video
-      class="hero__video hero__video--desktop"
+      class="hero__video"
       autoplay
       muted
       loop
       playsinline
-      preload="auto"
-      poster="/media/posters/mariposa-flor-amarilla-hero.jpg"
+      preload="metadata"
       aria-hidden="true"
     >
-      <source src="/media/videos/mariposa-flor-amarilla-hero-1080p.mp4" type="video/mp4" />
-    </video>
-    <video
-      class="hero__video hero__video--mobile"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="none"
-      poster="/media/posters/mariposas-entre-hojas-vertical.jpg"
-      aria-hidden="true"
-    >
-      <source src="/media/videos/mariposas-entre-hojas-vertical-1080.mp4" type="video/mp4" />
+      <source
+        media="(min-width: 769px) and (prefers-reduced-motion: no-preference)"
+        src="/media/videos/mariposa-flor-amarilla-hero-1080p.webm"
+        type="video/webm"
+      />
+      <source
+        media="(min-width: 769px) and (prefers-reduced-motion: no-preference)"
+        src="/media/videos/mariposa-flor-amarilla-hero-1080p.mp4"
+        type="video/mp4"
+      />
+      <source
+        media="(max-width: 768px) and (prefers-reduced-motion: no-preference)"
+        src="/media/videos/mariposas-entre-hojas-vertical-1080.webm"
+        type="video/webm"
+      />
+      <source
+        media="(max-width: 768px) and (prefers-reduced-motion: no-preference)"
+        src="/media/videos/mariposas-entre-hojas-vertical-1080.mp4"
+        type="video/mp4"
+      />
     </video>
   </div>
   <div class="hero__overlay" aria-hidden="true"></div>
