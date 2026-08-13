@@ -1,7 +1,7 @@
-<!-- Experiencia: el tour guiado es la protagonista. Abre en oscuro con la
+<!-- Experiencia: la página del TOUR GUIADO. Abre en oscuro con la
      jerarquía de conversión: tour guiado + guía certificado por el ICT
-     (tratamiento editorial sin cursiva) + español e inglés + públicos
-     (educativos y visitantes, presentación compacta).
+     (tratamiento editorial sin cursiva) + atención en español e inglés +
+     públicos (educativos y en compañía).
      VIDEO: mariposa-flores-tropicales (solo existe MP4; si en el futuro se
      genera un WebM se agrega como primer <source> antes del fallback MP4).
      Fotos humanas de la galería inmersiva: material real APROBADO para uso
@@ -14,11 +14,10 @@
 <section class="page-header page-header--dark">
   <div class="container">
     <p class="page-header__label">La experiencia</p>
-    <h1 class="page-header__title">La Experiencia</h1>
+    <h1 class="page-header__title">Tour por el Mariposario</h1>
     <p class="page-header__lead">
-      Tour guiado por el mariposario, ideal para visitantes nacionales y
-      extranjeros, con un guía certificado por el ICT y atención en español e
-      inglés.
+      Conoce de cerca el mundo de las mariposas con un recorrido guiado en
+      español o inglés por <%= site.name %>.
     </p>
   </div>
 </section>
@@ -29,27 +28,21 @@
     <div class="exp-guiada__grid">
       <div class="exp-guiada__intro">
         <p class="eyebrow">Experiencia guiada</p>
-        <h2>Tour por el Mariposario</h2>
+        <h2>El recorrido</h2>
         <div class="prose">
           <p>
-            Vive una experiencia educativa y cercana en <%= site.name %>, un
-            mariposario en Bajo La Paz, San Ramón, donde podrás observar
-            mariposas y aprender sobre su desarrollo en un entorno natural.
+            Durante el tour recorrerás el mariposario mientras conoces de cerca
+            el mundo de las mariposas y haces del recorrido una experiencia de
+            observación y aprendizaje.
           </p>
         </div>
         <p class="guide-credential">
           <span class="guide-credential__title"><%= site.guidedVisits.guideCredential %></span>
-          <span class="guide-credential__sub">
-            Atención en español e inglés, ideal para visitantes nacionales y extranjeros
-          </span>
+          <span class="guide-credential__sub">Atención en español e inglés</span>
         </p>
       </div>
 
       <div class="exp-guiada__publics">
-        <p class="exp-guiada__lead">
-          Visitas guiadas para distintos públicos, desde preescolar y kínder
-          hasta personas adultas mayores.
-        </p>
         <div class="exp-guiada__group">
           <h3>Visitas educativas</h3>
           <p class="exp-guiada__group-text">
@@ -57,9 +50,10 @@
           </p>
         </div>
         <div class="exp-guiada__group">
-          <h3>Otros visitantes</h3>
+          <h3>Para disfrutar en compañía</h3>
           <p class="exp-guiada__group-text">
-            Personas adultas, adultas mayores y visitantes de distintas edades.
+            Familias, personas adultas y adultas mayores también pueden
+            disfrutar del recorrido.
           </p>
         </div>
       </div>
@@ -70,8 +64,7 @@
         Consultar una visita
       </a>
       <p class="exp-guiada__note">
-        Para visitas individuales, grupales o educativas, consulte
-        disponibilidad, precio y duración por WhatsApp.
+        Consulta disponibilidad, precio y duración por WhatsApp.
       </p>
     </div>
   </div>
@@ -87,8 +80,8 @@
         <div class="prose">
           <p>
             Durante el recorrido podrás conocer el ciclo de vida de las
-            mariposas en sus distintas etapas, desde el huevo, la oruga y la
-            crisálida, hasta su transformación final.
+            mariposas en sus distintas etapas: huevo, oruga, crisálida y
+            mariposa adulta.
           </p>
           <p>
             También aprenderás sobre sus hábitos, alimentación, reproducción y
@@ -129,16 +122,13 @@
 
     <div class="experiencia-immersive__content">
       <div class="experiencia-immersive__text">
-        <p class="eyebrow eyebrow--on-dark">Cercanía</p>
-        <h2>Observar de cerca, sin prisa</h2>
+        <p class="eyebrow eyebrow--on-dark">Aprende observando</p>
+        <h2>Descubre de cerca</h2>
         <div class="prose">
           <p>
-            Entre flores y vegetación, las mariposas van y vienen. Detenerse a
-            mirar de cerca es una forma sencilla de conectar con la naturaleza.
-          </p>
-          <p>
-            El entorno del mariposario en Bajo La Paz, San Ramón, lo acompaña
-            todo: plantas, aire y el paisaje del bosque nuboso.
+            Durante el recorrido podrás observar las mariposas de cerca, hacer
+            preguntas y descubrir detalles sobre su comportamiento, alimentación
+            y desarrollo.
           </p>
         </div>
       </div>
@@ -197,8 +187,8 @@
     <p class="eyebrow eyebrow--on-dark">¿Planeas una visita?</p>
     <h2>Conversemos sobre tu visita</h2>
     <p class="experiencia-cta__body">
-      Para visitas individuales, grupales o educativas, consulte disponibilidad
-      y detalles por WhatsApp. Estamos en Bajo La Paz, San Ramón.
+      Consulta disponibilidad, precio y duración por WhatsApp. Estamos en Bajo
+      La Paz, San Ramón.
     </p>
     <p class="section-actions">
       <a class="btn btn--whatsapp" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">

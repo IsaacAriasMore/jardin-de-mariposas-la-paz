@@ -119,8 +119,8 @@ npm run format:check  # Prettier (verifica)
 | `/`                    | Inicio                                                         |
 | `/nuestro-mariposario` | Nuestro Mariposario (ruta oficial; `nuestro-jardin` NO se usa) |
 | `/mariposas`           | Mariposas                                                      |
-| `/experiencia`         | La Experiencia                                                 |
-| `/conservacion`        | Conservación                                                   |
+| `/experiencia`         | Tour por el Mariposario                                        |
+| `/conservacion`        | Mariposas y su entorno                                         |
 | `/galeria`             | Galería                                                        |
 | `/visitanos`           | Visítanos (ubicación, horario, contacto)                       |
 | `/robots.txt`          | Rutas de rastreo + sitemap                                     |

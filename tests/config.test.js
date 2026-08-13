@@ -42,7 +42,7 @@ test('los datos oficiales del negocio están completos', () => {
   assert.equal(business.navigation.length, 5);
   assert.deepEqual(
     business.navigation.map((item) => item.label),
-    ['Experiencia', 'Nuestro Mariposario', 'Mariposas', 'Galería', 'Visítanos'],
+    ['Tour guiado', 'Nuestro Mariposario', 'Mariposas', 'Galería', 'Visítanos'],
   );
   assert.ok(
     !business.navigation.some((item) => item.label === 'Conservación'),

@@ -46,13 +46,13 @@ module.exports = {
     // grupo, precios, reservas, métodos de pago ni horarios especiales.
     guideCredential: 'Guía certificado por el ICT',
   },
-  // Menú principal: prioridad a la conversión (Experiencia primero) y a las
-  // páginas de contenido central. La marca ya enlaza a "/" y "Guías" queda
-  // reservado sin enlace hasta que exista contenido real. Conservación sale
-  // del menú principal (se mantiene accesible, indexable y enlazada desde
-  // la home, el pie de página y el sitemap).
+  // Menú principal: prioridad a la conversión (el tour guiado primero) y a
+  // las páginas de contenido central. La marca ya enlaza a "/" y "Guías"
+  // queda reservado sin enlace hasta que exista contenido real. Conservación
+  // sale del menú principal (se mantiene accesible, indexable y enlazada
+  // desde la home, el pie de página y el sitemap).
   navigation: [
-    { label: 'Experiencia', href: '/experiencia' },
+    { label: 'Tour guiado', href: '/experiencia' },
     { label: 'Nuestro Mariposario', href: '/nuestro-mariposario' },
     { label: 'Mariposas', href: '/mariposas' },
     { label: 'Galería', href: '/galeria' },

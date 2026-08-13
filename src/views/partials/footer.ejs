@@ -4,8 +4,6 @@
       <section>
         <h2 class="site-footer__title"><%= site.name %></h2>
         <p class="site-footer__text"><%= site.location.address %></p>
-        <p class="site-footer__text"><%= site.location.reference %></p>
-        <p class="site-footer__plus-code"><%= site.location.plusCode %></p>
         <p class="site-footer__maps-wrapper">
           <a class="site-footer__link" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener"
             >Cómo llegar en Google Maps</a
@@ -27,18 +25,19 @@
         <h2 class="site-footer__title">Explorar</h2>
         <ul class="site-footer__list">
           <li>
+            <a class="site-footer__link" href="/experiencia">Tour guiado</a>
+          </li>
+          <li>
+            <a class="site-footer__link" href="/nuestro-mariposario">Nuestro Mariposario</a>
+          </li>
+          <li>
+            <a class="site-footer__link" href="/galeria">Galería</a>
+          </li>
+          <li>
             <a class="site-footer__link" href="/visitanos">Visítanos</a>
           </li>
           <li>
-            <a class="site-footer__link" href="/conservacion">Conservación</a>
-          </li>
-          <li>
-            <a class="site-footer__link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener"
-              >Facebook · @mariposaslapaz</a
-            >
-          </li>
-          <li>
-            <a class="site-footer__link" href="<%= whatsapp.primaryHref %>">Contacto</a>
+            <a class="site-footer__link site-footer__link--secondary" href="/conservacion">Mariposas y su entorno</a>
           </li>
         </ul>
       </section>
@@ -52,10 +51,12 @@
             >
           </li>
           <li>
-            <a class="site-footer__link" href="<%= whatsapp.primaryHref %>"><%= site.phones.primary %></a>
+            <a class="site-footer__link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a>
           </li>
           <li>
-            <a class="site-footer__link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a>
+            <a class="site-footer__link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener"
+              >Facebook · @mariposaslapaz</a
+            >
           </li>
         </ul>
       </section>

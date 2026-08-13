@@ -76,6 +76,7 @@ test('el menú principal prioriza la conversión y ya no enlaza Conservación', 
     const nav = res.text.match(/<ul class="site-nav__list" id="nav-list"[\s\S]*?<\/ul>/);
     assert.ok(nav, `navbar presente en ${route}`);
     assert.ok(nav[0].includes('Consultar visita'), `CTA del menú en ${route}`);
+    assert.ok(nav[0].includes('Tour guiado'), `label Tour guiado en el menú de ${route}`);
     assert.ok(
       !nav[0].includes('/conservacion'),
       `sin enlace a Conservación en el menú de ${route}`,
@@ -98,8 +99,8 @@ test('el Home comunica el tour guiado, la credencial ICT y WhatsApp en su jerarq
   assert.ok(html.includes('español · inglés'), 'idiomas visibles en la franja rápida');
   assert.ok(html.includes('español e inglés'), 'atención en español e inglés');
   assert.ok(html.includes('ciclo de vida'), 'propuesta de aprendizaje');
-  assert.ok(html.includes('desde preescolar y kínder'), 'público preescolar y kínder');
-  assert.ok(html.includes('hasta personas adultas mayores'), 'público adultos mayores');
+  assert.ok(html.includes('desde kínder y grupos escolares'), 'público kínder y escolares');
+  assert.ok(html.includes('hasta familias, personas adultas y adultas mayores'), 'público general');
   assert.ok(html.includes('consultar por whatsapp'), 'CTA WhatsApp presente');
   assert.ok(html.includes('precio y duración'), 'precio y duración se remiten a WhatsApp');
   assert.ok(res.text.includes('href="https://wa.me/50688894483?text='), 'enlace wa.me');
@@ -127,11 +128,10 @@ test('/experiencia presenta el tour guiado, la credencial ICT y el aprendizaje',
   assert.ok(html.includes('guía certificado por el ict'), 'credencial ICT en el lead');
   assert.ok(html.includes('español e inglés'), 'idiomas en el texto');
   assert.ok(html.includes('consultar una visita'), 'CTA de consulta');
-  assert.ok(html.includes('visitas guiadas para distintos públicos'), 'lead de públicos');
   assert.ok(html.includes('preescolar, kínder'), 'público educativo compacto');
   assert.ok(html.includes('grupos educativos'), 'grupos educativos');
   assert.ok(html.includes('adultas mayores'), 'público adultos mayores');
-  assert.ok(html.includes('visitantes de distintas edades'), 'distintas edades');
+  assert.ok(html.includes('para disfrutar en compañía'), 'bloque de familias y adultos');
   assert.ok(html.includes('ciclo de vida'), 'propuesta de aprendizaje');
   assert.ok(html.includes('crisálida'), 'etapas del ciclo de vida');
   assert.ok(html.includes('hábitos, alimentación, reproducción'), 'contenido educativo');
@@ -158,14 +158,54 @@ test('las fotos aprobadas se distribuyen y 482005509 (HOLD) no aparece en ningun
   }
 });
 
-test('/visitanos ofrece el bloque educativo/grupal y la credencial ICT', async () => {
+test('/visitanos ofrece el tour guiado y la credencial ICT', async () => {
   const res = await request(app).get('/visitanos');
   assert.equal(res.status, 200);
-  assert.ok(res.text.includes('¿Planea una visita educativa o grupal?'));
-  assert.ok(res.text.includes('guía certificado por el ICT'));
-  assert.ok(res.text.includes('atención en español e inglés'));
+  assert.ok(res.text.includes('¿Quieres realizar el tour?'));
+  assert.match(res.text, /guía\s+certificado por el ICT/);
+  assert.ok(res.text.includes('español o inglés'));
   assert.ok(res.text.includes('precio y duración'));
   assert.ok(res.text.includes('Consultar por WhatsApp'));
+});
+
+test('el footer es conciso: sin referencia/Plus Code y con números sin duplicar', async () => {
+  const res = await request(app).get('/');
+  const footer = res.text.match(/<footer class="site-footer"[\s\S]*?<\/footer>/);
+  assert.ok(footer, 'footer presente en Home');
+
+  assert.ok(footer[0].includes('Tour guiado'), 'Explorar prioriza el tour');
+  assert.ok(footer[0].includes('Mariposas y su entorno'), 'Conservación como enlace secundario');
+  assert.ok(footer[0].includes('Facebook · @mariposaslapaz'), 'Facebook en Contacto');
+  assert.ok(footer[0].includes('href="tel:+50688803433"'), 'teléfono alternativo presente');
+
+  assert.ok(!footer[0].includes('5F36+VVC'), 'sin Plus Code en el footer');
+  assert.ok(!footer[0].includes('200 metros sureste'), 'sin referencia exacta en el footer');
+  assert.equal(
+    (footer[0].match(/\+506 8889-4483/g) || []).length,
+    1,
+    'número principal sin duplicar (solo el botón WhatsApp)',
+  );
+});
+
+test('Mariposas quedó sin la sección pendiente de fichas', async () => {
+  const res = await request(app).get('/mariposas');
+  assert.equal(res.status, 200);
+  assert.ok(res.text.includes('Mariposa oscura con puntos azules'), 'caption de la foto aprobada');
+  assert.ok(!res.text.includes('Las fichas de cada especie'), 'sin bloque de fichas');
+  assert.ok(!res.text.includes('En camino'), 'sin sección en camino');
+  assert.ok(!res.text.includes('identificación científica'), 'sin nota de identificación');
+  assert.ok(res.text.includes('Conocer el tour'), 'CTA al tour presente');
+});
+
+test('Conservación se presenta como "Mariposas y su entorno"', async () => {
+  const res = await request(app).get('/conservacion');
+  assert.equal(res.status, 200);
+  assert.ok(
+    res.text.includes('<h1') && res.text.includes('Mariposas y su entorno'),
+    'H1 renombrado',
+  );
+  assert.ok(res.text.includes('Aprender también ayuda a valorar'), 'cierre educativo');
+  assert.ok(res.text.includes('Conocer el tour'), 'CTA al tour presente');
 });
 
 test('el JSON-LD de /visitanos no inventa el nombre alternativo', async () => {
