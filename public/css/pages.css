@@ -448,65 +448,166 @@
   }
 }
 
-/* --- Visítanos: conversion-focused ------------------------------------ */
-.visitanos-conversion {
-  padding: var(--space-6) 0;
+/* --- Visítanos: conversión local ---------------------------------------
+   Más directa y escaneable que el resto del sitio: fotografía REAL del
+   lugar, información práctica en columnas y contacto/CTA en oscuro. ------ */
+.visitanos-location {
+  padding: var(--space-6) 0 var(--space-5);
+  background: var(--color-bg);
 }
 
-.visitanos-conversion__grid {
+.visitanos-location__layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--space-6);
   align-items: start;
 }
 
-.visitanos-conversion__info {
-  max-width: 48ch;
+.visitanos-location__media {
+  margin: 0;
 }
 
-.visitanos-conversion__hours {
-  background: var(--color-surface-muted);
-  border-radius: var(--radius-md);
-  padding: var(--space-3);
+.visitanos-location__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
 }
 
-.visitanos-conversion__hours-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+.visitanos-location__copy {
+  max-width: 46ch;
+  padding-top: var(--space-2);
+}
+
+.visitanos-location__note {
+  color: var(--color-ink-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  max-width: 40ch;
+}
+
+.visitanos-address {
+  font-style: normal;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-ink);
   margin-bottom: var(--space-2);
 }
 
-.visitanos-hours-list {
+/* Información práctica: horario + cómo llegar */
+.visitanos-practico {
+  padding: var(--space-5) 0 var(--space-6);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.visitanos-practico__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.visitanos-hours {
   list-style: none;
+  margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: var(--space-1);
 }
 
-.visitanos-hours-list dt {
+.visitanos-hours__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+  align-items: baseline;
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.visitanos-hours__row:last-child {
+  border-bottom: 0;
+}
+
+.visitanos-hours dt {
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  color: var(--color-ink);
 }
 
-.visitanos-hours-list dd {
+.visitanos-hours dd {
   margin: 0;
+  text-align: right;
   color: var(--color-ink-secondary);
 }
 
-.visitanos-contact-grid {
+.visitanos-price {
+  margin-top: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: 0.95rem;
+}
+
+.visitanos-reference {
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 36ch;
+}
+
+.visitanos-plus-code {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+/* Contacto + CTA en oscuro */
+.visitanos-cta {
+  padding: var(--space-6) 0;
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
+}
+
+.visitanos-cta h2 {
+  color: var(--color-ink-on-dark);
+}
+
+.visitanos-cta .prose {
+  color: var(--color-ink-on-dark-muted);
+}
+
+.visitanos-cta__layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.visitanos-contact-list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.visitanos-contact-list a {
+  color: var(--color-ink-on-dark-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .visitanos-contact-list a:hover {
+    color: var(--color-ink-on-dark);
+  }
+}
+
+.visitanos-cta__actions {
   display: grid;
   gap: var(--space-2);
-  margin-top: var(--space-3);
-}
-
-.visitanos-contact-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.visitanos-contact-item a {
-  font-weight: 500;
+  min-width: min(360px, 100%);
 }
 
 /* --- Responsive ------------------------------------------------------- */
@@ -538,13 +639,23 @@
   .mariposas-apertura__layout,
   .mariposas-outro__layout,
   .conservacion-contemplative__columns,
-  .visitanos-conversion__grid {
+  .visitanos-location__layout,
+  .visitanos-practico__layout,
+  .visitanos-cta__layout {
     grid-template-columns: 1fr;
     gap: var(--space-3);
   }
 
   .nuestro-layout__image {
     aspect-ratio: 16 / 10;
+  }
+
+  .visitanos-location__media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .visitanos-cta__actions .btn {
+    justify-content: center;
   }
 
   .experiencia-immersive__hero {
@@ -585,5 +696,18 @@
 @media (max-width: 480px) {
   .galeria-full__masonry {
     columns: 1;
+  }
+
+  .visitanos-cta__actions .btn {
+    width: 100%;
+  }
+
+  .visitanos-hours__row {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .visitanos-hours dd {
+    text-align: left;
   }
 }

@@ -1,44 +1,118 @@
-<section class="page-section">
+<!-- Visítanos: conversión local. Directa y escaneable: fotografía REAL del
+     lugar, información práctica en columnas y contacto/CTA en oscuro.
+     Datos 100% desde business.js; structured data LocalBusiness (schema)
+     generada desde la misma fuente. No se inventan precios, parqueo,
+     accesibilidad, servicios ni políticas. -->
+
+<section class="page-header">
   <div class="container">
-    <h1 class="page-title">Visítanos</h1>
-    <p class="page-lead"><%= site.location.address %> · <%= site.location.reference %>.</p>
-
-    <h2>Horario</h2>
-    <ul class="page-list">
-      <% site.hours.forEach(function (slot) { %>
-        <li><strong><%= slot.days %>:</strong> <%= slot.time %></li>
-      <% }) %>
-    </ul>
-
-    <h2>Entrada</h2>
-    <p><%= site.priceNote %>.</p>
-
-    <h2>Contacto</h2>
-    <ul class="page-list">
-      <li>
-        <a class="btn" href="<%= whatsapp.primary %>" target="_blank" rel="noopener"
-          >WhatsApp · <%= site.phones.primary %></a
-        >
-      </li>
-      <li>
-        <a class="page-link" href="<%= whatsapp.primaryHref %>"><%= site.phones.primary %></a>
-      </li>
-      <li>
-        <a class="page-link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a>
-      </li>
-      <li>
-        <a class="page-link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener">Facebook</a>
-      </li>
-    </ul>
-
-    <h2>Ubicación</h2>
-    <p class="site-footer__plus-code"><%= site.location.plusCode %></p>
-    <p>
-      <a class="page-link" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener"
-        >Cómo llegar en Google Maps</a
-      >
+    <p class="page-header__label">Bajo La Paz · San Ramón</p>
+    <h1 class="page-header__title">Visítanos</h1>
+    <p class="page-header__lead">
+      Cómo llegar, cuándo encontrarnos y cómo contactarnos antes de su visita
+      al mariposario en el bosque nuboso de San Ramón.
     </p>
-    <!-- Fase 2: foto real del mariposario y su entrada (no foto de stock) +
-         mapa incrustado. -->
   </div>
 </section>
+
+<!-- ======== UBICACIÓN: fotografía real + dirección ---------------------- -->
+<section class="visitanos-location reveal">
+  <div class="container">
+    <div class="visitanos-location__layout">
+      <figure class="visitanos-location__media reveal-image">
+        <img
+          src="/media/img/mariposario-bajo-la-paz-01-1280.jpg"
+          srcset="/media/img/mariposario-bajo-la-paz-01-640.webp 640w, /media/img/mariposario-bajo-la-paz-01-1280.webp 1280w"
+          sizes="(max-width: 768px) 100vw, 46vw"
+          alt="El Jardín de Mariposas La Paz en Bajo La Paz, San Ramón"
+          width="1280"
+          height="1707"
+          loading="lazy"
+        />
+        <figcaption class="media-caption">El jardín en Bajo La Paz, San Ramón</figcaption>
+      </figure>
+      <div class="visitanos-location__copy">
+        <p class="eyebrow">Ubicación</p>
+        <h2>Dónde estamos</h2>
+        <address class="visitanos-address">
+          <%= site.location.address %>
+        </address>
+        <p class="visitanos-location__note">
+          Un mariposario rural de observación, rodeado de la vegetación y el
+          paisaje de San Ramón.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== INFORMACIÓN PRÁCTICA: horario + cómo llegar ----------------- -->
+<section class="visitanos-practico reveal">
+  <div class="container">
+    <div class="visitanos-practico__layout">
+      <div>
+        <p class="eyebrow">Horario</p>
+        <h2>Cuándo venir</h2>
+        <dl class="visitanos-hours">
+          <% site.hours.forEach(function (slot) { %>
+            <div class="visitanos-hours__row">
+              <dt><%= slot.days %></dt>
+              <dd><%= slot.time %></dd>
+            </div>
+          <% }) %>
+        </dl>
+        <p class="visitanos-price">
+          Entrada: <a href="<%= whatsapp.primary %>" target="_blank" rel="noopener">consultar por WhatsApp</a>.
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow">Cómo llegar</p>
+        <h2>Referencia</h2>
+        <p class="visitanos-reference"><%= site.location.reference %></p>
+        <p class="visitanos-plus-code"><%= site.location.plusCode %></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CONTACTO + CTA: WhatsApp protagonista ----------------------- -->
+<section class="visitanos-cta reveal">
+  <div class="container">
+    <div class="visitanos-cta__layout">
+      <div>
+        <p class="eyebrow eyebrow--on-dark">Contacto</p>
+        <h2>¿Listo para su visita?</h2>
+        <div class="prose">
+          <p>
+            Para consultar la entrada o resolver dudas antes de venir, el canal
+            más directo es WhatsApp.
+          </p>
+        </div>
+        <ul class="visitanos-contact-list">
+          <li>
+            <a href="<%= whatsapp.primaryHref %>">Llamar al <%= site.phones.primary %></a>
+          </li>
+          <li>
+            <a href="<%= whatsapp.secondaryHref %>">Llamar al <%= site.phones.secondary %></a>
+          </li>
+          <li>
+            <a href="<%= site.facebookUrl %>" target="_blank" rel="noopener"
+              >Seguir en Facebook · @mariposaslapaz</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="visitanos-cta__actions">
+        <a class="btn btn--whatsapp btn--large" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">
+          Consultar por WhatsApp
+        </a>
+        <a class="btn btn--ghost-dark" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener">
+          Ver en Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Structured data LocalBusiness (datos confirmados de business.js) -->
+<script type="application/ld+json" nonce="<%= cspNonce %>"><%- JSON.stringify(schema) %></script>

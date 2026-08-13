@@ -1,6 +1,6 @@
 'use strict';
 
-const { buildPageMeta } = require('../utils/seo');
+const { buildPageMeta, buildLocalBusinessSchema, absoluteUrl } = require('../utils/seo');
 
 // Definición de páginas informativas: metadata SEO + vista asociada.
 // Agregar una página nueva = agregar una entrada aquí + su ruta en routes/.
@@ -68,7 +68,7 @@ const PAGE_DEFS = [
     path: '/visitanos',
     title: 'Visítanos',
     description:
-      'Ubicación, horario y contacto del Jardín de Mariposas La Paz en Bajo La Paz, San Ramón, Alajuela, Costa Rica.',
+      'Mariposario en Bajo La Paz, San Ramón, Alajuela, Costa Rica: cómo llegar, horarios, entrada y contacto por WhatsApp del Jardín de Mariposas La Paz.',
   },
 ];
 
@@ -82,6 +82,21 @@ const pages = {};
 for (const def of PAGE_DEFS) {
   pages[def.key] = makeHandler(def);
 }
+
+// Visítanos: añade structured data LocalBusiness construida exclusivamente
+// con datos confirmados de business.js + config (ver src/utils/seo.js).
+pages.visitanos = function (req, res) {
+  const def = PAGE_DEFS.find((d) => d.key === 'visitanos');
+  const page = buildPageMeta(def);
+  res.render(def.view, {
+    page,
+    schema: buildLocalBusinessSchema({
+      canonical: page.canonical,
+      description: def.description,
+      image: absoluteUrl('/media/img/mariposario-bajo-la-paz-01-1280.jpg'),
+    }),
+  });
+};
 
 module.exports = {
   pages,

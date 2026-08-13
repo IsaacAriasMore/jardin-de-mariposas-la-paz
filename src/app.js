@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('node:path');
+const crypto = require('node:crypto');
 const express = require('express');
 const helmet = require('helmet');
 const expressLayouts = require('express-ejs-layouts');
@@ -28,7 +29,15 @@ function createApp() {
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
           imgSrc: ["'self'", 'data:'],
           mediaSrc: ["'self'"],
-          scriptSrc: ["'self'"],
+          scriptSrc: [
+            "'self'",
+            (req, res) => {
+              // Nonce por petición para permitir el JSON-LD inline (Visítanos)
+              // sin abrir 'unsafe-inline'. La vista usa el mismo <%- cspNonce %>.
+              res.locals.cspNonce = crypto.randomBytes(16).toString('hex');
+              return `'nonce-${res.locals.cspNonce}'`;
+            },
+          ],
           connectSrc: ["'self'"],
           formAction: ["'self'", 'https://wa.me'],
           frameAncestors: ["'self'"],
