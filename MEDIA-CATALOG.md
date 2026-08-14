@@ -10,6 +10,8 @@ Para el uso por sección: `GUIA-DE-USO.md`.
 - **REAL** — material del propio mariposario (procedencia confirmada).
 - **STOCK** — material de terceros (Pexels / Unsplash), apoyo editorial.
   No acompañar con textos del tipo "fotografía tomada en nuestro jardín".
+- **VERIFICADO REUTILIZABLE** — fuente pública, autor y licencia explícita
+  comprobados en la página original.
 - **APROBADO PARA USO WEB** — autorizado por el usuario para integrar al sitio.
   La procedencia puede seguir sin documentar (no documentada); con personas,
   estas son adultas. Aún no se clasifican como REAL.
@@ -34,6 +36,46 @@ Confirmación actual:
 ---
 
 ## FOTOGRAFÍAS
+
+### morfo-helenor.jpg
+
+- Archivo: `Fotos/morpho-helenor.jpg` (1280x853, JPEG, horizontal).
+- Especie: _Morpho helenor peleides_ (subespecie de _Morpho helenor_).
+- Procedencia: [Wikimedia Commons](<https://commons.wikimedia.org/wiki/File:Common_morpho_(Morpho_helenor_peleides).jpg>).
+  Autor: Charles J. Sharp. Licencia: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+- Derechos: **VERIFIED** · verificado el 2026-08-14.
+- Derivados: `morpho-helenor-{640,1280}.{webp,jpg}`.
+- Uso: primera tarjeta de «El mundo de las mariposas» en Home.
+
+### heliconius-hecale.jpg
+
+- Archivo: `Fotos/heliconius-hecale.jpg` (4094x2652, JPEG, horizontal).
+- Especie: _Heliconius hecale_.
+- Procedencia: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heliconius_hecale,_Jard%C3%ADn_Bot%C3%A1nico_de_M%C3%BAnich,_Alemania,_2013-01-27,_DD_04.JPG).
+  Autor: Diego Delso. Licencia: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+- Derechos: **VERIFIED** · verificado el 2026-08-14.
+- Derivados: `heliconius-hecale-{640,1280,1920}.{webp,jpg}`.
+- Uso: segunda tarjeta de «El mundo de las mariposas» en Home.
+
+### dryas-iulia.jpg
+
+- Archivo: `Fotos/dryas-iulia.jpg` (3264x1836, JPEG, horizontal).
+- Especie: _Dryas iulia_.
+- Procedencia: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julia_butterfly_on_flower,_Dryas_iulia.jpg).
+  Autora: 7oanna. Licencia: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+- Derechos: **VERIFIED** · verificado el 2026-08-14.
+- Derivados: `dryas-iulia-{640,1280,1920}.{webp,jpg}`.
+- Uso: tercera tarjeta de «El mundo de las mariposas» en Home.
+
+### catonephele-numilia.jpg
+
+- Archivo: `Fotos/catonephele-numilia.jpg` (1280x925, JPEG, horizontal; rendition oficial de 1280 px).
+- Especie: _Catonephele numilia_.
+- Procedencia: [Wikimedia Commons](<https://commons.wikimedia.org/wiki/File:Blue-frosted_Banner_(Catonephele_numilia)_female_attracted_to_banana..._(52384794599).jpg>).
+  Autor: Bernard DUPONT. Licencia: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0).
+- Derechos: **VERIFIED** · verificado el 2026-08-14.
+- Derivados: `catonephele-numilia-{640,1280}.{webp,jpg}`.
+- Uso: imagen derecha de «Descubre detalles que normalmente pasan desapercibidos» en Home.
 
 ### mariposa-azul-hoja-tropical.jpg
 
@@ -268,14 +310,15 @@ Nota: la única PENDIENTE es `480999978…`; la única HOLD es `482005509…`
 Los derivados publicados heredan la clasificación del asset fuente. Esta tabla no
 declara propiedad intelectual: separa procedencia conocida de autorización de uso.
 
-| Asset fuente / derivados publicados                                                                                      | Clasificación    | Derechos | Personas visibles | Revisión                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------ | ---------------- | -------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mariposario-bajo-la-paz-{01,02}`                                                                                        | REAL_MARIPOSARIO | PENDING  | no                | Confirmar autorización de publicación documentada.                                                                                                |
-| `mariposa-azul-hoja-tropical-*` (Open Graph)                                                                             | STOCK            | PENDING  | no                | **PRE-LAUNCH BLOCKER**: URL/licencia no verificadas.                                                                                              |
-| Stock de mariposas y Pexels publicados                                                                                   | STOCK            | PENDING  | no                | Plataforma/autor figuran donde se conocen; falta verificación de licencia.                                                                        |
-| `mariposa-oscura-puntos-azules-*`, `mariposa-naranja-flores-*`                                                           | UNKNOWN          | PENDING  | no                | Aprobados para web por el usuario; procedencia fuente pendiente.                                                                                  |
-| `guia-mariposario-mariposa-*`, `guia-acompanando-visitante-*`, `guia-grupo-adultos-*`, `visitantes-dentro-mariposario-*` | UNKNOWN          | PENDING  | yes               | **PRE-LAUNCH BLOCKER**: confirmar permiso de publicación/model release. El catálogo los describe como adultos; no se infieren edades adicionales. |
-| Videos Hero y Experiencia publicados                                                                                     | STOCK            | PENDING  | no                | Procedencia Pexels/ID documentada cuando existe; falta verificación de licencia.                                                                  |
+| Asset fuente / derivados publicados                                                                                      | Clasificación     | Derechos | Personas visibles | Revisión                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------ | ----------------- | -------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mariposario-bajo-la-paz-{01,02}`                                                                                        | REAL_MARIPOSARIO  | PENDING  | no                | Confirmar autorización de publicación documentada.                                                                                                |
+| `mariposa-azul-hoja-tropical-*` (Open Graph)                                                                             | STOCK             | PENDING  | no                | **PRE-LAUNCH BLOCKER**: URL/licencia no verificadas.                                                                                              |
+| `morpho-helenor-*`, `heliconius-hecale-*`, `dryas-iulia-*`, `catonephele-numilia-*`                                      | VERIFIED_REUSABLE | VERIFIED | no                | Wikimedia Commons: especie, autor y licencia CC verificadas el 2026-08-14; ver entradas individuales.                                             |
+| Stock de mariposas y Pexels publicados                                                                                   | STOCK             | PENDING  | no                | Plataforma/autor figuran donde se conocen; falta verificación de licencia.                                                                        |
+| `mariposa-oscura-puntos-azules-*`, `mariposa-naranja-flores-*`                                                           | UNKNOWN           | PENDING  | no                | Aprobados para web por el usuario; procedencia fuente pendiente.                                                                                  |
+| `guia-mariposario-mariposa-*`, `guia-acompanando-visitante-*`, `guia-grupo-adultos-*`, `visitantes-dentro-mariposario-*` | UNKNOWN           | PENDING  | yes               | **PRE-LAUNCH BLOCKER**: confirmar permiso de publicación/model release. El catálogo los describe como adultos; no se infieren edades adicionales. |
+| Videos Hero y Experiencia publicados                                                                                     | STOCK             | PENDING  | no                | Procedencia Pexels/ID documentada cuando existe; falta verificación de licencia.                                                                  |
 
 ### PRE-LAUNCH MEDIA BLOCKERS
 

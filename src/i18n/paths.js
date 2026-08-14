@@ -21,10 +21,31 @@ const PAGE_DEFS = {
     paths: { es: '/visitanos', en: '/en/visit-us' },
     structuredData: true,
   },
+  privacy: {
+    view: 'pages/legal-page',
+    paths: { es: '/privacidad', en: '/en/privacy' },
+    contentNamespace: 'legal',
+  },
+  terms: {
+    view: 'pages/legal-page',
+    paths: { es: '/terminos', en: '/en/terms' },
+    contentNamespace: 'legal',
+  },
+  cookies: {
+    view: 'pages/legal-page',
+    paths: { es: '/cookies', en: '/en/cookies' },
+    contentNamespace: 'legal',
+  },
+  imageRights: {
+    view: 'pages/legal-page',
+    paths: { es: '/derechos-imagen', en: '/en/image-rights' },
+    contentNamespace: 'legal',
+  },
 };
 
 const navigationPages = ['experience', 'garden', 'butterflies', 'gallery', 'visit'];
 const footerPages = ['experience', 'garden', 'gallery', 'visit', 'environment'];
+const legalPages = ['privacy', 'terms', 'cookies', 'imageRights'];
 
 function getPath(page, locale) {
   return PAGE_DEFS[page]?.paths[locale] || PAGE_DEFS.home.paths.es;
@@ -49,6 +70,7 @@ module.exports = {
   PAGE_DEFS,
   navigationPages,
   footerPages,
+  legalPages,
   getPath,
   getPageByPath,
   getLocaleFromPath,

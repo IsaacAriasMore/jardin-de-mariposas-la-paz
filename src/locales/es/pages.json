@@ -60,15 +60,10 @@
     "butterflies": {
       "title": "El mundo de las mariposas",
       "subtitle": "Colores, formas y una transformación que podrás conocer durante tu visita.",
-      "names": [
-        "Mariposa sobre flor roja",
-        "Mariposa azul pequeña",
-        "Mariposa naranja entre flores"
-      ],
       "alts": [
-        "Mariposa negra y amarilla posada sobre una flor roja",
-        "Mariposa azul pequeña sobre flor violeta",
-        "Mariposa naranja entre flores"
+        "Morpho helenor con las alas azules abiertas sobre vegetación",
+        "Heliconius hecale posada sobre vegetación",
+        "Dryas iulia posada sobre una flor"
       ],
       "action": "Explorar el mundo de las mariposas"
     },
@@ -76,7 +71,7 @@
       "eyebrow": "Observar de cerca",
       "title": "Descubre detalles que normalmente pasan desapercibidos",
       "body": "Recorre el mariposario, observa las mariposas y aprovecha la visita guiada para aprender sobre su comportamiento y transformación.",
-      "caption": "Imagen ilustrativa: mariposa entre el follaje tropical."
+      "alt": "Catonephele numilia junto a una banana"
     },
     "environment": {
       "title": "¿Por qué son importantes las mariposas?",
@@ -137,8 +132,7 @@
       "alts": [
         "Guía explicando al grupo durante una visita",
         "Visitantes observando mariposas dentro del mariposario"
-      ],
-      "note": "Fotografías de las visitas guiadas en el mariposario."
+      ]
     },
     "pause": {
       "alt": "El Jardín de Mariposas La Paz en Bajo La Paz, San Ramón"
@@ -231,7 +225,7 @@
         "Mariposa azul posada sobre una hoja tropical",
         "Mariposas naranjas sobre un fondo natural oscuro"
       ],
-      "note": "Algunas fotografías muestran el mariposario y las visitas guiadas en Bajo La Paz, San Ramón. El resto son imágenes ilustrativas de mariposas y flores tropicales."
+      "note": "Algunas fotografías muestran el mariposario y las visitas guiadas en Bajo La Paz, San Ramón. Algunas de las imágenes son ilustrativas."
     },
     "cta": {
       "eyebrow": "Ver en persona",

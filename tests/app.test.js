@@ -18,6 +18,10 @@ const PUBLIC_ROUTES = [
   '/conservacion',
   '/galeria',
   '/visitanos',
+  '/privacidad',
+  '/terminos',
+  '/cookies',
+  '/derechos-imagen',
 ];
 
 const LOCALIZED_ROUTES = [
@@ -28,6 +32,10 @@ const LOCALIZED_ROUTES = [
   ['/galeria', '/en/gallery'],
   ['/conservacion', '/en/butterflies-and-their-environment'],
   ['/visitanos', '/en/visit-us'],
+  ['/privacidad', '/en/privacy'],
+  ['/terminos', '/en/terms'],
+  ['/cookies', '/en/cookies'],
+  ['/derechos-imagen', '/en/image-rights'],
 ];
 
 // /guias está reservada para el futuro: excluida del sitemap y fuera de las
@@ -123,10 +131,14 @@ test('el Home comunica el tour guiado, la credencial ICT y WhatsApp en su jerarq
   assert.ok(res.text.includes('¿Planeas una visita?'), 'CTA final de conversión');
 });
 
-test('el Home incorpora las fotos nuevas aprobadas (guía y mariposa naranja)', async () => {
+test('el Home incorpora las especies documentadas con fuentes verificadas', async () => {
   const res = await request(app).get('/');
   assert.ok(res.text.includes('guia-mariposario-mariposa-960.jpg'), 'foto del guía en Home');
-  assert.ok(res.text.includes('mariposa-naranja-flores-528.jpg'), 'mariposa naranja en Home');
+  assert.ok(res.text.includes('morpho-helenor-1280.jpg'), 'Morpho helenor en Home');
+  assert.ok(res.text.includes('heliconius-hecale-1280.jpg'), 'Heliconius hecale en Home');
+  assert.ok(res.text.includes('dryas-iulia-1280.jpg'), 'Dryas iulia en Home');
+  assert.ok(res.text.includes('catonephele-numilia-1280.jpg'), 'Catonephele numilia en Home');
+  assert.doesNotMatch(res.text, /mariposas-editorial__item-(?:overlay|name)/);
   assert.ok(res.text.includes('alt="Guía mostrando una mariposa durante una visita"'));
 });
 
@@ -152,13 +164,9 @@ test('el Home mantiene un solo video (el hero) por rendimiento', async () => {
   );
   assert.match(res.text, /data-source-desktop-webm=/, 'fuente desktop declarada como dato');
   assert.match(res.text, /data-source-mobile-webm=/, 'fuente móvil declarada como dato');
-  assert.match(res.text, /data-hero-motion-toggle/, 'control explícito de movimiento presente');
+  assert.match(res.text, /data-motion-toggle/, 'control global de movimiento presente');
   assert.match(res.text, /aria-label="Pausar movimiento"/, 'control de movimiento accesible');
-  assert.match(
-    res.text,
-    /hero__motion-toggle-label">Pausar movimiento/,
-    'control en estado full por defecto',
-  );
+  assert.doesNotMatch(res.text, /data-hero-motion-toggle/, 'sin control duplicado dentro del Hero');
 });
 
 test('Motion inicia en full sin una preferencia válida guardada', () => {
@@ -170,7 +178,7 @@ test('Motion inicia en full sin una preferencia válida guardada', () => {
   assert.doesNotMatch(mainScript, /preference === 'system'/);
 });
 
-test('el control global de motion se localiza y acompaña al Hero en páginas públicas', async () => {
+test('el control global de motion se localiza en la navegación pública', async () => {
   const [homeEs, homeEn, internalEs] = await Promise.all([
     request(app).get('/'),
     request(app).get('/en'),
@@ -180,7 +188,7 @@ test('el control global de motion se localiza y acompaña al Hero en páginas p�
   assert.match(homeEs.text, /data-motion-toggle/);
   assert.match(homeEs.text, /data-label-pause="Pausar movimiento"/);
   assert.match(homeEs.text, /data-label-activate="Activar movimiento"/);
-  assert.match(homeEs.text, /data-hero-motion-toggle/);
+  assert.doesNotMatch(homeEs.text, /data-hero-motion-toggle/);
   assert.match(homeEn.text, /data-label-pause="Pause motion"/);
   assert.match(homeEn.text, /data-label-activate="Enable motion"/);
   assert.match(internalEs.text, /data-motion-toggle/);
@@ -397,6 +405,7 @@ test('/visitanos incluye structured data LocalBusiness y contacto completo', asy
   assert.equal(schema.address.addressLocality, 'San Ramón');
   assert.equal(schema.address.postalCode, '20201');
   assert.equal(schema.openingHoursSpecification.length, 2);
+  assert.doesNotMatch(JSON.stringify(schema.openingHoursSpecification), /Sunday/);
   assert.ok(schema.hasMap.startsWith('https://www.google.com/maps/'));
   assert.equal(schema.sameAs[0], 'https://www.facebook.com/mariposaslapaz/');
 
@@ -523,7 +532,7 @@ test('los catálogos de traducción tienen la misma estructura de claves', () =>
         : [current];
     });
 
-  for (const namespace of ['common', 'pages']) {
+  for (const namespace of ['common', 'pages', 'legal']) {
     assert.deepEqual(
       leafPaths(readCatalog('es', namespace)).sort(),
       leafPaths(readCatalog('en', namespace)).sort(),
@@ -592,6 +601,8 @@ test('las leyendas tecnicas de medios no se muestran en la interfaz', async () =
   ]);
 
   assert.doesNotMatch(home.text, /<figcaption[^>]*>Imagen ilustrativa:/);
+  assert.doesNotMatch(home.text, /mariposas-editorial__item-(?:overlay|name)/);
+  assert.doesNotMatch(experience.text, /experiencia-immersive__gallery-note/);
   assert.doesNotMatch(experience.text, /experiencia-immersive__hero-caption/);
   assert.doesNotMatch(environment.text, /<figcaption[^>]*>Imagen ilustrativa:/);
 });
@@ -613,13 +624,82 @@ test('la densidad de mariposas y los catálogos no conservan parámetros legacy 
       fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', locale, 'pages.json'), 'utf8'),
     );
     assert.equal(pages.experience.immersive.caption, undefined);
+    assert.equal(pages.experience.immersive.note, undefined);
+    assert.equal(pages.home.butterflies.names, undefined);
     assert.equal(pages.butterflies.gallery.captions, undefined);
     assert.equal(pages.gallery.items.captions, undefined);
     assert.equal(pages.environment.main.illustrationCaption, undefined);
   }
 });
 
-test('el sitemap expone exactamente las catorce URLs públicas localizadas', async () => {
+test('las páginas legales responden, localizan el idioma y muestran su contenido esencial', async () => {
+  const legalPairs = LOCALIZED_ROUTES.slice(-4);
+  for (const [spanishPath, englishPath] of legalPairs) {
+    const [spanish, english] = await Promise.all([
+      request(app).get(spanishPath),
+      request(app).get(englishPath),
+    ]);
+    assert.equal(spanish.status, 200, `GET ${spanishPath} → 200`);
+    assert.equal(english.status, 200, `GET ${englishPath} → 200`);
+    assert.match(spanish.text, /<html lang="es-CR"/);
+    assert.match(english.text, /<html lang="en"/);
+    assert.equal((spanish.text.match(/<h1[ >]/g) || []).length, 1);
+    assert.equal((english.text.match(/<h1[ >]/g) || []).length, 1);
+    assert.ok(spanish.text.includes('ojardindemariposaslapaz@gmail.com'));
+    assert.ok(english.text.includes('ojardindemariposaslapaz@gmail.com'));
+    assert.ok(spanish.text.includes('Warner Jesus Arias Mesen'));
+    assert.ok(english.text.includes('Irma Iris Morera Elizondo'));
+    assert.doesNotMatch(spanish.text, /cédula|identidad-documento/i);
+    assert.doesNotMatch(english.text, /identity-document/i);
+  }
+
+  const privacy = await request(app).get('/privacidad');
+  assert.match(
+    privacy.text,
+    /No enviamos comunicaciones publicitarias posteriores sin autorización/,
+  );
+  assert.match(privacy.text, /WhatsApp/);
+  assert.match(privacy.text, /acceso, corrección o rectificación, o supresión/);
+
+  const cookies = await request(app).get('/cookies');
+  assert.match(cookies.text, /jmlp-theme-v1/);
+  assert.match(cookies.text, /jmlp-motion-preference-v2/);
+  assert.doesNotMatch(cookies.text, /Google Analytics|Meta Pixel|reCAPTCHA/);
+
+  const imageRights = await request(app).get('/derechos-imagen');
+  assert.match(imageRights.text, /Charles J\. Sharp/);
+  assert.match(imageRights.text, /CC BY-SA 4\.0/);
+  assert.match(imageRights.text, /creativecommons\.org\/licenses\/by-sa\/4\.0/);
+});
+
+test('el footer y las URLs legales mantienen pares de idioma, SEO y disponibilidad dominical', async () => {
+  const [spanish, english, visit] = await Promise.all([
+    request(app).get('/privacidad'),
+    request(app).get('/en/privacy'),
+    request(app).get('/visitanos'),
+  ]);
+  const base = 'https://jardindemariposaslapaz.com';
+
+  assert.match(spanish.text, /Información legal/);
+  assert.match(spanish.text, /href="\/privacidad">Privacidad<\/a>/);
+  assert.match(spanish.text, /href="\/derechos-imagen">Derechos de imagen<\/a>/);
+  assert.match(english.text, /<h2 class="site-footer__title">Legal<\/h2>/);
+  assert.match(english.text, /href="\/en\/image-rights">Image rights<\/a>/);
+  assert.match(spanish.text, new RegExp(`rel="canonical" href="${base}/privacidad"`));
+  assert.match(spanish.text, new RegExp(`hreflang="en" href="${base}/en/privacy"`));
+  assert.match(english.text, new RegExp(`hreflang="es-CR" href="${base}/privacidad"`));
+  assert.match(spanish.text, /href="\/en\/privacy">EN<\/a>/);
+  assert.match(english.text, /href="\/privacidad">ES<\/a>/);
+  assert.match(visit.text, /Domingo<\/dt>\s*<dd>Consultar disponibilidad/);
+
+  const match = visit.text.match(
+    /<script type="application\/ld\+json" nonce="[^"]+">([\s\S]*?)<\/script>/,
+  );
+  assert.ok(match, 'JSON-LD de visita presente');
+  assert.doesNotMatch(match[1], /Sunday/);
+});
+
+test('el sitemap expone exactamente las veintidós URLs públicas localizadas', async () => {
   const res = await request(app).get('/sitemap.xml');
   const locations = [...res.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expected = LOCALIZED_ROUTES.flatMap(([spanishPath, englishPath]) => [

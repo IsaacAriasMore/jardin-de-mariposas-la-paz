@@ -11,7 +11,7 @@ i18next.use(Backend).init({
   fallbackLng: 'es',
   supportedLngs,
   preload: supportedLngs,
-  ns: ['common', 'pages'],
+  ns: ['common', 'pages', 'legal'],
   defaultNS: 'common',
   returnEmptyString: false,
   backend: {

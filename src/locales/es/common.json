@@ -43,7 +43,7 @@
     "weekday": "Lunes a viernes",
     "saturday": "Sábado",
     "sunday": "Domingo",
-    "closed": "Cerrado"
+    "availability": "Consultar disponibilidad"
   },
   "business": {
     "priceNote": "Consultar por WhatsApp",
@@ -57,6 +57,13 @@
     "admission": "Entrada: {{value}}.",
     "facebook": "Facebook · @mariposaslapaz",
     "copyright": "{{year}} · {{address}}"
+  },
+  "legal": {
+    "footerTitle": "Información legal",
+    "privacy": "Privacidad",
+    "terms": "Términos de uso",
+    "cookies": "Cookies",
+    "imageRights": "Derechos de imagen"
   },
   "errors": {
     "notFoundTitle": "Página no encontrada",

@@ -88,6 +88,10 @@ function buildSizes(width) {
 // PENDIENTE (480999978…): ver MEDIA-CATALOG.md.
 const PHOTOS = [
   { src: 'mariposa-azul-hoja-tropical.jpg', seo: 'mariposa-azul-hoja-tropical' },
+  { src: 'morpho-helenor.jpg', seo: 'morpho-helenor' },
+  { src: 'heliconius-hecale.jpg', seo: 'heliconius-hecale' },
+  { src: 'dryas-iulia.jpg', seo: 'dryas-iulia' },
+  { src: 'catonephele-numilia.jpg', seo: 'catonephele-numilia' },
   { src: 'mariposa-azul-pequena-flor-violeta.jpg', seo: 'mariposa-azul-pequena-flor-violeta' },
   { src: 'mariposa-cola-larga-volando-flores.jpg', seo: 'mariposa-cola-larga-volando-flores' },
   { src: 'mariposa-negra-amarilla-flor-roja.jpg', seo: 'mariposa-negra-amarilla-flor-roja' },

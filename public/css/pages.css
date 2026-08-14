@@ -68,6 +68,59 @@
   font-weight: 600;
 }
 
+/* --- Legal pages: deliberately quiet, long-form editorial reading ------- */
+.legal-page {
+  padding-block: var(--space-6) var(--space-7);
+}
+
+.legal-page__intro {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.legal-page__section {
+  padding-top: var(--space-5);
+}
+
+.legal-page__section h2,
+.legal-page__contact h2 {
+  margin-bottom: var(--space-2);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.legal-page .prose ul {
+  margin: var(--space-2) 0 0;
+  padding-left: 1.2rem;
+}
+
+.legal-page .prose li + li {
+  margin-top: 0.45rem;
+}
+
+.legal-page__contact {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+}
+
+.legal-page__contact ul {
+  margin: 0 0 var(--space-2);
+  padding-left: 1.2rem;
+}
+
+.legal-page__contact p + p,
+.legal-page__contact address {
+  margin-top: var(--space-2);
+}
+
+.legal-page__updated {
+  margin-top: var(--space-4);
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+}
+
 /* --- Nuestro Mariposario: editorial documentary ---------------------- */
 .nuestro-layout {
   display: grid;
@@ -493,14 +546,6 @@
   .experiencia-immersive__gallery-item:hover img {
     transform: scale(1.05);
   }
-}
-
-.experiencia-immersive__gallery-note {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--color-ink-on-dark-muted);
 }
 
 /* --- Experiencia: banda contemplativa (pausa en claro) ---------------- */

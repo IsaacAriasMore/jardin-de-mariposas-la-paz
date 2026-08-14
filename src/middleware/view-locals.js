@@ -7,6 +7,7 @@ const { getTranslator } = require('../i18n');
 const {
   PAGE_DEFS,
   footerPages,
+  legalPages,
   getLocaleFromPath,
   getPageByPath,
   getPath,
@@ -22,6 +23,7 @@ function viewLocals(req, res, next) {
   const localizedHours = business.hours.map((slot, index) => ({
     ...slot,
     days: t(`hours.${['weekday', 'saturday', 'sunday'][index]}`),
+    time: slot.timeKey ? t(`hours.${slot.timeKey}`) : slot.time,
   }));
 
   res.locals.site = business;
@@ -47,6 +49,11 @@ function viewLocals(req, res, next) {
     page,
     href: getPath(page, locale),
     label: t(`nav.${page}`),
+  }));
+  res.locals.legalNavigation = legalPages.map((page) => ({
+    page,
+    href: getPath(page, locale),
+    label: t(`legal.${page}`),
   }));
   res.locals.localizedHours = localizedHours;
   res.locals.preloadHero = false;

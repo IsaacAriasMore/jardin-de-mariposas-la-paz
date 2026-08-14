@@ -11,8 +11,9 @@ const { PAGE_DEFS, getPath } = require('../i18n/paths');
 function pageHandler(key, locale) {
   return function renderPage(req, res) {
     const definition = PAGE_DEFS[key];
-    const content = res.locals.t(`pages:${key}`, { returnObjects: true });
-    const meta = res.locals.t(`pages:meta.${key}`, { returnObjects: true });
+    const namespace = definition.contentNamespace || 'pages';
+    const content = res.locals.t(`${namespace}:${key}`, { returnObjects: true });
+    const meta = res.locals.t(`${namespace}:meta.${key}`, { returnObjects: true });
     const page = buildPageMeta({
       ...meta,
       path: getPath(key, locale),

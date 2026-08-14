@@ -426,30 +426,6 @@ html[data-motion='reduced'] .hero__video {
   }
 }
 
-.mariposas-editorial__item-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--space-3) var(--space-2) var(--space-2);
-  background: linear-gradient(transparent, oklch(0.1 0.02 155 / 0.6));
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .mariposas-editorial__item:hover .mariposas-editorial__item-overlay {
-    opacity: 1;
-  }
-}
-
-.mariposas-editorial__item-name {
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-style: italic;
-}
-
 .mariposas-editorial__cta {
   text-align: center;
   margin-top: var(--space-3);

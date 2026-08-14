@@ -25,10 +25,14 @@ module.exports = {
     primaryTel: '+50688894483',
     secondaryTel: '+50688803433',
   },
+  contact: {
+    email: 'ojardindemariposaslapaz@gmail.com',
+    siteResponsibles: ['Warner Jesus Arias Mesen', 'Irma Iris Morera Elizondo'],
+  },
   hours: [
     { days: 'Lunes a viernes', time: '8:00 a. m. – 5:00 p. m.' },
     { days: 'Sábado', time: '8:00 a. m. – 12:00 m.' },
-    { days: 'Domingo', time: 'Cerrado' },
+    { days: 'Domingo', time: 'Consultar disponibilidad', timeKey: 'availability' },
   ],
   facebookUrl: 'https://www.facebook.com/mariposaslapaz/',
   priceNote: 'Consultar por WhatsApp',
