@@ -11,23 +11,46 @@ function absoluteUrl(path = '/') {
 
 // Construye el objeto de metadata SEO por página (title, description,
 // canonical, Open Graph). Las vistas lo consumen vía el partial head.
-function buildPageMeta({ title, description, path = '/', ogImage = null, noindex = false }) {
+function buildPageMeta({
+  title,
+  description,
+  path = '/',
+  locale = 'es',
+  alternatePaths = null,
+  ogImage = '/media/img/mariposa-azul-hoja-tropical-1920.jpg',
+  noindex = false,
+}) {
   const canonical = absoluteUrl(path);
-  const fullTitle = `${title} · ${business.name}`;
+  const fullTitle = title.includes(business.name) ? title : `${title} · ${business.name}`;
 
   return {
     title: fullTitle,
     description,
     canonical,
     robots: noindex ? 'noindex, follow' : 'index, follow',
+    alternates: alternatePaths
+      ? {
+          es: absoluteUrl(alternatePaths.es),
+          en: absoluteUrl(alternatePaths.en),
+          xDefault: absoluteUrl(alternatePaths.es),
+        }
+      : null,
     og: {
       type: 'website',
-      locale: 'es_CR',
+      locale: locale === 'en' ? 'en_US' : 'es_CR',
+      alternateLocale: locale === 'en' ? 'es_CR' : 'en_US',
       siteName: business.name,
       title: fullTitle,
       description,
       url: canonical,
-      ...(ogImage ? { image: absoluteUrl(ogImage) } : {}),
+      ...(ogImage
+        ? {
+            image: absoluteUrl(ogImage),
+            imageWidth: 1920,
+            imageHeight: 1080,
+            imageAlt: business.tagline,
+          }
+        : {}),
     },
   };
 }
@@ -83,9 +106,6 @@ function buildOpeningHoursSpecifications() {
 // Esquema LocalBusiness para /visitanos. canonical/description/image se pasan
 // desde el controlador (metadata ya validada); el resto sale de business.js.
 function buildLocalBusinessSchema({ canonical, description, image }) {
-  const [addressLocality, addressRegion] = business.location.address.split(', ');
-  const postalCode = (business.location.plusCode.match(/\d{4,5}/) || [])[0];
-
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -93,16 +113,15 @@ function buildLocalBusinessSchema({ canonical, description, image }) {
     description,
     url: canonical,
     ...(image ? { image } : {}),
-    telephone: [business.phones.primaryTel, business.phones.secondaryTel],
+    telephone: business.phones.primaryTel,
     hasMap: config.googleMapsUrl,
     sameAs: [business.facebookUrl],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: business.location.reference,
-      addressLocality,
-      addressRegion,
-      postalCode,
-      addressCountry: 'CR',
+      addressLocality: business.location.locality,
+      addressRegion: business.location.region,
+      postalCode: business.location.postalCode,
+      addressCountry: business.location.country,
     },
     openingHoursSpecification: buildOpeningHoursSpecifications(),
   };
@@ -112,4 +131,11 @@ module.exports = {
   absoluteUrl,
   buildPageMeta,
   buildLocalBusinessSchema,
+  serializeJsonLd: (value) =>
+    JSON.stringify(value)
+      .replace(/</g, '\\u003c')
+      .replace(/>/g, '\\u003e')
+      .replace(/&/g, '\\u0026')
+      .replace(/\u2028/g, '\\u2028')
+      .replace(/\u2029/g, '\\u2029'),
 };

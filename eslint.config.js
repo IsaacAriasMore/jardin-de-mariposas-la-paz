@@ -5,7 +5,7 @@ const globals = require('globals');
 
 module.exports = [
   {
-    ignores: ['node_modules/**', 'public/**', 'Fotos/**', 'Videos/**', '.agents/**'],
+    ignores: ['node_modules/**', 'public/**', 'Fotos/**', 'Videos/**', '.agents/**', 'release/**'],
   },
   js.configs.recommended,
   {

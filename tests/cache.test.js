@@ -5,6 +5,7 @@
 // antes de importar la configuración garantiza que la app usa la rama de
 // caché diferenciada (como en Hostinger).
 process.env.NODE_ENV = 'production';
+process.env.SITE_URL = 'https://jardindemariposaslapaz.com';
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');

@@ -104,6 +104,8 @@
 .entorno-mosaic__item {
   margin: 0;
   min-height: 0;
+  height: 100%;
+  aspect-ratio: auto;
   overflow: hidden;
   border-radius: var(--radius-sm);
 }
@@ -136,14 +138,6 @@
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: var(--radius-md);
-}
-
-.acompanada__media figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-ink-on-dark-muted);
 }
 
 .acompanada__text {
@@ -234,17 +228,6 @@
   }
 }
 
-/* Captions editoriales discretos */
-.mariposas-apertura__media figcaption,
-.mariposas-banda__media figcaption,
-.mariposas-outro__image figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-ink-muted);
-}
-
 /* Galería asimétrica: dos dominantes + espacio negativo */
 .mariposas-galeria {
   background: var(--color-bg);
@@ -286,20 +269,6 @@
   .mariposas-galeria__item:hover img {
     transform: scale(1.03);
   }
-}
-
-.mariposas-galeria__caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: var(--space-4) var(--space-2) var(--space-2);
-  background: linear-gradient(transparent, oklch(0.12 0.03 155 / 0.72));
-  color: oklch(0.92 0.004 145);
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.4;
 }
 
 /* Posiciones del mosaico: dominante alta a la izquierda, banda ancha
@@ -551,14 +520,6 @@
   border-radius: var(--radius-md);
 }
 
-.experiencia-pausa__media figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-ink-muted);
-}
-
 /* --- Experiencia: CTA final ------------------------------------------- */
 .experiencia-cta {
   padding: var(--space-6) var(--space-5);
@@ -593,7 +554,7 @@
   aspect-ratio: 21 / 8;
   overflow: hidden;
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-5);
+  margin: 0 0 var(--space-5);
 }
 
 .conservacion-contemplative__hero-image img {

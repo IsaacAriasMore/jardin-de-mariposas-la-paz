@@ -262,3 +262,25 @@ Nota: la única PENDIENTE es `480999978…`; la única HOLD es `482005509…`
 - Ahorro: ~55% del total (los videos 4K de 44/29 MB pasan a 6.6/3.2 MB).
 - Video derivado más pesado: `mariposa-flores-tropicales-1080p.mp4` (13.88 MB).
 - Imagen derivada más pesada: `mariposario-bajo-la-paz-01-1536.jpg` (0.66 MB).
+
+## Auditoría de procedencia y derechos — medios publicados
+
+Los derivados publicados heredan la clasificación del asset fuente. Esta tabla no
+declara propiedad intelectual: separa procedencia conocida de autorización de uso.
+
+| Asset fuente / derivados publicados                                                                                      | Clasificación    | Derechos | Personas visibles | Revisión                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------ | ---------------- | -------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mariposario-bajo-la-paz-{01,02}`                                                                                        | REAL_MARIPOSARIO | PENDING  | no                | Confirmar autorización de publicación documentada.                                                                                                |
+| `mariposa-azul-hoja-tropical-*` (Open Graph)                                                                             | STOCK            | PENDING  | no                | **PRE-LAUNCH BLOCKER**: URL/licencia no verificadas.                                                                                              |
+| Stock de mariposas y Pexels publicados                                                                                   | STOCK            | PENDING  | no                | Plataforma/autor figuran donde se conocen; falta verificación de licencia.                                                                        |
+| `mariposa-oscura-puntos-azules-*`, `mariposa-naranja-flores-*`                                                           | UNKNOWN          | PENDING  | no                | Aprobados para web por el usuario; procedencia fuente pendiente.                                                                                  |
+| `guia-mariposario-mariposa-*`, `guia-acompanando-visitante-*`, `guia-grupo-adultos-*`, `visitantes-dentro-mariposario-*` | UNKNOWN          | PENDING  | yes               | **PRE-LAUNCH BLOCKER**: confirmar permiso de publicación/model release. El catálogo los describe como adultos; no se infieren edades adicionales. |
+| Videos Hero y Experiencia publicados                                                                                     | STOCK            | PENDING  | no                | Procedencia Pexels/ID documentada cuando existe; falta verificación de licencia.                                                                  |
+
+### PRE-LAUNCH MEDIA BLOCKERS
+
+1. Verificar licencia y fuente pública del OG `mariposa-azul-hoja-tropical-1920.jpg` antes de lanzamiento.
+2. Documentar autorización de publicación para las cuatro fotografías publicadas con personas visibles.
+3. Confirmar derechos de publicación de las dos fotografías REAL_MARIPOSARIO.
+
+Estado de OG: **PENDING — PRE-LAUNCH BLOCKER**. No se modificó su uso técnico.

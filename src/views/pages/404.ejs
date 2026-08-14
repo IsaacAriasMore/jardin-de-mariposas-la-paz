@@ -1,11 +1,1 @@
-<section class="page-section">
-  <div class="container">
-    <p>Error 404</p>
-    <h1 class="page-title">Página no encontrada</h1>
-    <p class="page-lead">
-      La página que buscabas no existe o fue movida. Puedes volver a la página
-      de inicio o revisar el menú de navegación.
-    </p>
-    <p><a class="btn" href="/">Volver al inicio</a></p>
-  </div>
-</section>
+<section class="page-section"><div class="container"><p>Error 404</p><h1 class="page-title"><%= t('errors.notFoundTitle') %></h1><p class="page-lead"><%= t('errors.notFoundDescription') %></p><p><a class="btn" href="<%= paths.home %>"><%= t('actions.backHome') %></a></p></div></section>

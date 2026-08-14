@@ -183,6 +183,7 @@ html[data-motion='reduced'] .hero__video {
   bottom: var(--space-5);
   right: 0;
   z-index: 2;
+  pointer-events: none;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 0.92rem;
@@ -277,14 +278,6 @@ html[data-motion='reduced'] .hero__video {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--radius-md);
-}
-
-.guia-experiencia__media figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-ink-muted);
 }
 
 /* --- Intro: editorial split ------------------------------------------ */
@@ -520,14 +513,6 @@ html[data-motion='reduced'] .hero__video {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-}
-
-.experiencia-full__caption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-ink-on-dark-muted);
 }
 
 /* --- Conservación: contemplativa con imagen grande -------------------- */

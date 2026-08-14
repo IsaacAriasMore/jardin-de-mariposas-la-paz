@@ -1,6 +1,7 @@
 'use strict';
 
 const config = require('../config');
+const { PAGE_DEFS } = require('../i18n/paths');
 
 // robots.txt: políticas de rastreo + referencia al sitemap.
 function robots(req, res) {
@@ -16,15 +17,10 @@ Sitemap: ${config.siteUrl}/sitemap.xml
 // la navegación visible: "/" no está en el menú pero sí indexa.
 // NOTA: "/guias" está excluido a propósito: reservada para el futuro, no se
 // indexa hasta tener artículos reales (evita thin content en el sitemap).
-const PUBLIC_ROUTES = [
-  '/',
-  '/nuestro-mariposario',
-  '/mariposas',
-  '/experiencia',
-  '/conservacion',
-  '/galeria',
-  '/visitanos',
-];
+const PUBLIC_ROUTES = Object.values(PAGE_DEFS).flatMap((definition) => [
+  definition.paths.es,
+  definition.paths.en,
+]);
 
 // sitemap.xml: todas las páginas públicas.
 function sitemap(req, res) {

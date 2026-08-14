@@ -14,6 +14,24 @@ delete process.env.GOOGLE_MAPS_URL;
 const config = require('../src/config');
 const business = require('../src/config/business');
 
+test('los parsers de configuración rechazan puertos y URLs inválidos', () => {
+  assert.equal(config.parsePort('1'), 1);
+  assert.equal(config.parsePort('65535'), 65535);
+  for (const value of ['0', '65536', 'abc', '3.14', '']) {
+    assert.throws(() => config.parsePort(value), /Invalid PORT/);
+  }
+  assert.equal(config.normalizeBaseUrl('https://example.com/', 'SITE_URL'), 'https://example.com');
+  assert.equal(
+    config.normalizeBaseUrl('http://localhost:3000', 'SITE_URL'),
+    'http://localhost:3000',
+  );
+  assert.throws(
+    () => config.normalizeBaseUrl('javascript:alert(1)', 'SITE_URL'),
+    /Invalid SITE_URL/,
+  );
+  assert.throws(() => config.parseHttpsUrl('http://example.com', 'GOOGLE_MAPS_URL'));
+});
+
 test('la configuración funciona con valores por defecto sin .env', () => {
   assert.equal(config.env, 'development');
   assert.equal(config.port, 3000);
@@ -39,15 +57,7 @@ test('los datos oficiales del negocio están completos', () => {
   assert.equal(business.facebookUrl, 'https://www.facebook.com/mariposaslapaz/');
   assert.equal(business.priceNote, 'Consultar por WhatsApp');
   assert.equal(business.hours.length, 3);
-  assert.equal(business.navigation.length, 5);
-  assert.deepEqual(
-    business.navigation.map((item) => item.label),
-    ['Tour guiado', 'Nuestro Mariposario', 'Mariposas', 'Galería', 'Visítanos'],
-  );
-  assert.ok(
-    !business.navigation.some((item) => item.label === 'Conservación'),
-    'Conservación sale del menú principal (sigue accesible y enlazada)',
-  );
+  assert.equal(business.navigation, undefined, 'la navegación se localiza por page IDs');
 });
 
 test('las visitas guiadas están confirmadas con públicos, idiomas y credencial ICT', () => {

@@ -11,6 +11,10 @@ module.exports = {
     address: 'Bajo La Paz, San Ramón, Alajuela, Costa Rica',
     reference: '200 metros sureste de la Escuela/Liceo Arredondo Blanco',
     plusCode: '5F36+VVC, Bajo La Paz, San Ramón, Alajuela 20201, Costa Rica',
+    locality: 'San Ramón',
+    region: 'Alajuela',
+    postalCode: '20201',
+    country: 'CR',
   },
   phones: {
     // Formato visual para mostrar en la web
@@ -46,16 +50,4 @@ module.exports = {
     // grupo, precios, reservas, métodos de pago ni horarios especiales.
     guideCredential: 'Guía certificado por el ICT',
   },
-  // Menú principal: prioridad a la conversión (el tour guiado primero) y a
-  // las páginas de contenido central. La marca ya enlaza a "/" y "Guías"
-  // queda reservado sin enlace hasta que exista contenido real. Conservación
-  // sale del menú principal (se mantiene accesible, indexable y enlazada
-  // desde la home, el pie de página y el sitemap).
-  navigation: [
-    { label: 'Tour guiado', href: '/experiencia' },
-    { label: 'Nuestro Mariposario', href: '/nuestro-mariposario' },
-    { label: 'Mariposas', href: '/mariposas' },
-    { label: 'Galería', href: '/galeria' },
-    { label: 'Visítanos', href: '/visitanos' },
-  ],
 };

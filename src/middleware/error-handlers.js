@@ -3,38 +3,36 @@
 const config = require('../config');
 const { buildPageMeta } = require('../utils/seo');
 
-// Página 404 personalizada para cualquier ruta no registrada.
 function notFound(req, res, _next) {
+  const { locale, t } = res.locals;
   res.status(404);
   res.render('pages/404', {
     page: buildPageMeta({
-      title: 'Página no encontrada',
-      description:
-        'La página que buscaba no existe o fue movida. Revise la dirección o vuelva a la página de inicio.',
+      title: t('errors.notFoundTitle'),
+      description: t('errors.notFoundDescription'),
       path: req.path,
+      locale,
       noindex: true,
     }),
   });
 }
 
-// Manejo centralizado de errores. En producción no se expone el stack.
 function errorHandler(err, req, res, next) {
-  if (res.headersSent) {
-    return next(err);
-  }
+  if (res.headersSent) return next(err);
 
   const statusCode = Number(err.status || err.statusCode) || 500;
-
   if (statusCode >= 500) {
     console.error(`[error] ${req.method} ${req.originalUrl}`, err);
   }
 
+  const { locale, t } = res.locals;
   res.status(statusCode);
   res.render('pages/error', {
     page: buildPageMeta({
-      title: 'Error del servidor',
-      description: 'Ocurrió un error inesperado. Intente nuevamente en unos momentos.',
+      title: t('errors.serverTitle'),
+      description: t('errors.serverDescription', { statusCode }),
       path: req.path,
+      locale,
       noindex: true,
     }),
     statusCode,
@@ -42,7 +40,4 @@ function errorHandler(err, req, res, next) {
   });
 }
 
-module.exports = {
-  notFound,
-  errorHandler,
-};
+module.exports = { notFound, errorHandler };

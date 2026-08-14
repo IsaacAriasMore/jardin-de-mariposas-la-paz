@@ -6,9 +6,14 @@ document.documentElement.classList.add('js');
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
   const storageKey = 'jmlp-motion-preference-v2';
+  const themeStorageKey = 'jmlp-theme-v1';
+  const themeColors = { light: '#f1f4f2', dark: '#10231d' };
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const heroVideo = document.querySelector('.hero__video');
+  const experienceVideo = document.querySelector('[data-motion-video]');
   const heroMotionToggle = document.querySelector('[data-hero-motion-toggle]');
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+  const motionToggle = document.querySelector('[data-motion-toggle]');
   const revealSelector = '.reveal';
   const revealElements = [...document.querySelectorAll(revealSelector)];
   const tiltElements = [...document.querySelectorAll('[data-tilt]')];
@@ -21,6 +26,42 @@ document.addEventListener('DOMContentLoaded', () => {
   let tiltTarget;
   let tiltEnabled = false;
   let playState = { status: 'idle', errorName: '', errorMessage: '' };
+  let experienceVideoObserver;
+
+  function currentTheme() {
+    return root.dataset.theme === 'dark' ? 'dark' : 'light';
+  }
+
+  function syncThemeToggle() {
+    if (!themeToggle) return;
+    const dark = currentTheme() === 'dark';
+    const label = dark ? themeToggle.dataset.labelLight : themeToggle.dataset.labelDark;
+    const icon = themeToggle.querySelector('[data-theme-icon]');
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+    if (icon) {
+      icon.setAttribute(
+        'd',
+        dark
+          ? 'M20.5 14.7A8.7 8.7 0 0 1 9.3 3.5 8.7 8.7 0 1 0 20.5 14.7Z'
+          : 'M12 4.5a7.5 7.5 0 1 0 7.5 7.5A6 6 0 0 1 12 4.5Z',
+      );
+    }
+  }
+
+  function setTheme(theme, persist = true) {
+    const value = theme === 'dark' ? 'dark' : 'light';
+    root.dataset.theme = value;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColors[value]);
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, value);
+      } catch {
+        // Storage may be unavailable in private or embedded contexts.
+      }
+    }
+    syncThemeToggle();
+  }
 
   function readPreference() {
     try {
@@ -44,6 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return preference === 'full';
   }
 
+  function setMotionPreference(value, options = {}) {
+    savePreference(value === 'reduced' ? 'reduced' : 'full');
+    applyMotion(options);
+  }
+
   function setVideoState(status, error) {
     playState = {
       status,
@@ -58,7 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!heroMotionToggle) return;
     const full = hasFullMotion();
     const blocked = playState.status === 'blocked' || playState.status === 'error';
-    const label = blocked ? 'Reproducir video' : full ? 'Pausar movimiento' : 'Activar movimiento';
+    const label = blocked
+      ? heroMotionToggle.dataset.labelReplay
+      : full
+        ? heroMotionToggle.dataset.labelPause
+        : heroMotionToggle.dataset.labelActivate;
     heroMotionToggle.setAttribute('aria-pressed', String(full));
     heroMotionToggle.setAttribute('aria-label', label);
     heroMotionToggle.setAttribute('title', label);
@@ -66,6 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
     heroMotionToggle.dataset.videoState = playState.status;
     const text = heroMotionToggle.querySelector('.hero__motion-toggle-label');
     if (text) text.textContent = label;
+  }
+
+  function setMotionToggle() {
+    if (!motionToggle) return;
+    const full = hasFullMotion();
+    const label = full ? motionToggle.dataset.labelPause : motionToggle.dataset.labelActivate;
+    const icon = motionToggle.querySelector('[data-motion-icon]');
+    motionToggle.setAttribute('aria-pressed', String(full));
+    motionToggle.setAttribute('aria-label', label);
+    motionToggle.setAttribute('title', label);
+    motionToggle.dataset.mode = full ? 'full' : 'reduced';
+    if (icon) icon.setAttribute('d', full ? 'M7 5v14M17 5v14' : 'M8 5.5 18 12 8 18.5Z');
   }
 
   function requestHeroPlayback() {
@@ -112,6 +174,77 @@ document.addEventListener('DOMContentLoaded', () => {
       setVideoState('loading');
     }
     if (forcePlay || heroVideo.paused) requestHeroPlayback();
+  }
+
+  function pauseExperienceVideo() {
+    if (!experienceVideo) return;
+    experienceVideo.pause();
+    experienceVideo.dataset.videoState = 'paused';
+  }
+
+  function requestExperiencePlayback() {
+    if (!experienceVideo || !hasFullMotion() || !experienceVideo.dataset.activeSource) return;
+    const playPromise = experienceVideo.play();
+    if (!playPromise) return;
+    playPromise
+      .then(() => {
+        experienceVideo.dataset.videoState = 'playing';
+      })
+      .catch((error) => {
+        experienceVideo.dataset.videoState =
+          error?.name === 'NotAllowedError' ? 'blocked' : 'error';
+      });
+  }
+
+  function loadExperienceVideo() {
+    if (!experienceVideo) return;
+    const source = experienceVideo.dataset.videoSrc;
+    if (!source || experienceVideo.dataset.activeSource === source) {
+      requestExperiencePlayback();
+      return;
+    }
+    experienceVideo.src = source;
+    experienceVideo.dataset.activeSource = source;
+    experienceVideo.dataset.videoState = 'loading';
+    experienceVideo.load();
+    requestExperiencePlayback();
+  }
+
+  function clearExperienceVideo() {
+    if (!experienceVideo) return;
+    pauseExperienceVideo();
+    experienceVideo.removeAttribute('src');
+    experienceVideo.dataset.activeSource = '';
+    experienceVideo.load();
+  }
+
+  function stopExperienceVideoObserver() {
+    if (experienceVideoObserver) experienceVideoObserver.disconnect();
+    experienceVideoObserver = undefined;
+  }
+
+  function syncExperienceVideo() {
+    if (!experienceVideo) return;
+    stopExperienceVideoObserver();
+    if (!hasFullMotion()) {
+      clearExperienceVideo();
+      return;
+    }
+    if (!('IntersectionObserver' in window)) {
+      loadExperienceVideo();
+      return;
+    }
+    experienceVideoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          loadExperienceVideo();
+          return;
+        }
+        pauseExperienceVideo();
+      },
+      { rootMargin: '400px 0px' },
+    );
+    experienceVideoObserver.observe(experienceVideo);
   }
 
   function bindVideoEvents() {
@@ -389,6 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     root.dataset.motion = full ? 'full' : 'reduced';
     root.classList.toggle('motion-ready', full);
     syncHeroVideo({ forcePlay });
+    syncExperienceVideo();
     setupReveals();
     setupTilt();
     if (full && restartHero) {
@@ -396,6 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.requestAnimationFrame(() => root.classList.add('motion-ready'));
     }
     setHeroToggle();
+    setMotionToggle();
   }
 
   const header = document.querySelector('.site-header');
@@ -420,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navList.classList.toggle('is-open', isOpen);
       navToggle.setAttribute(
         'aria-label',
-        isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación',
+        isOpen ? navToggle.dataset.labelClose : navToggle.dataset.labelOpen,
       );
       if (returnFocus && !isOpen) navToggle.focus();
     };
@@ -448,12 +583,28 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroMotionToggle) {
     heroMotionToggle.addEventListener('click', () => {
       if (playState.status === 'blocked' || playState.status === 'error') {
-        savePreference('full');
-        applyMotion({ restartHero: true, forcePlay: true });
+        setMotionPreference('full', { restartHero: true, forcePlay: true });
         return;
       }
-      savePreference(hasFullMotion() ? 'reduced' : 'full');
-      applyMotion({ restartHero: true, forcePlay: true });
+      setMotionPreference(hasFullMotion() ? 'reduced' : 'full', {
+        restartHero: true,
+        forcePlay: true,
+      });
+    });
+  }
+  if (motionToggle) {
+    motionToggle.addEventListener('click', () =>
+      setMotionPreference(hasFullMotion() ? 'reduced' : 'full', {
+        restartHero: true,
+        forcePlay: true,
+      }),
+    );
+  }
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      root.classList.add('theme-transition');
+      setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+      window.setTimeout(() => root.classList.remove('theme-transition'), 260);
     });
   }
   window.addEventListener('resize', () => {
@@ -466,5 +617,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   bindVideoEvents();
+  setTheme(currentTheme(), false);
   applyMotion({ restartHero: true, forcePlay: true });
 });

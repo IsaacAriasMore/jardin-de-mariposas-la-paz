@@ -9,6 +9,8 @@
     "dev": "node --watch src/server.js",
     "test": "node --test \"tests/*.test.js\"",
     "media": "node scripts/media.mjs",
+    "release:check": "node scripts/release-check.mjs",
+    "release:build": "node scripts/build-release.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -21,7 +23,9 @@
     "ejs": "^3.1.10",
     "express": "^4.22.2",
     "express-ejs-layouts": "^2.5.1",
-    "helmet": "^8.3.0"
+    "helmet": "^8.3.0",
+    "i18next": "^26.3.6",
+    "i18next-fs-backend": "^2.6.7"
   },
   "devDependencies": {
     "@derhuerst/ffprobe-static": "^5.3.0",

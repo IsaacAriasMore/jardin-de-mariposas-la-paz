@@ -1,0 +1,64 @@
+{
+  "siteName": "Jardín de Mariposas La Paz",
+  "nav": {
+    "aria": "Primary navigation",
+    "experience": "Guided tour",
+    "garden": "Our butterfly garden",
+    "butterflies": "Butterflies",
+    "gallery": "Gallery",
+    "visit": "Visit us",
+    "environment": "Butterflies and their environment",
+    "open": "Open navigation menu",
+    "close": "Close navigation menu"
+  },
+  "language": { "label": "Language", "es": "ES", "en": "EN" },
+  "theme": { "toDark": "Enable dark mode", "toLight": "Enable light mode" },
+  "motion": { "pause": "Pause motion", "activate": "Enable motion", "replay": "Play video" },
+  "actions": {
+    "consultVisit": "Ask about a visit",
+    "consultWhatsApp": "Ask on WhatsApp",
+    "tour": "Explore the tour",
+    "learnMore": "Learn more",
+    "directions": "Get directions",
+    "openMaps": "Open in Google Maps",
+    "backHome": "Back to home",
+    "skip": "Skip to content"
+  },
+  "labels": {
+    "location": "Location",
+    "hours": "Hours",
+    "admission": "Admission",
+    "guidedVisits": "Guided visits",
+    "tour": "Guided tour",
+    "explore": "Explore",
+    "contact": "Contact",
+    "priceDuration": "Price and duration",
+    "map": "Official map"
+  },
+  "hours": {
+    "weekday": "Monday to Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed"
+  },
+  "business": {
+    "priceNote": "Ask on WhatsApp",
+    "guideCredential": "ICT-certified guide",
+    "languages": "Spanish · English",
+    "serviceLanguages": "Service in Spanish and English",
+    "whatsappMessage": "Hello! I would like information about Jardín de Mariposas La Paz."
+  },
+  "footer": {
+    "maps": "Get directions in Google Maps",
+    "admission": "Admission: {{value}}.",
+    "facebook": "Facebook · @mariposaslapaz",
+    "copyright": "{{year}} · {{address}}"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you are looking for does not exist or has moved. You can return home or use the navigation menu.",
+    "serverTitle": "Server error",
+    "serverDescription": "An unexpected error occurred ({{statusCode}}). Please try again shortly. If it continues, you can contact us on WhatsApp.",
+    "technical": "Technical details (development only)"
+  }
+}

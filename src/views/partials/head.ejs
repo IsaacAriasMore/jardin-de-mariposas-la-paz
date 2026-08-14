@@ -1,55 +1,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title><%= page.title %></title>
   <meta name="description" content="<%= page.description %>" />
   <meta name="robots" content="<%= page.robots %>" />
   <link rel="canonical" href="<%= page.canonical %>" />
-
-  <!-- Tipografía: Newsreader (display) + Karla (body) -->
+  <% if (page.alternates) { %>
+    <link rel="alternate" hreflang="es-CR" href="<%= page.alternates.es %>" />
+    <link rel="alternate" hreflang="en" href="<%= page.alternates.en %>" />
+    <link rel="alternate" hreflang="x-default" href="<%= page.alternates.xDefault %>" />
+  <% } %>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap"
-  />
-
-  <!-- Open Graph -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" />
   <meta property="og:type" content="<%= page.og.type %>" />
   <meta property="og:locale" content="<%= page.og.locale %>" />
+  <meta property="og:locale:alternate" content="<%= page.og.alternateLocale %>" />
   <meta property="og:site_name" content="<%= page.og.siteName %>" />
   <meta property="og:title" content="<%= page.og.title %>" />
   <meta property="og:description" content="<%= page.og.description %>" />
   <meta property="og:url" content="<%= page.og.url %>" />
-  <% if (page.og.image) { %>
-    <meta property="og:image" content="<%= page.og.image %>" />
-  <% } %>
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="<%= page.og.image ? 'summary_large_image' : 'summary' %>" />
-
-  <meta name="theme-color" content="#1a3a28" />
+  <% if (page.og.image) { %><meta property="og:image" content="<%= page.og.image %>" /><meta property="og:image:width" content="<%= page.og.imageWidth %>" /><meta property="og:image:height" content="<%= page.og.imageHeight %>" /><meta property="og:image:alt" content="<%= page.og.imageAlt %>" /><% } %>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<%= page.og.title %>" />
+  <meta name="twitter:description" content="<%= page.og.description %>" />
+  <meta name="twitter:image" content="<%= page.og.image %>" />
+  <meta name="theme-color" content="#f1f4f2" />
+  <script nonce="<%= cspNonce %>">!function(){try{var t=localStorage.getItem('jmlp-theme-v1');t=t==='dark'||t==='light'?t:'light';document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]').content=t==='dark'?'#10231d':'#f1f4f2'}catch(e){}}();</script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
   <% if (typeof preloadHero !== 'undefined' && preloadHero) { %>
-    <link
-      rel="preload"
-      as="image"
-      media="(min-width: 769px)"
-      href="/media/posters/mariposa-flor-amarilla-hero.jpg"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      media="(max-width: 768px)"
-      href="/media/posters/mariposas-entre-hojas-vertical.jpg"
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" media="(min-width: 769px)" href="/media/posters/mariposa-flor-amarilla-hero.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" media="(max-width: 768px)" href="/media/posters/mariposas-entre-hojas-vertical.jpg" fetchpriority="high" />
   <% } %>
-
   <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/home.css" />
-  <link rel="stylesheet" href="/css/pages.css" />
+  <% if (pageKey === 'home') { %>
+    <link rel="stylesheet" href="/css/home.css" />
+  <% } else { %>
+    <link rel="stylesheet" href="/css/pages.css" />
+  <% } %>
   <script src="/js/main.js" defer></script>
 </head>

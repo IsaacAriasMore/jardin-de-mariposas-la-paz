@@ -2,8 +2,8 @@
 
 Sitio web oficial de **Jardín de Mariposas La Paz** — mariposario en **Bajo La Paz, San Ramón, Alajuela, Costa Rica**.
 
-> **Estado actual: Fase 1 — arquitectura, configuración y scaffolding.**
-> Las páginas tienen estructura y contenido semilla (correcto y sin datos inventados), pero el diseño visual completo se desarrolla en la Fase 2. Ver `GUIA-DE-USO.md` para el uso de los materiales fotográficos y de video.
+> **Estado actual: candidato de lanzamiento.**
+> El sitio incluye experiencia bilingüe, tema claro/oscuro, controles globales de movimiento, medios responsivos y comprobaciones de integridad de release. Ver `MEDIA-CATALOG.md` para procedencia y pendientes de derechos de los medios.
 
 ---
 
@@ -25,7 +25,7 @@ Página web pública del mariposario que permita a visitantes potenciales:
 | Templates        | EJS + `express-ejs-layouts`                                              |
 | Markup           | HTML5 semántico                                                          |
 | Estilos          | CSS moderno con tokens personalizados (sin framework; sin paso de build) |
-| Scripts frontend | JavaScript vanilla (a incorporar cuando haya interacción)                |
+| Scripts frontend | JavaScript vanilla (tema, idioma, movimiento y carga de video)           |
 | Seguridad        | Helmet                                                                   |
 | Tests            | `node:test` (runner nativo) + Supertest                                  |
 | Calidad          | ESLint (flat config) + Prettier                                          |
@@ -44,14 +44,14 @@ Decisiones de la Fase 1:
 ├── eslint.config.js
 ├── package.json
 ├── public/
-│   ├── css/base.css          # Tokens + estilos base (paleta provisional)
+│   ├── css/base.css          # Tokens, tema y sistema visual compartido
 │   ├── favicon.svg
 │   └── media/                # Medios optimizados servidos por la web (ignorados en Git)
 ├── src/
 │   ├── app.js                # Fábrica de la app Express (importable en tests)
 │   ├── server.js             # Arranque del servidor
 │   ├── config/
-│   │   ├── index.js          # Entorno: PORT, SITE_URL, GOOGLE_MAPS_URL
+│   │   ├── index.js          # Validación de PORT, SITE_URL y URLs externas
 │   │   └── business.js       # FUENTE ÚNICA de datos del negocio
 │   ├── controllers/
 │   │   ├── pages.controller.js  # Definición + handlers de las páginas
@@ -59,6 +59,8 @@ Decisiones de la Fase 1:
 │   ├── middleware/
 │   │   ├── error-handlers.js    # 404 + error centralizado (500)
 │   │   └── view-locals.js       # Datos compartidos con todas las vistas
+│   ├── i18n/                 # Inicialización, idiomas y rutas localizadas
+│   ├── locales/               # Catálogos es/en versionados
 │   ├── routes/index.js       # Mapa de rutas oficiales
 │   ├── utils/
 │   │   ├── seo.js            # Metadata por página (title/descripción/OG/canonical)
@@ -93,12 +95,12 @@ Abrir `http://localhost:3000`.
 
 Ver `.env.example`. Las más relevantes:
 
-| Variable          | Default                              | Descripción                                             |
-| ----------------- | ------------------------------------ | ------------------------------------------------------- |
-| `NODE_ENV`        | `development`                        | `production` oculta errores y aplica caché estática     |
-| `PORT`            | `3000`                               | Puerto HTTP                                             |
-| `SITE_URL`        | `https://jardindemariposaslapaz.com` | URL pública (dominio definitivo pendiente de compra)    |
-| `GOOGLE_MAPS_URL` | URL del Plus Code provisional        | Enlace de mapa desacoplado; se reemplaza por el oficial |
+| Variable          | Default                       | Descripción                                             |
+| ----------------- | ----------------------------- | ------------------------------------------------------- |
+| `NODE_ENV`        | `development`                 | `production` oculta errores y aplica caché estática     |
+| `PORT`            | `3000`                        | Puerto HTTP                                             |
+| `SITE_URL`        | URL provisional del negocio   | URL pública; obligatoria y HTTPS en `production`        |
+| `GOOGLE_MAPS_URL` | URL del Plus Code provisional | Enlace de mapa desacoplado; se reemplaza por el oficial |
 
 Copie el archivo solo si necesita cambiar valores: `Copy-Item .env.example .env` (o `cp` en Linux/macOS). `.env` nunca se versiona.
 
@@ -110,6 +112,8 @@ npm run test          # Tests estructurales (node:test)
 npm run lint          # ESLint
 npm run format        # Prettier (escribe)
 npm run format:check  # Prettier (verifica)
+npm run release:check # Referencias, tamaños y hashes de medios publicados
+npm run release:build # Ensambla el paquete de entrega en release/
 ```
 
 ## Rutas
@@ -148,7 +152,19 @@ Evolución prevista sin rehacer el proyecto: `/mariposas/:slug` (detalle de espe
 - `robots.txt` y `sitemap.xml` dinámicos.
 - `noindex` automático en 404 y error.
 - JSON-LD `LocalBusiness` en `/visitanos` (datos solo de `business.js` + `config`), CSP explícita con nonce y `frame-src` para el embed de Google Maps.
-- Pendiente (Fase 2): imagen OG con el material real y esquema `Organization`.
+- OG/Twitter, canonical, sitemap y JSON-LD se construyen desde la configuración y los catálogos localizados.
+
+## Idioma, tema y movimiento
+
+- Español e inglés comparten la misma estructura de rutas y catálogos en `src/locales/`; la paridad de claves se valida en tests.
+- El tema se guarda en `localStorage` y actualiza `meta[name="theme-color"]` sin recarga.
+- El control global de movimiento respeta la preferencia del visitante y `prefers-reduced-motion`; los videos decorativos no se cargan ni reproducen cuando el movimiento está reducido.
+
+## Validación de release
+
+Antes de una entrega, ejecutar `npm test`, `npm run lint`, `npm run format:check`, `npm run release:check` y `npm run release:build`.
+
+`release:check` verifica que toda referencia publicada a `/media/` exista y genera `release/media-manifest.json` con hashes SHA-256. `release:build` copia únicamente el runtime, código, medios publicados y scripts necesarios a `release/jardin-de-mariposas/`. La carpeta `release/` es un artefacto local ignorado por Git.
 
 ## WhatsApp
 
@@ -158,7 +174,7 @@ Todo enlace se genera con `src/utils/whatsapp.js` (helper único, URL codificada
 
 - **Son masters locales y NO se versionan en Git** (ver `.gitignore`): los videos 4K suman ~95 MB y no deben entrar al historial.
 - **No se modifican, no se sobrescriben, no se convierten destructivamente.**
-- Para la web se generan **copias optimizadas** en `public/media/` con `npm run media` (escritorio 1920×1080, móvil 1080×1920, MP4 H.264 y WebM si es posible, `autoplay muted loop playsinline`, sin audio para fondos automáticos). Ver `GUIA-DE-USO.md`.
+- Para la web se publican copias optimizadas en `public/media/`; sus referencias, tamaño y hash se validan con `npm run release:check`. Ver `GUIA-DE-USO.md` y `MEDIA-CATALOG.md`.
 - Si más adelante se desea versionar los masters, se recomienda Git LFS y quitar las líneas `Fotos/` / `Videos/` del `.gitignore`.
 
 ## Evolución futura
@@ -166,15 +182,15 @@ Todo enlace se genera con `src/utils/whatsapp.js` (helper único, URL codificada
 - **MySQL** (vía `mysql2` + un pool en `src/config` o `src/services`): especies, artículos/guías, galería administrable, FAQ, configuración y panel administrativo. Los módulos `models/`, `repositories/`, `validators/` y `middleware/` de panel se crearán cuando haya uso real, evitando carpetas vacías.
 - **Dominio definitivo**: se compra y se fija en `SITE_URL` (reemplaza provisional `jardindemariposaslapaz.com`).
 - **Enlace oficial de Google Maps**: se define en `GOOGLE_MAPS_URL` (provisionalmente el Plus Code).
-- **Diseño completo** (Fase 2): paleta, tipografías, hero con video, galería, JSON-LD y optimización de medios.
+- La evolución futura se limita a contenido y capacidades confirmadas del negocio; no se deben publicar especies, precios, testimonios ni derechos de uso no verificados.
 
 ## Publicación en Hostinger
 
-1. Subir el proyecto (sin `node_modules/` ni `.env`) y ejecutar `npm install`.
-2. Crear `.env` con `NODE_ENV=production`, `PORT` y `SITE_URL=https://<dominio>`.
-3. Iniciar con `npm start` (o `pm2 start src/server.js`).
-4. Proxy inverso (Apache/nginx de Hostinger) hacia `http://localhost:<PORT>` + SSL/HTTPS.
-5. Los masters deben generarse optimizados en `public/media/` antes de subir (no subir los 4K).
+1. Ejecutar las validaciones de release y subir el contenido de `release/jardin-de-mariposas/`, sin `node_modules/` ni `.env`.
+2. Crear `.env` con `NODE_ENV=production`, `PORT` y `SITE_URL=https://<dominio>`; el arranque falla si `SITE_URL` no es HTTPS válido.
+3. Ejecutar `npm ci --omit=dev` y arrancar con `npm start` (o `pm2 start src/server.js`).
+4. Configurar proxy inverso HTTPS hacia `http://localhost:<PORT>`.
+5. Confirmar los pendientes de procedencia/derechos marcados en `MEDIA-CATALOG.md` antes de publicar los medios.
 
 ## Licencia
 
