@@ -1,0 +1,103 @@
+# ============================================================
+# Jardin de Mariposas La Paz — Apache configuration
+# Hostinger static hosting (no Node.js required)
+# ============================================================
+
+# --- Default index ---
+DirectoryIndex index.html
+
+# --- Custom 404 ---
+ErrorDocument 404 /404.html
+
+# --- HTTPS redirect (compatible with Hostinger proxy/CDN) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} ^jardindemariposaslapaz\.com$ [OR]
+  RewriteCond %{HTTP_HOST} ^www\.jardindemariposaslapaz\.com$
+  RewriteRule ^(.*)$ https://jardindemariposaslapaz.com/$1 [R=301,L]
+
+  # Clean URLs: serve /slug as /slug/index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [L]
+</IfModule>
+
+# --- Security headers ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-NqGEg9QVzmmbIg7o9rGHhOAXu3OI9dvETKxZkz7TCT4=' 'sha256-UIwQUyDO9X01JjDSwCE9dxFfAGI6LVo+mi8vhEr0NmU=' 'sha256-/JZXE5yFnfZmvomKgulf4vWWkq8RXNrQDhjJz4LLz90='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self' https://wa.me; frame-src 'self' https://www.google.com; frame-ancestors 'self'; base-uri 'self'; upgrade-insecure-requests"
+
+  # HSTS (only effective over HTTPS)
+  <IfModule mod_ssl.c>
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+  </IfModule>
+</IfModule>
+
+# --- Compression ---
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript application/json application/xml image/svg+xml text/plain
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/xml image/svg+xml text/plain
+</IfModule>
+
+# --- Cache strategy ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: no long-term cache
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS, JS, SVG: revalidate
+  ExpiresByType text/css "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 0 seconds"
+
+  # Media (images, video): 30 days
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType video/webm "access plus 30 days"
+</IfModule>
+
+# Revalidation for CSS/JS/favicon
+<FilesMatch "\.(css|js|svg)$">
+  <IfModule mod_headers.c>
+    Header always set Cache-Control "public, max-age=0, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+# Media: 30 days without immutable
+<FilesMatch "\.(mp4|webm|jpg|jpeg|webp|png)$">
+  <IfModule mod_headers.c>
+    Header always set Cache-Control "public, max-age=2592000"
+  </IfModule>
+</FilesMatch>
+
+# HTML: no-cache
+<FilesMatch "\.(html)$">
+  <IfModule mod_headers.c>
+    Header always set Cache-Control "no-cache"
+  </IfModule>
+</FilesMatch>
+
+# --- MIME types ---
+<IfModule mod_mime.c>
+  AddType text/html .html
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType application/xml .xml
+  AddType image/svg+xml .svg
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType image/webp .webp
+</IfModule>

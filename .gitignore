@@ -1,12 +1,19 @@
-# Dependencias
-node_modules/
+# La fuente publicada es site/; no ignorarla.
 
-# Entorno y secretos — .env nunca se versiona
+# Masters locales y material fuente fuera del paquete publicado.
+Fotos/
+Videos/
+
+# Entorno local, dependencias y artefactos de herramientas.
 .env
 .env.*
-!.env.example
-
-# Logs y archivos temporales
+node_modules/
+dist/
+release/
+coverage/
+build/
+.cache/
+.eslintcache
 *.log
 logs/
 npm-debug.log*
@@ -14,15 +21,7 @@ tmp/
 temp/
 .notes/
 
-# Builds y cachés
-coverage/
-dist/
-build/
-release/
-.cache/
-.eslintcache
-
-# Sistema y editores
+# Sistema y editores.
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -33,13 +32,6 @@ desktop.ini
 *.njsproj
 *.sln
 
-# Assets fuente (masters locales): NO se versionan.
-# Fotos/ y Videos/ son los originales en alta resolución (los videos 4K suman ~95 MB).
-# Para publicar el sitio se generan copias optimizadas en public/media/.
-Fotos/
-Videos/
-
-# Medios servidos por la web: copias optimizadas generadas a partir de los masters.
-# El directorio se conserva con .gitkeep para mantener la ruta en el repo.
-public/media/*
-!public/media/.gitkeep
+# Configuración local de Codex/agentes.
+.agents/
+.codex/
