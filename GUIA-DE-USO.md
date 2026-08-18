@@ -1,82 +1,96 @@
 # Guía de uso del material — Jardín de Mariposas
 
-Los archivos fueron renombrados con nombres descriptivos, en minúsculas y separados por guiones para que sean más fáciles de mantener y usar en una web.
+Clasificación completa (stock / real / pendiente / HOLD), dimensiones y licencias:
+`MEDIA-CATALOG.md`. Mapeo de nombres masters -> derivados: `MAPEO-NOMBRES-ORIGINALES.txt`.
+
+## Pipeline de medios
+
+- Generar derivados: `npm run media` (Sharp para fotos; FFmpeg para videos y posters).
+- Los masters (`Fotos/`, `Videos/`) nunca se tocan; los derivados van a `public/media/`.
+- Binarios: se usa `ffmpeg-static` y `@derhuerst/ffprobe-static` (devDependencies),
+  con override vía `FFMPEG_BIN` / `FFPROBE_BIN` o el binario del PATH.
+- Formato web: imágenes WebP (+ JPEG fallback) a 640/1280/1920 px sin upscaling
+  (las fuentes menores a 640 px generan un derivado a 480w + el ancho natural);
+  videos MP4 H.264 (yuv420p, faststart, sin audio) y WebM VP9 solo cuando es menor
+  que el MP4; posters extraídos de un frame real de cada video.
+- Los videos del hero se sirven como `autoplay muted loop playsinline`; por eso se
+  elimina el audio en todos los derivados.
+
+> Para producción (Hostinger) se genera `public/media/` ANTES del deployment.
+> No se sirven masters desde `public/` ni videos 4K.
 
 ## Prioridad recomendada
 
 ### HERO PRINCIPAL
-**Video:** `mariposa-flor-amarilla-hero-4k.mp4`
-- Mejor candidato para el hero de escritorio.
-- Es horizontal 16:9, 4K y tiene fondo suave.
-- La mariposa y la flor transmiten inmediatamente la temática del sitio.
-- Conviene comprimir una copia a 1080p/WebM antes de producción.
+**Video (desktop):** `mariposa-flor-amarilla-hero-1080p.mp4` (WebM: `.webm`)
+- Horizontal 16:9, 4K original, fondo suave, mariposa sobre flor amarilla.
+- Poster: `mariposa-flor-amarilla-hero.jpg` (frame real del video).
 
-**Imagen de respaldo / portada:** `mariposa-azul-hoja-tropical.jpg`
-- Es la fotografía más impactante del grupo.
-- El azul crea un punto focal fuerte sobre el verde tropical.
-- Útil como fallback del video, portada móvil, Open Graph o sección destacada.
+**Hero móvil:** `mariposas-entre-hojas-vertical-1080.mp4` (WebM: `.webm`)
+- Vertical 9:16, ideal para sustituir el horizontal en pantallas móviles.
+- Poster: `mariposas-entre-hojas-vertical.jpg`.
 
-**Hero móvil:** `mariposas-entre-hojas-vertical-4k.mp4`
-- Formato vertical 9:16.
-- Ideal para sustituir el video horizontal en pantallas móviles.
-- No conviene usarlo como hero de escritorio porque obligaría a recortar demasiado.
+**Imagen de respaldo / portada (fallback, OG):** `mariposa-azul-hoja-tropical`
+- La más impactante del grupo; azul intenso sobre verde tropical.
 
 ## SECCIÓN “NUESTRAS MARIPOSAS” / ESPECIES DESTACADAS
-- `mariposa-negra-amarilla-flor-roja.jpg`
-  - Perfil claro de una mariposa sobre una flor roja.
-  - Excelente para tarjeta de especie o bloque destacado.
+- `mariposa-negra-amarilla-flor-roja` — perfil claro sobre flor roja; tarjeta de especie.
+- `mariposa-azul-pequena-flor-violeta` — macro limpio; variedad de tamaño y color.
+- `mariposa-azul-hoja-tropical` — protagonista visual; puede repetirse con otro recorte.
 
-- `mariposa-azul-pequena-flor-violeta.jpg`
-  - Macro limpio y fondo suave.
-  - Añade variedad de tamaño y color sin repetir el aspecto de la mariposa azul grande.
-
-- `mariposa-azul-hoja-tropical.jpg`
-  - También puede reutilizarse como la especie visualmente protagonista.
-
-> Antes de mostrar nombres científicos o nombres de especie, conviene confirmar la identificación de cada mariposa. Los nombres de archivo se dejaron descriptivos para no afirmar una especie incorrecta.
+> Antes de mostrar nombres científicos o de especie, confirmar la identificación.
+> Los nombres de archivo son descriptivos y no afirman especies.
 
 ## SECCIÓN “LA EXPERIENCIA” / “VIVE EL MARIPOSARIO”
-**Video:** `mariposa-flores-tropicales-detalle.mp4`
-- Plano cercano, vegetación y flores.
-- Funciona mejor dentro de la página que como hero porque visualmente es más cargado.
-- Puede acompañar texto sobre observar mariposas de cerca.
-
-**Imagen:** `mariposa-cola-larga-volando-flores.jpg`
-- Captura comportamiento y movimiento.
-- Muy buena para comunicar que el visitante verá mariposas libres entre flores.
+- **Video:** `mariposa-flores-tropicales-1080p.mp4` (solo MP4; el WebM no reducía).
+  Plano cercano de vegetación y flores; funciona dentro de la página, no como hero.
+  Poster: `mariposa-flores-tropicales-detalle.jpg`.
+- **Imagen:** `mariposa-cola-larga-volando-flores` — comportamiento y movimiento.
 
 ## SECCIÓN NATURALEZA / FLORA / POLINIZACIÓN
-- `mariposa-sobre-flor-amarilla.jpg`
-  - La relación mariposa-flor es muy clara.
-  - Buena para una sección sobre plantas, alimentación, hábitat o conservación.
+- `mariposa-sobre-flor-amarilla` — relación mariposa-flor muy clara; bloque con texto.
 
 ## GALERÍA
-- `grupo-mariposas-naranjas-en-planta.jpg`
-  - Vertical y con varias mariposas; aporta variedad a una galería tipo masonry.
+- `grupo-mariposas-naranjas-en-planta` — vertical, varias mariposas; masonry.
+- `mariposas-naranjas-fondo-natural` — vertical oscuro; rompe la galería clara.
+- `mariposas-naranjas-en-vuelo` — artística, con movimiento; pieza decorativa.
 
-- `mariposas-naranjas-fondo-natural.jpg`
-  - Vertical, oscuro y elegante; útil para romper una galería llena de imágenes claras.
+## AUTENTICIDAD DEL LUGAR (Visítanos / contacto)
+- `mariposario-bajo-la-paz-01` y `mariposario-bajo-la-paz-02` — fotos REALES del
+  negocio (Facebook): interior con sendero y vegetación; estructura con crisálidas.
+  Idóneas donde importe mostrar el lugar de verdad.
 
-- `mariposas-naranjas-en-vuelo.jpg`
-  - Imagen artística con movimiento.
-  - Mejor como pieza visual/decorativa que como fotografía de identificación de especies.
+## FOTOGRAFÍAS APROBADAS PARA USO WEB (autorizadas por el usuario)
+Procedencia no documentada (por eso no se clasifican como REAL); las personas que
+aparecen son adultas. Alt texts en las vistas correspondientes.
 
-## Orden visual sugerido en la landing
+- `guia-mariposario-mariposa` — Home (sección experiencia guiada).
+- `guia-grupo-adultos` — /experiencia (galería inmersiva).
+- `visitantes-dentro-mariposario` — /experiencia (galería inmersiva) y /galería.
+- `guia-acompanando-visitante` — /nuestro-mariposario (acompañada) y /galería.
+- `mariposa-oscura-puntos-azules` — /mariposas (galería) y /galería.
+- `mariposa-naranja-flores` — Home (placa compacta, máx. 480px). Fuente 528w:
+  solo derivados 480w + ancho natural. NO en full-bleed / hero / espacios grandes.
 
-1. Hero — video de mariposa sobre flor amarilla.
-2. Introducción — texto + mariposa azul sobre hoja tropical.
-3. Nuestras mariposas — fotografías negra/amarilla, azul pequeña y azul grande.
-4. La experiencia — video de mariposa entre flores + mariposa volando.
-5. Naturaleza / conservación — mariposa sobre flor amarilla.
-6. Galería — fotografías verticales y fotografía de vuelo.
-7. Ubicación / contacto — aquí conviene usar una foto REAL del propio mariposario o de su entrada, no una foto de stock.
+> Evitar repetir una misma fotografía más de 2 veces en el sitio. El pie/caption de
+> las fotos con personas no inventa nombres ni los asocia a personas reales.
 
-## Nota importante para producción
-No cargues directamente los videos 4K tal como están en la web final. Conserva estos originales como fuente y crea versiones optimizadas:
-- escritorio: 1920×1080
-- móvil: 1080×1920
-- MP4 H.264 y, si es posible, WebM
-- sin audio si serán fondos automáticos
-- `autoplay muted loop playsinline`
+## Videos de apoyo (STOCK, contenido pendiente de confirmar)
+- `pexels-13619427-1080p` (horizontal) y `pexels-15160751-1080` (vertical):
+  ambiente/flora o fondos de sección. Confirmar contenido visual antes de
+  acompañarlos de textos sobre "nuestro mariposario".
 
-Esto reducirá mucho el tiempo de carga.
+## Reglas
+- Las fotos STOCK no deben acompañarse de textos como "en nuestro jardín" o
+  "así se ven en nuestro mariposario". Los videos actuales son STOCK: no deben
+  presentarse como grabados en el mariposario.
+- `482005509_*.jpg` está en HOLD (menores/personas): no integrar a la web.
+- Las 6 fotografías `505011602_*.jpg`, `505835868_*.jpg`, `506940932_*.jpg`,
+  `506941578_*.jpg`, `507088230_*.jpg` y `508109705_*.jpg` están APROBADAS PARA
+  USO WEB (autorizadas por el usuario), con derivados generados. Su procedencia
+  sigue sin documentar: no afirmar autor ni propiedad, no tratarlas como REAL.
+- `480999978_*.jpg` está PENDIENTE: no integrar hasta confirmar procedencia.
+- Las imágenes menores a 640 px (p. ej. `505835868_*.jpg`, 528w) generan solo
+  derivados a 480w + ancho natural: nunca se agrandan ni se declaran mayores, y
+  no se usan en espacios grandes (full-bleed, hero).
+- No cargar los masters 4K en la web: usar siempre los derivados de `public/media/`.

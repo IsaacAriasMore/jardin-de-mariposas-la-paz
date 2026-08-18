@@ -1,0 +1,1003 @@
+/* ==========================================================================
+   Internal pages — Jardín de Mariposas La Paz
+   Each page has its own composition. No repeating patterns.
+   ========================================================================== */
+
+/* --- Page header (shared base, per-page customization) ---------------- */
+.page-header {
+  padding: var(--space-7) 0 var(--space-5);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.page-header--dark {
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
+  border-bottom: none;
+}
+
+.page-header--dark h1 {
+  color: var(--color-ink-on-dark);
+}
+
+.page-header__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-1);
+}
+
+.page-header--dark .page-header__label {
+  color: oklch(0.65 0.08 55);
+}
+
+.page-header__title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
+}
+
+.page-header__lead {
+  color: var(--color-ink-secondary);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  max-width: 55ch;
+}
+
+.page-header--dark .page-header__lead {
+  color: var(--color-ink-on-dark-muted);
+}
+
+/* --- Content prose (editorial text blocks) ---------------------------- */
+.prose {
+  max-width: 65ch;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-ink-secondary);
+}
+
+.prose p + p {
+  margin-top: var(--space-2);
+}
+
+.prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+/* --- Legal pages: deliberately quiet, long-form editorial reading ------- */
+.legal-page {
+  padding-block: var(--space-6) var(--space-7);
+}
+
+.legal-page__intro {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.legal-page__section {
+  padding-top: var(--space-5);
+}
+
+.legal-page__section h2,
+.legal-page__contact h2 {
+  margin-bottom: var(--space-2);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.legal-page .prose ul {
+  margin: var(--space-2) 0 0;
+  padding-left: 1.2rem;
+}
+
+.legal-page .prose li + li {
+  margin-top: 0.45rem;
+}
+
+.legal-page__contact {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+}
+
+.legal-page__contact ul {
+  margin: 0 0 var(--space-2);
+  padding-left: 1.2rem;
+}
+
+.legal-page__contact p + p,
+.legal-page__contact address {
+  margin-top: var(--space-2);
+}
+
+.legal-page__updated {
+  margin-top: var(--space-4);
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+}
+
+/* --- Nuestro Mariposario: editorial documentary ---------------------- */
+.nuestro-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.nuestro-layout__image {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.nuestro-layout__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nuestro-layout__text {
+  max-width: 50ch;
+  padding-top: var(--space-3);
+}
+
+.entorno-mosaic {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--space-1);
+  height: clamp(32.5rem, 42vw, 36rem);
+}
+
+.entorno-mosaic__item {
+  margin: 0;
+  min-height: 0;
+  height: 100%;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.entorno-mosaic__item:first-child {
+  grid-row: 1 / 3;
+}
+
+.entorno-mosaic__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Nuestro Mariposario: acompañada (2 cols, foto humana) ------------ */
+.acompanada__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.acompanada__media {
+  margin: 0;
+}
+
+.acompanada__media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.acompanada__text {
+  max-width: 52ch;
+}
+
+/* --- Mariposas: ensayo fotográfico editorial --------------------------
+   Apertura asimétrica, banda full-bleed, mosaico asimétrico, nota oscura
+   y outro con CTA. No repite patrones de la home. --------------------- */
+.mariposas-apertura {
+  padding: var(--space-7) 0;
+  background: var(--color-bg);
+}
+
+.mariposas-apertura__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.mariposas-apertura__text {
+  max-width: 46ch;
+}
+
+.mariposas-apertura__body {
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.mariposas-apertura__media {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-sm);
+}
+
+/* Banda full-bleed: imagen horizontal protagonista */
+.mariposas-banda {
+  padding: var(--space-5) 0;
+  background: var(--color-surface);
+}
+
+.mariposas-banda__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.mariposas-banda__media {
+  margin: 0;
+}
+
+.mariposas-banda__media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.mariposas-banda__copy {
+  max-width: 32ch;
+}
+
+.mariposas-banda__copy h2 {
+  margin-bottom: var(--space-2);
+}
+
+.mariposas-banda__copy p {
+  margin: 0;
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .mariposas-banda {
+    padding: var(--space-4) 0;
+  }
+
+  .mariposas-banda__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .mariposas-banda__copy {
+    max-width: 52ch;
+  }
+}
+
+/* Galería asimétrica: dos dominantes + espacio negativo */
+.mariposas-galeria {
+  background: var(--color-bg);
+}
+
+.mariposas-galeria__header {
+  margin-bottom: var(--space-4);
+}
+
+.mariposas-galeria__subtitle {
+  color: var(--color-ink-muted);
+  font-size: 1.05rem;
+  max-width: 50ch;
+}
+
+.mariposas-galeria__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 80px;
+  grid-auto-flow: dense;
+  gap: var(--space-1);
+}
+
+.mariposas-galeria__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.mariposas-galeria__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mariposas-galeria__item:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* Posiciones del mosaico: dominante alta a la izquierda, banda ancha
+   abajo a la izquierda; derecha apilada (ritmo espejo). */
+.mariposas-galeria__item:nth-child(1) {
+  grid-column: 1 / 6;
+  grid-row: 1 / 8;
+}
+.mariposas-galeria__item:nth-child(2) {
+  grid-column: 6 / 13;
+  grid-row: 1 / 5;
+}
+.mariposas-galeria__item:nth-child(3) {
+  grid-column: 6 / 13;
+  grid-row: 5 / 12;
+}
+.mariposas-galeria__item:nth-child(4) {
+  grid-column: 1 / 6;
+  grid-row: 8 / 12;
+}
+
+/* Outro: observar + CTA */
+.mariposas-outro {
+  background: var(--color-surface);
+}
+
+.mariposas-outro__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.mariposas-outro__image {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Experiencia: visita guiada (primera sección) -----------------------
+   Bloque de conversión: intro editorial + públicos en dos grupos
+   (educativas / visitantes) + idiomas + CTA WhatsApp. ------------------ */
+.exp-guiada {
+  padding: var(--space-6) 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.exp-guiada__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.exp-guiada__intro {
+  max-width: 50ch;
+}
+
+.exp-guiada__publics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.exp-guiada__group h3 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  margin-bottom: var(--space-1);
+}
+
+.exp-guiada__group-text {
+  margin: 0;
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.exp-guiada__cta {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.exp-guiada__note {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.95rem;
+  max-width: 44ch;
+}
+
+/* --- Experiencia: aprendizaje (ciclo de vida, propuesta educativa) ------
+   Bloque en claro con jerarquía: texto + chips de las etapas. Refuerza la
+   propuesta de valor "aprender durante el recorrido". -------------------- */
+.experiencia-aprende {
+  padding: var(--space-6) 0;
+}
+
+.experiencia-aprende__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.experiencia-aprende__text {
+  max-width: 50ch;
+}
+
+.experiencia-aprende__etapas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.experiencia-aprende__chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.experiencia-aprende__chip::before {
+  content: '';
+  flex: none;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experiencia-aprende__chip:hover {
+    color: var(--color-primary);
+  }
+}
+
+/* --- Experiencia: immersive with video --------------------------------
+   Composición cinematográfica oscura: video protagonista, texto breve y
+   galería de apoyo. Ritmo distinto al de Mariposas (abre en oscuro). --- */
+.experiencia-immersive {
+  padding: var(--space-6) 0;
+}
+
+.experiencia-immersive h2 {
+  color: var(--color-ink-on-dark);
+}
+
+.experiencia-immersive .prose {
+  color: var(--color-ink-on-dark-muted);
+}
+
+.experiencia-immersive .prose strong {
+  color: var(--color-ink-on-dark);
+}
+
+.experiencia-immersive__hero {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-1);
+}
+
+.experiencia-immersive__hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.experiencia-immersive__hero-caption {
+  margin: 0 0 var(--space-4);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink-on-dark-muted);
+}
+
+.experiencia-immersive__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.experiencia-immersive__text {
+  max-width: 50ch;
+}
+
+.experiencia-immersive__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.experiencia-immersive__gallery-item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.experiencia-immersive__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experiencia-immersive__gallery-item:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* --- Experiencia: banda contemplativa (pausa en claro) ---------------- */
+.experiencia-pausa {
+  padding: var(--space-7) 0;
+  background: var(--color-surface);
+}
+
+.experiencia-pausa__media {
+  margin: 0;
+}
+
+.experiencia-pausa__media img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+/* --- Experiencia: CTA final ------------------------------------------- */
+.experiencia-cta {
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
+  text-align: center;
+}
+
+.experiencia-cta h2 {
+  color: var(--color-ink-on-dark);
+}
+
+.experiencia-cta__body {
+  color: var(--color-ink-on-dark-muted);
+  max-width: 46ch;
+  margin: 0 auto var(--space-3);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.experiencia-cta .section-actions {
+  justify-content: center;
+}
+
+/* --- Conservación: contemplative, large imagery ----------------------- */
+.conservacion-contemplative {
+  padding: var(--space-6) 0;
+}
+
+.conservacion-contemplative__hero-image {
+  width: 100%;
+  aspect-ratio: 21 / 8;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin: 0 0 var(--space-5);
+}
+
+.conservacion-contemplative__hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.conservacion-contemplative__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+/* --- Galería: full masonry -------------------------------------------- */
+.galeria-full {
+  padding: var(--space-6) 0;
+}
+
+.galeria-full__masonry {
+  columns: 3;
+  column-gap: var(--space-2);
+}
+
+.galeria-full__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-2);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.galeria-full__item img {
+  width: 100%;
+  display: block;
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .galeria-full__item:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* --- Visítanos: conversión local ---------------------------------------
+   Más directa y escaneable que el resto del sitio: fotografía REAL del
+   lugar, información práctica en columnas y contacto/CTA en oscuro. ------ */
+.visitanos-location {
+  padding: var(--space-6) 0 var(--space-5);
+  background: var(--color-bg);
+}
+
+.visitanos-location__layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.visitanos-location__media {
+  margin: 0;
+}
+
+.visitanos-location__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.visitanos-location__copy {
+  max-width: 46ch;
+  padding-top: var(--space-2);
+}
+
+.visitanos-location__note {
+  color: var(--color-ink-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  max-width: 40ch;
+}
+
+.visitanos-address {
+  font-style: normal;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+/* Mapa de ubicación: iframe responsivo sin estilos inline. El wrapper fija
+   la proporción (aspect-ratio) y recorta el borde para el radio discreto;
+   el iframe ocupa el 100% del wrapper sin deformarse. */
+.visitanos-map {
+  margin-top: var(--space-6);
+}
+
+.visitanos-map__frame {
+  height: clamp(31.25rem, 44vw, 36rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+  box-shadow: var(--shadow-lg);
+}
+
+.visitanos-map__frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.visitanos-map__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.visitanos-map__meta span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.visitanos-map__meta strong {
+  color: var(--color-ink);
+  font-size: 1rem;
+}
+
+.visitanos-map__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Información práctica: horario + cómo llegar */
+.visitanos-practico {
+  padding: var(--space-5) 0 var(--space-6);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.visitanos-practico__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.visitanos-hours {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.visitanos-hours__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+  align-items: baseline;
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.visitanos-hours__row:last-child {
+  border-bottom: 0;
+}
+
+.visitanos-hours dt {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-ink);
+}
+
+.visitanos-hours dd {
+  margin: 0;
+  text-align: right;
+  color: var(--color-ink-secondary);
+}
+
+.visitanos-price {
+  margin-top: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: 0.95rem;
+}
+
+.visitanos-reference {
+  color: var(--color-ink-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 36ch;
+}
+
+.visitanos-plus-code {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+/* Contacto + CTA en oscuro */
+.visitanos-cta {
+  padding: var(--space-6) 0;
+  background: var(--color-surface-dark);
+  color: var(--color-ink-on-dark);
+}
+
+.visitanos-cta h2 {
+  color: var(--color-ink-on-dark);
+}
+
+.visitanos-cta .prose {
+  color: var(--color-ink-on-dark-muted);
+}
+
+.visitanos-cta__layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.visitanos-contact-list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.visitanos-contact-list a {
+  color: var(--color-ink-on-dark-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .visitanos-contact-list a:hover {
+    color: var(--color-ink-on-dark);
+  }
+}
+
+.visitanos-cta__actions {
+  display: grid;
+  gap: var(--space-2);
+  min-width: min(360px, 100%);
+}
+
+/* --- Responsive ------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .entorno-mosaic__item:first-child {
+    grid-column: auto;
+    grid-row: 1 / 3;
+  }
+
+  .mariposas-galeria__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .mariposas-galeria__item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .mariposas-galeria__item:nth-child(2),
+  .mariposas-galeria__item:nth-child(4) {
+    aspect-ratio: 16 / 10;
+  }
+
+  .mariposas-galeria__item:nth-child(4) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .nuestro-layout,
+  .exp-guiada__grid,
+  .experiencia-immersive__content,
+  .experiencia-aprende__layout,
+  .acompanada__layout,
+  .mariposas-apertura__layout,
+  .mariposas-outro__layout,
+  .conservacion-contemplative__columns,
+  .visitanos-location__layout,
+  .visitanos-practico__layout,
+  .visitanos-cta__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .nuestro-layout__image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .acompanada__media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .visitanos-location__media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .entorno-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .entorno-mosaic__item:first-child {
+    grid-row: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .entorno-mosaic__item:not(:first-child) {
+    aspect-ratio: 16 / 10;
+  }
+
+  .visitanos-map__frame {
+    height: clamp(22.5rem, 95vw, 27.5rem);
+  }
+
+  .visitanos-cta__actions .btn {
+    justify-content: center;
+  }
+
+  .experiencia-immersive__hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  .experiencia-immersive__gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .experiencia-pausa__media img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .galeria-full__masonry {
+    columns: 2;
+  }
+
+  .mariposas-galeria__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mariposas-galeria__item:nth-child(n) {
+    grid-column: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .mariposas-galeria__item:nth-child(2),
+  .mariposas-galeria__item:nth-child(4) {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 480px) {
+  .visitanos-map__actions {
+    flex-direction: column;
+  }
+
+  .visitanos-map__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .galeria-full__masonry {
+    columns: 1;
+  }
+
+  .exp-guiada__publics {
+    grid-template-columns: 1fr;
+  }
+
+  .experiencia-immersive__gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .visitanos-cta__actions .btn {
+    width: 100%;
+  }
+
+  .visitanos-hours__row {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .visitanos-hours dd {
+    text-align: left;
+  }
+}

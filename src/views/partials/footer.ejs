@@ -1,52 +1,12 @@
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer__grid">
-      <section class="site-footer__col">
-        <h2 class="site-footer__title"><%= site.name %></h2>
-        <p><%= site.location.address %></p>
-        <p><%= site.location.reference %></p>
-        <p class="site-footer__plus-code"><%= site.location.plusCode %></p>
-        <p>
-          <a class="site-footer__link" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener"
-            >Cómo llegar en Google Maps</a
-          >
-        </p>
-      </section>
-
-      <section class="site-footer__col">
-        <h2 class="site-footer__title">Horario</h2>
-        <ul class="site-footer__list">
-          <% site.hours.forEach(function (slot) { %>
-            <li><span><%= slot.days %>:</span> <%= slot.time %></li>
-          <% }) %>
-        </ul>
-        <p class="site-footer__note">Entrada: <%= site.priceNote %>.</p>
-      </section>
-
-      <section class="site-footer__col">
-        <h2 class="site-footer__title">Contacto</h2>
-        <ul class="site-footer__list">
-          <li>
-            <a class="site-footer__link" href="<%= whatsapp.primary %>" target="_blank" rel="noopener"
-              >WhatsApp · <%= site.phones.primary %></a
-            >
-          </li>
-          <li>
-            <a class="site-footer__link" href="<%= whatsapp.primaryHref %>"><%= site.phones.primary %></a>
-          </li>
-          <li>
-            <a class="site-footer__link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a>
-          </li>
-          <li>
-            <a class="site-footer__link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener"
-              >Facebook</a
-            >
-          </li>
-        </ul>
-      </section>
+      <section><h2 class="site-footer__title"><%= site.name %></h2><p class="site-footer__text"><%= site.location.address %></p><p class="site-footer__maps-wrapper"><a class="site-footer__link" href="<%= config.googleMapsUrl %>" target="_blank" rel="noopener"><%= t('footer.maps') %></a></p></section>
+      <section><h2 class="site-footer__title"><%= t('labels.hours') %></h2><ul class="site-footer__list"><% localizedHours.forEach(function (slot) { %><li class="site-footer__text"><strong><%= slot.days %>:</strong> <%= slot.time %></li><% }) %></ul><p class="site-footer__note"><%= t('footer.admission', { value: t('business.priceNote') }) %></p></section>
+      <section><h2 class="site-footer__title"><%= t('labels.explore') %></h2><ul class="site-footer__list"><% footerNavigation.forEach(function (item) { %><li><a class="site-footer__link<%= item.page === 'environment' ? ' site-footer__link--secondary' : '' %>" href="<%= item.href %>"><%= item.label %></a></li><% }) %></ul></section>
+      <section><h2 class="site-footer__title"><%= t('labels.contact') %></h2><ul class="site-footer__list"><li><a class="site-footer__link site-footer__whatsapp btn btn--whatsapp" href="<%= whatsapp.primary %>" target="_blank" rel="noopener">WhatsApp</a></li><li><a class="site-footer__link" href="<%= whatsapp.secondaryHref %>"><%= site.phones.secondary %></a></li><li><a class="site-footer__link" href="<%= site.facebookUrl %>" target="_blank" rel="noopener"><%= t('footer.facebook') %></a></li></ul></section>
+      <section><h2 class="site-footer__title"><%= t('legal.footerTitle') %></h2><ul class="site-footer__list"><% legalNavigation.forEach(function (item) { %><li><a class="site-footer__link" href="<%= item.href %>"><%= item.label %></a></li><% }) %></ul></section>
     </div>
-    <p class="site-footer__copy">
-      © <%= new Date().getFullYear() %> <%= site.name %> · <%= site.location.address %>
-    </p>
+    <p class="site-footer__copy">&copy; <%= t('footer.copyright', { year: new Date().getFullYear(), address: site.location.address }) %></p>
   </div>
 </footer>

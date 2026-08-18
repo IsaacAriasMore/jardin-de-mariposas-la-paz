@@ -1,13 +1,150 @@
-ARCHIVO ORIGINAL -> NOMBRE NUEVO
+MAPEO DE NOMBRES — MASTERS -> DERIVADOS WEB
+===========================================
+Jardín de Mariposas La Paz
 
-pexels-alexandru-cojanu-828538450-19628702.jpg -> mariposa-sobre-flor-amarilla.jpg
-pexels-alialcantara-11145346.jpg -> grupo-mariposas-naranjas-en-planta.jpg
-ian-parker-UnoXP7nxwiI-unsplash.jpg -> mariposas-naranjas-en-vuelo.jpg
-david-clode-Oq9JrJb6K7M-unsplash.jpg -> mariposa-negra-amarilla-flor-roja.jpg
-pexels-erik-karits-2093459-33108142.jpg -> mariposa-azul-pequena-flor-violeta.jpg
-damon-on-road-jJXN1q7ERks-unsplash.jpg -> mariposa-azul-hoja-tropical.jpg
-pexels-erik-karits-2093459-28952595.jpg -> mariposa-cola-larga-volando-flores.jpg
-pexels-ahmetmert-38387671.jpg -> mariposas-naranjas-fondo-natural.jpg
-14671265_3840_2160_24fps.mp4 -> mariposa-flor-amarilla-hero-4k.mp4
-2616619-hd_1920_1080_30fps.mp4 -> mariposa-flores-tropicales-detalle.mp4
-17735534-uhd_2160_3840_60fps.mp4 -> mariposas-entre-hojas-vertical-4k.mp4
+Los masters conservan SIEMPRE su nombre original (Fotos/ y Videos/ no se tocan).
+Los derivados web se generan con `npm run media` en public/media/ (img/, videos/,
+posters/) con nombres descriptivos en minúsculas y guiones, sin tildes.
+
+Formato:  master | prefijo del derivado | procedencia / nota
+Inventario completo (dimensiones, tamaños, uso, licencias): MEDIA-CATALOG.md
+
+
+FOTOGRAFÍAS (Fotos/)
+====================
+
+MATERIAL DE TERCEROS — STOCK (Pexels / Unsplash)
+  - Archivos ya renombrados antes de esta fase (origen documentado en su
+    nombre original; la URL y licencia exacta están PENDIENTE DE VERIFICAR):
+
+  mariposa-azul-hoja-tropical.jpg
+    -> mariposa-azul-hoja-tropical-{640,1280,1920}.{webp,jpg}
+    Origen: damon-on-road-jJXN1q7ERks-unsplash.jpg (Unsplash)
+
+  mariposa-azul-pequena-flor-violeta.jpg
+    -> mariposa-azul-pequena-flor-violeta-{640,1280,1920}.{webp,jpg}
+    Origen: pexels-erik-karits-2093459-33108142.jpg (Pexels)
+
+  mariposa-cola-larga-volando-flores.jpg
+    -> mariposa-cola-larga-volando-flores-{640,1280,1920}.{webp,jpg}
+    Origen: pexels-erik-karits-2093459-28952595.jpg (Pexels)
+
+  mariposa-negra-amarilla-flor-roja.jpg
+    -> mariposa-negra-amarilla-flor-roja-{640,1280,1920}.{webp,jpg}
+    Origen: david-clode-Oq9JrJb6K7M-unsplash.jpg (Unsplash)
+
+  mariposa-sobre-flor-amarilla.jpg
+    -> mariposa-sobre-flor-amarilla-{640,1280,1920}.{webp,jpg}
+    Origen: pexels-alexandru-cojanu-828538450-19628702.jpg (Pexels)
+
+  grupo-mariposas-naranjas-en-planta.jpg
+    -> grupo-mariposas-naranjas-en-planta-{640,1280,1920}.{webp,jpg}
+    Origen: pexels-alialcantara-11145346.jpg (Pexels)
+
+  mariposas-naranjas-fondo-natural.jpg
+    -> mariposas-naranjas-fondo-natural-{640,1280,1920}.{webp,jpg}
+    Origen: pexels-ahmetmert-38387671.jpg (Pexels)
+
+  mariposas-naranjas-en-vuelo.jpg
+    -> mariposas-naranjas-en-vuelo-{640,1280,1920}.{webp,jpg}
+    Origen: ian-parker-UnoXP7nxwiI-unsplash.jpg (Unsplash)
+
+  - Archivos nuevos sin renombrar (se conserva el nombre original como
+    derivado; renombrar a descriptivo queda PENDIENTE hasta confirmar
+    el contenido visual):
+
+  pexels-abdullah-elgumus-917947069-38000621.jpg
+    -> pexels-abdullah-elgumus-917947069-38000621-{640,1280,1920}.{webp,jpg}
+    Origen: Pexels, autor abdullah elgumus, ID 917947069. Licencia PENDIENTE.
+
+  pexels-joerg-hartmann-626385254-38778510.jpg
+    -> pexels-joerg-hartmann-626385254-38778510-{640,1280,1920}.{webp,jpg}
+    Origen: Pexels, autor joerg hartmann, ID 626385254. Licencia PENDIENTE.
+
+MATERIAL REAL DEL NEGOCIO — APROBADO (Facebook, procedencia confirmada)
+  118407196_1677795549050644_2796371698994772266_n.jpg
+    -> mariposario-bajo-la-paz-01-{640,1280,1536}.{webp,jpg}
+    Procedencia: cuenta de Facebook del negocio. Interior con sendero y vegetación.
+
+  119239978_1695778757252323_8903119856060690491_n.jpg
+    -> mariposario-bajo-la-paz-02-{640,1280,1920}.{webp,jpg}
+    Procedencia: cuenta de Facebook del negocio. Estructura con crisálidas.
+
+APROBADO PARA USO WEB — CON DERIVADOS
+(autorizado por el usuario para integrar al sitio; procedencia no documentada,
+por eso NO se clasifican como REAL. Las personas presentes son adultas.)
+
+  505011602_3077208649109320_5051752296908815880_n.jpg
+    -> mariposa-oscura-puntos-azules-{640,960}.{webp,jpg}
+    Mariposa oscura con puntos azules. Uso: /mariposas, /galería.
+
+  505835868_3080390048791180_3877059931757099776_n.jpg
+    -> mariposa-naranja-flores-{480,528}.{webp,jpg}
+    Mariposa naranja entre flores. Fuente 528w: solo 480w + ancho natural,
+    nunca se agranda. Uso: Home, placa compacta (máx. 480px). NO en
+    full-bleed / hero / espacios grandes.
+
+  506940932_3086830528147132_1929793400418905484_n.jpg
+    -> guia-mariposario-mariposa-{640,960}.{webp,jpg}
+    Hombre (guía) mostrando una mariposa. Uso: Home (experiencia guiada).
+
+  506941578_3086830491480469_5740770662770968235_n.jpg
+    -> guia-acompanando-visitante-{640,960}.{webp,jpg}
+    Hombre acompañando a un visitante adulto. Uso: /nuestro-mariposario, /galería.
+
+  507088230_3086830348147150_333135784783391839_n.jpg
+    -> guia-grupo-adultos-{640,960}.{webp,jpg}
+    Hombre explicando a un grupo de adultos. Uso: /experiencia (galería inmersiva).
+
+  508109705_3086830558147129_5168074877511046835_n.jpg
+    -> visitantes-dentro-mariposario-{640,960}.{webp,jpg}
+    Visitantes adultos observando mariposas. Uso: /experiencia (galería inmersiva),
+    /galería.
+
+HOLD — SIN DERIVADOS (no integrar a la web)
+  482005509_657913423419130_6761994400711140598_n (1).jpg
+    Contiene menores/personas. No generar uso público, no agregar a Home ni a
+    Galería, no subir derivado. Confirmar autorización de publicación.
+
+PENDIENTE DE CONFIRMACIÓN — SIN DERIVADOS
+  480999978_653004007243405_7237932086854309152_n.jpg
+    Origen sin confirmar (no clasificada como real). No integrar hasta verificar.
+
+
+VIDEOS (Videos/)
+================
+
+  mariposa-flor-amarilla-hero-4k.mp4
+    -> mariposa-flor-amarilla-hero-1080p.{mp4,webm}
+    -> posters: mariposa-flor-amarilla-hero.{jpg,webp}
+    Origen: 14671265_3840_2160_24fps.mp4 (Pexels). 3840x2160, 19s, sin audio.
+
+  mariposa-flores-tropicales-detalle.mp4
+    -> mariposa-flores-tropicales-1080p.mp4  (webm omitido: no reducía)
+    -> posters: mariposa-flores-tropicales-detalle.{jpg,webp}
+    Origen: 2616619-hd_1920_1080_30fps.mp4 (Pexels). 1920x1080, 25s, audio aac
+    (se elimina en el derivado: se usa como fondo mudo).
+
+  mariposas-entre-hojas-vertical-4k.mp4
+    -> mariposas-entre-hojas-vertical-1080.{mp4,webm}  (fps 60->30)
+    -> posters: mariposas-entre-hojas-vertical.{jpg,webp}
+    Origen: 17735534-uhd_2160_3840_60fps.mp4 (Pexels). 2160x3840, 10s, sin audio.
+
+  13619427_1920_1080_30fps.mp4
+    -> pexels-13619427-1080p.{mp4,webm}
+    -> posters: pexels-13619427-ambiente.{jpg,webp}
+    Origen: Pexels, ID 13619427. 1920x1080, 40s, sin audio. Contenido PENDIENTE.
+
+  15160751_1080_1920_30fps.mp4
+    -> pexels-15160751-1080.{mp4,webm}
+    -> posters: pexels-15160751-vertical.{jpg,webp}
+    Origen: Pexels, ID 15160751. 1080x1920, 16s, sin audio. Contenido PENDIENTE.
+
+
+SIN DERIVADOS POR DECISIÓN
+==========================
+  - 480999978_*.jpg  -> PENDIENTE DE CONFIRMACIÓN
+  - 482005509_*.jpg  -> HOLD (menores/personas)
+
+APROBADOS PARA USO WEB (derivados generados): las 6 fotografías 505011602…,
+505835868…, 506940932…, 506941578…, 507088230… y 508109705… (ver arriba).

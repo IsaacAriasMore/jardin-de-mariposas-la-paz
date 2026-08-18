@@ -3,6 +3,7 @@ package-lock.json
 Fotos/
 Videos/
 public/media/
+.agents/
 .env
 .env.*
 # Masters documentales del proyecto: no se reformatean

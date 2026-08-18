@@ -15,7 +15,7 @@ Node.js + Express 4 + EJS (MVC, aprobado en Fase 1). CSS nativo con tokens OKLCH
 - Familias y visitantes nacionales de Costa Rica (salidas de fin de semana desde el Valle Central).
 - Amantes de la naturaleza y la fotografía.
 - Turistas internacionales interesados en turismo de naturaleza.
-- Grupos escolares y educativos: no priorizados por ahora (confirmado por el dueño).
+- Grupos escolares, educativos y de distintas edades: se atienden con visitas guiadas (preescolar, kínder, escuelas, grupos educativos, personas adultas y adultas mayores).
 
 ## Product Purpose
 
@@ -32,19 +32,20 @@ Un mariposario rural real en Bajo La Paz, San Ramón (Alajuela, Costa Rica), don
 - Teléfono/WhatsApp principal: +506 8889-4483. Secundario: +506 8880-3433.
 - Precio de entrada: "Consultar por WhatsApp" (decisión confirmada; no publicar tarifas).
 - Redes: Facebook `facebook.com/mariposaslapaz` (única red confirmada).
+- Visitas guiadas: disponibles. Públicos: preescolar y kínder, escuelas, grupos educativos, personas adultas, adultas mayores y visitantes de distintas edades. Idiomas: español e inglés. Guía certificado por el ICT. NO confirmado (no publicar): duración, tamaño de grupo, precios, reservas, métodos de pago.
 - Entorno asociado a la marca: naturaleza, paisaje rural, biodiversidad, bosque nuboso, San Ramón, turismo natural.
 
 ## Capabilities and Constraints
 
 - Sitio informativo público, sin autenticación. WhatsApp como canal de contacto principal (helper único de enlaces `wa.me`).
-- Sin base de datos en esta etapa. Ruta `/guias` reservada sin contenido (confirmado: no crear artículos).
+- Sin base de datos en esta etapa. `/guias` está **reservada para una fase futura**: actualmente NO es una ruta pública (responde 404, no está en navegación ni en sitemap). Se habilitará cuando existan guías/artículos con contenido real; no se inventa contenido. Arquitectura prevista: `/guias` (índice) y `/guias/:slug` (detalle).
 - No inventar: especies (la identificación científica está pendiente), testimonios, premios, estadísticas, datos históricos o biológicos.
 - Dominio definitivo pendiente de compra; provisional `jardindemariposaslapaz.com`. Enlace de Google Maps desacoplado (`GOOGLE_MAPS_URL`), provisionalmente el Plus Code.
 - SEO desacoplado por página (title, description, canonical, OG, sitemap, robots).
 
 ## Brand Commitments
 
-- Nombre oficial: "Jardín de Mariposas La Paz".
+- Nombre oficial: "Jardín de Mariposas La Paz". Nombre corto: "Mariposario La Paz".
 - Idea editorial: **"Donde la naturaleza cobra alas."**
 - Personalidad: natural, auténtica, humana, serena, cálida, tropical, editorial, cuidada, local, costarricense.
 - No debe sentirse: corporativa, tecnológica, artificial, genérica, lujosa de forma ostentosa, infantil ni como plantilla turística.
@@ -53,7 +54,7 @@ Un mariposario rural real en Bajo La Paz, San Ramón (Alajuela, Costa Rica), don
 
 ## Evidence on Hand
 
-- 8 fotografías y 3 videos 4K en `Fotos/` y `Videos/` (masters; mapeo en `MAPEO-NOMBRES-ORIGINALES.txt`, uso recomendado en `GUIA-DE-USO.md`).
+- 20 fotografías y 5 videos en `Fotos/` y `Videos/` (masters; mapeo en `MAPEO-NOMBRES-ORIGINALES.txt`, inventario y clasificación en `MEDIA-CATALOG.md`, uso recomendado en `GUIA-DE-USO.md`). Derivados web generados con `npm run media` en `public/media/`.
 - Datos oficiales del negocio en `src/config/business.js`.
 - Ausencias que no deben rellenarse: especies identificadas, testimonios, premios, precios específicos, materiales físicos del negocio (folletos/QR).
 
